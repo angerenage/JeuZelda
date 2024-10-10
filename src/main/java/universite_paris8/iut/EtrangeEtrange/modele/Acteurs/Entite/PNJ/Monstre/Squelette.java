@@ -105,9 +105,9 @@ public class Squelette extends EntiteOffensif {
 
     @Override
     public void unTour() {
-        if (monde.estDansRayon(getPosition(), 6)){
+        if (monde.joueurDansRayon(getPosition(), 6)){
             seDeplacerVers(joueur.getPosition());
-            if (monde.estDansRayon(getPosition(), 2)){
+            if (monde.joueurDansRayon(getPosition(), 2)){
                 attaque();
             }
         }

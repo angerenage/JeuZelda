@@ -25,7 +25,7 @@ public class Aetoile {
         // Initialiser les sommets
         for (int y = 0; y < hauteur; y++) {
             for (int x = 0; x < largeur; x++) {
-                boolean traversable = monde.getNontraversable()[y][x] == -1;
+                boolean traversable = monde.getCarte().estTraversable(x, y);
                 graphe[y][x] = new Sommet(new Position(x, y), traversable);
             }
         }
@@ -57,7 +57,7 @@ public class Aetoile {
         // Réinitialiser les sommets
         for (int y = 0; y < graphe.length; y++) {
             for (int x = 0; x < graphe[0].length; x++) {
-                graphe[y][x].setTraversable(monde.getNontraversable()[y][x] == -1);
+                graphe[y][x].setTraversable(monde.getCarte().estTraversable(x, y));
             }
         }
 

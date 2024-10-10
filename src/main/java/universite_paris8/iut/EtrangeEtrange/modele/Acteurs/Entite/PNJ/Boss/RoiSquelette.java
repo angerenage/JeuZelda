@@ -78,7 +78,7 @@ public class RoiSquelette extends EntiteOffensif
                 return;
             }
         }
-        if (monde.estDansRayon(getPosition(), 2)){
+        if (monde.joueurDansRayon(getPosition(), 2)) {
             attaque();
         }
 

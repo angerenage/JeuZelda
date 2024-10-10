@@ -3,7 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagis
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.EntiteOffensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Humanoide;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionVendre;
+import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionMarchander;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.Soigner;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
@@ -82,7 +82,7 @@ public class Marchand extends Humanoide implements Dropable
     {
         Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?",null);
 
-        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.",new ActionVendre(this));
+        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.",new ActionMarchander(this));
 
 
 

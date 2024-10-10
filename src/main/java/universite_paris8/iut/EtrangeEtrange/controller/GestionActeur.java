@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Map.GestionCollisions;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
@@ -73,12 +74,10 @@ public class GestionActeur implements ListChangeListener<Acteur>
         acteur.getPosition().getYProperty().addListener((obs, old, nouv)-> {verifCollision(acteur);});
     }
 
-    private void verifCollision(Acteur acteur)
-    {
+    private void verifCollision(Acteur acteur) {
         Joueur joueur = monde.getJoueur();
 
-        if(acteur != joueur && monde.collisionAvecActeur(acteur,joueur))
-        {
+        if (acteur != joueur && GestionCollisions.collisionEntreActeur(acteur,joueur)) {
             acteur.subitCollision(joueur);
         }
 

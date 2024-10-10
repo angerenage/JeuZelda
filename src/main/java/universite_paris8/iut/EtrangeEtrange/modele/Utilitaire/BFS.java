@@ -34,7 +34,7 @@ public class BFS {
 
         for (int y = 0; y < hauteur; y++)
             for (int x = 0; x < largeur; x++)
-                this.graphe[y][x] = new Sommet(new Position(x, y), monde.getNontraversable()[y][x] == -1);
+                this.graphe[y][x] = new Sommet(new Position(x, y), monde.getCarte().estTraversable(x, y));
 
 
         for (int y = 0; y < hauteur; y++)

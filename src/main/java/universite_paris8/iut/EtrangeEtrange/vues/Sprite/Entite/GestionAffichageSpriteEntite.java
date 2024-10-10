@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-;
+
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Boss.RoiSquelette;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Slime;

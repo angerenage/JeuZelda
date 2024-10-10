@@ -10,8 +10,8 @@ public class ActionAchat extends Action
     private Marchand marchand;
     private Objet objet;
     private Joueur joueur;
-    private ActionVendre marchander;
-    public ActionAchat(Marchand marchand, Objet objet, Joueur joueur, ActionVendre marchander)
+    private ActionMarchander marchander;
+    public ActionAchat(Marchand marchand, Objet objet, Joueur joueur, ActionMarchander marchander)
     {
         this.joueur = joueur;
         this.objet = objet;

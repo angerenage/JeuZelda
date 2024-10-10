@@ -57,7 +57,6 @@ public class ConstanteObjet
     public static final int DURABILITE_FLECHE = 10;
     public static final int PRIX_ACHAT_FLECHE = 12;
     public static final int STACK_MAX_FLECHE = 64;
-    public static final int NOMBRE_UTLISATION_FLECHE = 1;
 
     //-----------------------------------------------ORBE-------------------------------------------------------------//
 

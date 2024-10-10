@@ -7,11 +7,11 @@ import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
 
 import java.util.ArrayList;
 
-public class ActionVendre extends Action
+public class ActionMarchander extends Action
 {
     private Marchand marchand;
 
-    public ActionVendre(Marchand marchand)
+    public ActionMarchander(Marchand marchand)
     {
         this.marchand = marchand;
     }
