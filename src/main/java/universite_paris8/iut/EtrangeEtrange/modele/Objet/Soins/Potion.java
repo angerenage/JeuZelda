@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Guerrisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Potion implements Guerrisable, Objet, Utilisable
 {

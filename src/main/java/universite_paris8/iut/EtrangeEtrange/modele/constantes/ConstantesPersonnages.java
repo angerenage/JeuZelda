@@ -1,6 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Parametres;
-
-import javafx.beans.property.StringProperty;
+package universite_paris8.iut.EtrangeEtrange.modele.constantes;
 
 public class ConstantesPersonnages
 {

@@ -1,7 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Utilitaire;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

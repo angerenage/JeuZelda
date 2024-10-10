@@ -3,7 +3,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Rechargeable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 
 import java.util.ArrayList;

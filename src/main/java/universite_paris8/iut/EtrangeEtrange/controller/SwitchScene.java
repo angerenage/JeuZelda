@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.vues.GestionSon;
 
 import java.io.IOException;

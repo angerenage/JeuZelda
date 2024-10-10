@@ -3,7 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.vues.Sprite.DropAuSol;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.ImageView;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 
 public class SpriteDropAuSol {

@@ -1,7 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Carquois extends ObjetConteneur<Fleche>
 {

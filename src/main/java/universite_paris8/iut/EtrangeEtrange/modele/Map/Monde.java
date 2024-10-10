@@ -17,6 +17,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.DropAuSol.gestionAffichageSpriteDropAuSol;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.Entite.GestionAffichageSpriteEntite;
 import universite_paris8.iut.EtrangeEtrange.controller.GestionActeur;
@@ -63,10 +64,9 @@ public class Monde {
 
     /**
      * Méthode création de monde à partir d'une TiledMap
-     * @param chemin
      * @param nommap
      */
-    public Monde(String chemin, String nommap, int hauteur, int largeur)
+    public Monde(String nommap, int hauteur, int largeur)
     {
         this.sol = new int[hauteur][largeur];
         this.traversable = new int[hauteur][largeur];
@@ -82,7 +82,7 @@ public class Monde {
 
         for(int i = 0 ; i < coucheMap.size() ; i++) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(chemin+"/"+nommap+"_"+fichiers[i]+".csv"));
+                BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONDE_BASE_PATH, nommap, fichiers[i])));
                 String ligne;
                 int ligneIndex = 0;
 
@@ -110,9 +110,9 @@ public class Monde {
     public static void setSizeMondeHauteur(int hauteurMonde) {
     }
 
-    public void creationMonstre(String chemin, String nommap, int hauteur){
+    public void creationMonstre(String nommap, int hauteur){
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(chemin+"/"+nommap+"_monstres.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONSTRE_BASE_PATH, nommap)));
             String ligne;
             int ligneIndex = 0;
 

@@ -1,8 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.ObjetConteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Sac extends ObjetConteneur<Objet>
 {
