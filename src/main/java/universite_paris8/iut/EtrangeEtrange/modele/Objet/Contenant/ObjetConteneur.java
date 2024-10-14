@@ -1,12 +1,8 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 
-import javafx.beans.property.IntegerProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Conteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Inventaire;
-
-import java.util.ArrayList;
 
 public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> implements Objet
 {
@@ -41,7 +37,7 @@ public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> impl
             else if (caseSurvole == tailleInventaire + 1)
                 joueur.setObjetMainGauche(o2);
             else
-                getEmplacement(caseSurvole).ajoutObjet((T) o2);
+                getEmplacement(caseSurvole).ajoutItem((T) o2);
         }
         if(o1!=null){
             if(caseVerouille==tailleInventaire)
@@ -49,7 +45,7 @@ public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> impl
             else if(caseVerouille==tailleInventaire+1)
                 joueur.setObjetMainGauche(o1);
             else
-                getEmplacement(caseVerouille).ajoutObjet((T)o1);
+                getEmplacement(caseVerouille).ajoutItem((T)o1);
         }
 
     }

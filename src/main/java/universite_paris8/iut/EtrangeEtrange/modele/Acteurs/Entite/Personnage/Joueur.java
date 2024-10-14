@@ -11,7 +11,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Livre
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Attaque;
@@ -20,7 +19,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
@@ -36,8 +34,8 @@ import java.util.Set;
 public abstract class Joueur extends Entite implements Offensif
 {
 
-    protected Objet objetMainGauche;
-    protected Objet objetMainDroite;
+
+    protected Utilisable<Entite> objetMainDroite;
     protected Sac sac;
 
     private Attaque attaque;
@@ -45,6 +43,7 @@ public abstract class Joueur extends Entite implements Offensif
 
     private Set<Direction> directions;
     private Competences competences;
+
     protected Carquois carquois;
     private boolean estEntrainDeCourir;
 
@@ -57,23 +56,21 @@ public abstract class Joueur extends Entite implements Offensif
      * @param attaqueSpecial La valeur de l'attaque spéciale du joueur.
      * @param defenseSpecial La valeur de la défense spéciale du joueur.
      * @param vitesse        La vitesse de déplacement du joueur.
-     * @param sac            Le sac à dos du joueur.
-     * @param objetMainGauche   L'objet tenu dans la main gauche du joueur.
      * @param objetMainDroite L'objet tenu dans la main droite du joueur.
-     * @param monde          Le monde dans lequel évolue le joueur.
      * @param x              La position horizontale du joueur dans le monde.
      * @param y              La position verticale du joueur dans le monde.
      * @param direction      La direction vers laquelle le joueur est orienté.
      * @param hitbox         La hitbox du joueur.
      */
-    public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Sac sac, Objet objetMainGauche, Objet objetMainDroite, Monde monde, double x, double y, Direction direction, Hitbox hitbox) {
-        super(monde, x, y, direction, pv,attaque,defense,attaqueSpecial,defenseSpecial,vitesse,hitbox,sac,objetMainGauche,new Epee());
+    public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Utilisable<Entite> objetMainDroite, double x, double y, Direction direction, Hitbox hitbox) {
+        super(x, y, direction, pv,defense,defenseSpecial,vitesse,hitbox);
         this.competences = CreationArbre.arbres();
         this.estEntrainDeCourir = false;
         this.directions = new HashSet<>();
         this.attaque = new Attaque(attaque);
         this.attaqueSpecial = new AttaqueSpecial(attaqueSpecial);
-
+        this.objetMainDroite = objetMainDroite;
+        this.sac = new Sac();
     }
 
 
@@ -94,20 +91,16 @@ public abstract class Joueur extends Entite implements Offensif
     {
         if (objetMainDroite != null)
         {
-            if (objetMainDroite instanceof Utilisable utilisable)
-            {
-                if (objetMainDroite instanceof Arc arc )
-                    arc.setFleche(carquois.retourneUneFleche());
+            if (objetMainDroite instanceof Arc arc )
+                arc.setFleche(carquois.retourneUneFleche());
 
-                if (utilisable.utiliseePar(this))
-                    objetMainDroite = null;
-
-            }
+            if (objetMainDroite.utiliseePar(this))
+                objetMainDroite = null;
         }
     }
 
     @Override
-    public void unTour()
+    public void agit()
     {
         double coeff = 1;
         for (Direction direction1 : directions)
@@ -181,29 +174,19 @@ public abstract class Joueur extends Entite implements Offensif
     }
 
 
-    public Objet retournerObjetMainDroite()
+    public Utilisable<Entite> retournerObjetMainDroite()
     {
-        Objet objet = this.objetMainDroite;
+        Utilisable<Entite> objet = this.objetMainDroite;
         this.objetMainDroite = null;
         return objet;
     }
-    public void setObjetMainGauche(Objet objet){
-        this.objetMainGauche = objet;
-    }
 
-    public Objet retournerObjetMainGauche(){
-        Objet objet = this.objetMainGauche;
-        this.objetMainGauche=null;
-        return objet;
-    }
+
     public Objet getObjetMainDroite(){
         return this.objetMainDroite;
     }
-    public Objet getObjetMainGauche(){
-        return this.objetMainGauche;
-    }
 
-    public void setObjetMainDroite(Objet objet){
+    public void setObjetMainDroite(Utilisable<Entite> objet){
         this.objetMainDroite = objet;
     }
 

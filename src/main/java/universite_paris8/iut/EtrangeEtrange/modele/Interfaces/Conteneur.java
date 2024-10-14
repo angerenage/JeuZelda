@@ -14,7 +14,7 @@ public interface Conteneur<T extends Objet>
     boolean estVide();
     int nombresObjets();
     int getTailleMax();
-
+    boolean supprimeObjet(T objet);
 
     IntegerProperty getTailleMaxProperty();
 

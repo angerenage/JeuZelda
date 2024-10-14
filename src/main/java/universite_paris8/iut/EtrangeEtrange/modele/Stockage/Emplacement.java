@@ -1,10 +1,12 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
 
 
+import javafx.beans.property.IntegerProperty;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Conteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 import java.util.ArrayList;
-public class Emplacement <T extends Objet>
+public class Emplacement <T extends Objet> implements Conteneur<T>
 {
     private int stackPossible;
     private ArrayList<T> objets;
@@ -15,20 +17,45 @@ public class Emplacement <T extends Objet>
         this.stackPossible = 1;
     }
 
-    public void ajoutObjet(T objet)
+    @Override
+    public boolean ajoutItem(T objet)
     {
+        boolean ajoutReussi;
+
         if (this.objets.isEmpty())
         {
             stackPossible = objet.stackMax();
             this.objets.add(objet);
+            ajoutReussi = true;
         }
         else if (this.objets.get(0).getClass().equals(objet.getClass()))
         {
             if (this.objets.size()+1 < stackPossible)
                 this.objets.add(objet);
+            ajoutReussi = true;
         }
+        else
+        {
+            ajoutReussi = false;
+        }
+
+        return ajoutReussi;
     }
 
+    public boolean supprimeObjet(T objet)
+    {
+        boolean aSupprimer = false;
+
+        for (int i = this.objets.size() -1; i >= 0; i--)
+        {
+            if (objet == this.objets.get(i)) {
+                this.objets.remove(i);
+                aSupprimer = true;
+            }
+        }
+
+        return aSupprimer;
+    }
 
     /**
      * La méthode enlève l'objet de l'inventaire
@@ -46,10 +73,18 @@ public class Emplacement <T extends Objet>
         return nvList;
     }
 
+
+
     public void vider()
     {
         this.objets.clear();
     }
+
+    @Override
+    public boolean estPlein() {
+        return false;
+    }
+
     public int quantiteObjet()
     {
         return this.objets.size();
@@ -58,6 +93,35 @@ public class Emplacement <T extends Objet>
     public boolean estVide()
     {
         return this.objets.isEmpty();
+    }
+
+    @Override
+    public int nombresObjets() {
+        return 0;
+    }
+
+    @Override
+    public int getTailleMax() {
+    }
+
+    @Override
+    public IntegerProperty getTailleMaxProperty() {
+        return null;
+    }
+
+    @Override
+    public T objetALemplacement(int emplacement) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<T> enleverObjet(int emplacement) {
+        return null;
+    }
+
+    @Override
+    public T retourneObjet(int emplacement) {
+        return null;
     }
 
     public boolean estDeMemeClass(Objet objet)

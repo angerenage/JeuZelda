@@ -21,6 +21,9 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
             this.inventaire[i] = new Emplacement<>();
     }
 
+
+
+
     public boolean ajoutItem(T objet)
     {
         boolean ajoutReussi = false;
@@ -34,30 +37,38 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
             emplacement = chercheEmplacementVide();
 
         if (emplacement != null) {
-            emplacement.ajoutObjet(objet);
+            emplacement.ajoutItem(objet);
             ajoutReussi = true;
         }
 
         return ajoutReussi;
     }
-    public Emplacement<T> chercheEmplacementStackable(T objet)
-    {
-        Emplacement<T> emplacement = null;
-        boolean emplacementTrouver = false;
 
-        for (int i = 0; i < this.inventaire.length && !emplacementTrouver ;i++)
-        {
-            Emplacement<T> emplacementAverifier = this.inventaire[i];
 
-            if (emplacementAverifier.peuEncoreStacker() &&emplacementAverifier.estDeMemeClass(objet))
-            {
-                emplacement = emplacementAverifier;
-                emplacementTrouver = true;
+    private ArrayList<Emplacement<T>> chercheEmplacementMemeItem(Class<? extends Objet> typeObjet) {
+        ArrayList<Emplacement<T>> emplacementsCorrespondants = new ArrayList<>();
+
+        for (Emplacement<T> emplacement : inventaire) {
+            if (emplacement.estDuMemeType(typeObjet)) {
+                emplacementsCorrespondants.add(emplacement);
             }
         }
 
-        return emplacement;
+        return emplacementsCorrespondants;
     }
+
+    public Emplacement<T> chercheEmplacementStackable(T objet) {
+
+        ArrayList<Emplacement<T>> emplacements = chercheEmplacementMemeItem(objet.getClass());
+
+        for (Emplacement<T> emplacement : emplacements) {
+            if (emplacement.peuEncoreStacker()) {
+                return emplacement;
+            }
+        }
+        return null;
+    }
+
     public Emplacement<T> chercheEmplacementVide()
     {
         Emplacement<T> emplacement = null;
@@ -122,6 +133,19 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
     {
         return this.taille.get();
     }
+
+    @Override
+    public boolean supprimeObjet(T objet) {
+        ArrayList<Emplacement<T>> emplacements = chercheEmplacementMemeItem(objet.getClass());
+
+        for (Emplacement<T> emplacement : emplacements) {
+            if (emplacement.supprimeObjet(objet))
+                return true;
+        }
+
+        return false;
+    }
+
     public IntegerProperty getTailleMaxProperty(){
         return this.taille;
     }

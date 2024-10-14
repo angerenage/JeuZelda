@@ -7,7 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 
-public class Potion implements Guerrisable, Objet, Utilisable
+public class Potion implements Guerrisable, Objet, Utilisable<Entite>
 {
 
     private static final int DURABILITEE = ConstanteObjet.DURABILITE_POTION;
@@ -18,15 +18,6 @@ public class Potion implements Guerrisable, Objet, Utilisable
 
     public Potion(){this.durabilitee = DURABILITEE;}
 
-    @Override
-    public boolean estUtiliseePar(Entite entite)
-    {
-        if (durabilitee > 0)
-        {
-            entite.soigner(restoration());
-            this.durabilitee--;
-        }
-    }
 
     @Override
     public double restoration() {
@@ -50,4 +41,14 @@ public class Potion implements Guerrisable, Objet, Utilisable
         return PRIX_ACHAT;
     }
 
+    @Override
+    public boolean utiliseePar(Entite entite) {
+        if (durabilitee > 0)
+        {
+            entite.soigner(restoration());
+            this.durabilitee--;
+        }
+
+        return durabilitee <= 0;
+    }
 }

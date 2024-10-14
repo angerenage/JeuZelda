@@ -1,6 +1,10 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternGenereItem;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionVendre;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.Soigner;
@@ -23,7 +27,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Marchand extends Humanoide implements Dropable
+public class Marchand extends NPEs implements Dropable
 {
 
     private int cycle;
@@ -31,8 +35,8 @@ public class Marchand extends Humanoide implements Dropable
 
     private Prompt prompt;
 
-    public Marchand(Monde monde, double x, double y, Direction direction) {
-        super(monde, x, y, direction, 10, 10, 10, 10, 10, 0.5, new Hitbox(0.5,0.5), null, null, null);
+    public Marchand(double x, double y, Direction direction) {
+        super(x, y, direction, 10, 10 , 10, 0.5, new Hitbox(0.5,0.5));
         this.cycle = 0;
         this.sac = new Sac();
 
@@ -40,20 +44,26 @@ public class Marchand extends Humanoide implements Dropable
 
     }
 
-    @Override
-    public void unTour()
+
+    public void genereMarchandises()
     {
         cycle++;
 
         if (cycle % 2000 == 0)
         {
-            remplieAleatoirementMarchandise();
             sac.ajoutItem(new Epee());
             sac.ajoutItem(new Arc());
             sac.ajoutItem(new Potion());
             cycle = 0;
         }
     }
+
+    @Override
+    protected Pattern initPattern() {
+        return new ConditionDelaieRespecter(new PatternGenereItem(),5000);
+    }
+
+
 
     @Override
     public void subitCollision(Acteur acteur) {
@@ -74,7 +84,7 @@ public class Marchand extends Humanoide implements Dropable
     public boolean estUnEnemie() {return false;}
 
     @Override
-    public  void subitAttaque(Dommageable causeDegat, EntiteOffensif entiteOffensif){}
+    public  void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif){}
 
     private void initPrompt()
     {
@@ -100,39 +110,11 @@ public class Marchand extends Humanoide implements Dropable
 
 
 
-    @Override
-    public void attaque() {
-
-    }
-
-    @Override
-    public void lanceUnSort(int numSort) {
-
-    }
 
 
 
 
-    private void remplieAleatoirementMarchandise()
-    {
-        Random rdm = new Random();
-        TypeObjet[] typeObjets = TypeObjet.values();
 
-        for (int i = 0;i<5;i++)
-        {
-            TypeObjet typeObjet = typeObjets[rdm.nextInt(typeObjets.length)];
-            Objet objet = TypeObjet.nouvelleInstance(typeObjet);
-
-            this.sac.ajoutItem(objet);
-
-            if(objet.stackMax() > 3)
-            {
-                for (int j = 0; j < rdm.nextInt(objet.stackMax()/2);j++)
-                    this.sac.ajoutItem(TypeObjet.nouvelleInstance(typeObjet));
-            }
-
-        }
-    }
 
     @Override
     public void drop() {
@@ -158,5 +140,6 @@ public class Marchand extends Humanoide implements Dropable
     public Prompt getPrompt(){
         return prompt;
     }
+
 
 }

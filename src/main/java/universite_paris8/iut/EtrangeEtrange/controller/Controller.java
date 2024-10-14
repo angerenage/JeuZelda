@@ -185,7 +185,8 @@ public class Controller implements Initializable {
     }
     public void initMonde()
     {
-        monde = new Monde("src/main/resources/universite_paris8/iut/EtrangeEtrange/TiledMap/", "mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
+        Monde.initMonde("src/main/resources/universite_paris8/iut/EtrangeEtrange/TiledMap/", "mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
+        monde = Monde.getMonde();
     }
 
     public void initJoueur() {

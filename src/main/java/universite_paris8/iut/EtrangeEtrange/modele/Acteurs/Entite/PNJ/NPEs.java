@@ -25,15 +25,17 @@ public abstract class NPEs extends Entite {
 
     private Pattern pattern;
 
-    public NPEs(Monde monde, double x, double y, Direction direction, double pv, double defense, double defenseSpecial, double vitesse, Hitbox hitbox,Pattern pattern) {
-        super(monde, x, y, direction, pv, defense, defenseSpecial, vitesse, hitbox);
-        this.pattern = pattern;
+    public NPEs(double x, double y, Direction direction, double pv, double defense, double defenseSpecial, double vitesse, Hitbox hitbox) {
+        super(x, y, direction, pv, defense, defenseSpecial, vitesse, hitbox);
+        this.pattern = initPattern();
     }
 
     @Override
-    public void unTour() {
-        pattern.effectue(this);
+    public void agit() {
+        pattern.effectue();
     }
 
 
+
+    protected abstract Pattern initPattern();
 }

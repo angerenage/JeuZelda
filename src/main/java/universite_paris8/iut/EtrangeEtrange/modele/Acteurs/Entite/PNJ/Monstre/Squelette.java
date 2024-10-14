@@ -1,6 +1,11 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionJoueurDansVisionDecorateur;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.PatternCompositeStrategie;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternComposite;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternsBasique.PatternDeplacementAleatoire;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternsBasique.PatternSeDeplaceVersJoueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ParametreMonstre;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.PieceOr;
@@ -11,14 +16,17 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 
-public class Squelette extends EntiteOffensif {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Squelette extends Monstre {
     private Joueur joueur;
     private Aetoile aetoile;
     private long lastPathCalculationTime;
     private Epee epee ;
 
-    public Squelette(Monde monde, double x, double y, Direction direction, Hitbox hitbox, Joueur joueur, Aetoile aetoile) {
-        super(monde, x, y, direction,
+    public Squelette(double x, double y, Direction direction, Hitbox hitbox, Joueur joueur, Aetoile aetoile) {
+        super(x, y, direction,
                 ParametreMonstre.PV_SQUELETTE,
                 ParametreMonstre.ATTAQUE_SQUELETTE,
                 ParametreMonstre.DEFENSE_SQUELETTE,
@@ -124,7 +132,14 @@ public class Squelette extends EntiteOffensif {
             setDirection(Direction.randomDirection());
     }
 
+    @Override
+    protected Pattern initPattern() {
 
+        Pattern patternDeplacementAleatoire = new PatternDeplacementAleatoire(this);
+        ConditionJoueurDansVisionDecorateur patternDeplacementVersJoueur = new ConditionJoueurDansVisionDecorateur(this,new PatternSeDeplaceVersJoueur(this),6);
+
+        return new PatternCompositeStrategie(new ArrayList<>(List.of(patternDeplacementVersJoueur)),patternDeplacementAleatoire);
+    }
 
     @Override
     public String typeActeur() {
@@ -143,4 +158,11 @@ public class Squelette extends EntiteOffensif {
     public boolean estUnEnemie() {
         return true;
     }
+
+    @Override
+    public void faitUneAttaque() {
+
+    }
+
+
 }

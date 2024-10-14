@@ -4,7 +4,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Interfaces;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 
 
-public interface Utilisable
+public interface Utilisable<T>
 {
-    boolean utiliseePar(Entite entite);
+    boolean utiliseePar(T entite);
 }

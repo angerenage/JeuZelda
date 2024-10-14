@@ -14,8 +14,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 
 public class Bloc extends Acteur implements Dropable {
-    public Bloc(Monde monde, double x, double y, Direction direction, double pv ,Hitbox hitbox)
-    { super(monde, x, y, direction, pv,0, hitbox);}
+    public Bloc(double x, double y, Direction direction, double pv ,Hitbox hitbox)
+    { super(x, y, direction, pv,0, hitbox);}
 
     @Override
     public void seFaitPousser(Acteur acteur)
@@ -49,7 +49,7 @@ public class Bloc extends Acteur implements Dropable {
     @Override
     public void drop() { monde.ajouterDropAuSol(new DropAuSol(new Arc(), 1, new Position(position.getX(), position.getY()))); }
     @Override
-    public void unTour() {/*NE FAIT RIEN*/}
+    public void agit() {/*NE FAIT RIEN*/}
     @Override
     public void causeCollision(Acteur acteur) {/*NE FAIT RIEN*/}
 

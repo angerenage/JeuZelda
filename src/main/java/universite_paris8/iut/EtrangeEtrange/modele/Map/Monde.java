@@ -26,10 +26,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Objects;
 
 public class Monde {
+
+
+    private static Monde monde;
     /**
      * Taille du monde (généré aléatoirement)
      * Ces valeurs ne servent que pour tester le fonctionnement de la scrolling map, elles seront supprimées lorsque les tests seront finis.
@@ -66,7 +67,7 @@ public class Monde {
      * @param chemin
      * @param nommap
      */
-    public Monde(String chemin, String nommap, int hauteur, int largeur)
+    private Monde(String chemin, String nommap, int hauteur, int largeur)
     {
         this.sol = new int[hauteur][largeur];
         this.traversable = new int[hauteur][largeur];
@@ -104,6 +105,17 @@ public class Monde {
 
     }
 
+    public static Monde getMonde()
+    {
+        return monde;
+    }
+
+    public static void initMonde(String chemin, String nommap, int hauteur, int largeur)
+    {
+        if (monde == null)
+            monde = new Monde(chemin, nommap, hauteur, largeur);
+    }
+
     public static void setSizeMondeLargeur(int largeurMonde) {
     }
 
@@ -124,15 +136,15 @@ public class Monde {
                     Acteur acteur = null;
                     if (monstre != -1) {
                         if (monstre == 4)
-                            acteur = new Marchand(this, j+0.5 ,ligneIndex+0.5, Direction.BAS);
+                            acteur = new Marchand( j+0.5 ,ligneIndex+0.5, Direction.BAS);
                         else if(monstre == 2)
-                            acteur = new Slime(this, j+0.5, ligneIndex+0.5, Direction.BAS, new Hitbox(0.25, 0.5));
+                            acteur = new Slime(j+0.5, ligneIndex+0.5, Direction.BAS, new Hitbox(0.25, 0.5));
                         else if(monstre == 3)
-                            acteur = new Squelette(this, j+0.5, ligneIndex+0.5,  Direction.BAS, new Hitbox(0.5, 0.5),joueur , new Aetoile(this));
+                            acteur = new Squelette( j+0.5, ligneIndex+0.5,  Direction.BAS, new Hitbox(0.5, 0.5),joueur , new Aetoile());
                         else if(monstre == 1)
-                            acteur = new RoiSquelette(this, j+0.5 , ligneIndex+0.5, Direction.BAS);
+                            acteur = new RoiSquelette( j+0.5 , ligneIndex+0.5, Direction.BAS);
                         else if(monstre == 0)
-                            acteur = new Bloc(this, j+0.5, ligneIndex+0.5, Direction.BAS, 1, 1, new Hitbox(1,1 ));
+                            acteur = new Bloc( j+0.5, ligneIndex+0.5, Direction.BAS,1, new Hitbox(1,1 ));
                         ajoutActeur(acteur);
                     }
                 }
@@ -249,10 +261,10 @@ public class Monde {
 
     public void unTour()
     {
-        this.joueur.unTour();
+        this.joueur.agit();
 
         for(int i = acteurs.size()-1 ; i>=0 ; i--)
-            acteurs.get(i).unTour();
+            acteurs.get(i).agit();
 
         for(int i = 0 ; i < acteursAsupprimer.size(); i++){
             enleveActeur(acteursAsupprimer.get(i));

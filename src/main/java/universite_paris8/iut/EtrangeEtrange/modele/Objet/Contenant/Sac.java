@@ -4,6 +4,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.ObjetConteneu
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 
+import java.util.List;
+
 public class Sac extends ObjetConteneur<Objet>
 {
     private static final int TAILLE = ConstanteObjet.TAILLE_SAC;

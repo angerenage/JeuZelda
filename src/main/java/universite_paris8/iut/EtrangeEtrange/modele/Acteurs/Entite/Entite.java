@@ -3,7 +3,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Defense;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.DefenseSpecial;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Vitesse;
@@ -15,14 +14,12 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
  */
 public abstract class Entite extends Acteur
 {
-    protected Vitesse statsVitesse;
     protected Defense statsDefense;
     protected DefenseSpecial statsDefenseSpecial;
 
     /**
      * Crée une nouvelle instance d'Entite avec les paramètres spécifiés.
      *
-     * @param monde            Le monde dans lequel l'entité évolue.
      * @param x                La position horizontale de l'entité dans le monde.
      * @param y                La position verticale de l'entité dans le monde.
      * @param direction        La direction initiale de l'entité.
@@ -32,9 +29,9 @@ public abstract class Entite extends Acteur
      * @param vitesse          La vitesse de déplacement de l'entité.
      * @param hitbox           La hitbox de l'entité.
      */
-    public Entite(Monde monde,double x,double y,Direction direction,double pv,double defense,double defenseSpecial,double vitesse, Hitbox hitbox)
+    public Entite(double x,double y,Direction direction,double pv,double defense,double defenseSpecial,double vitesse, Hitbox hitbox)
     {
-        super(monde,x,y,direction,pv,vitesse,hitbox);
+        super(x,y,direction,pv,vitesse,hitbox);
         this.statsDefense = new Defense(defense);
         this.statsDefenseSpecial = new DefenseSpecial(defenseSpecial);
     }
@@ -43,9 +40,8 @@ public abstract class Entite extends Acteur
      * Subit des dégâts infligés par une source dommageable.
      * @param causeDegat La source de dégâts.
      */
-    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif)
-    {
-        enlevePv((subitDegatPhysique(entiteOffensif.getAttaque(),causeDegat.degatPhysique()) + subitDegatSpecial(causeDegat.degatSpecial(), entiteOffensif.getAttaqueSpecial()))/2);
+    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif) {
+        enlevePv((calculeDegatPhysique(entiteOffensif.getAttaque(),causeDegat.degatPhysique()) + calculeDegatSpecial(causeDegat.degatSpecial(), entiteOffensif.getAttaqueSpecial()))/2);
     }
 
     public void subitCollision(Acteur acteur) {acteur.causeCollision(this);}
@@ -62,7 +58,7 @@ public abstract class Entite extends Acteur
      * @param degatArme La force de l'entité qui inflige les dégâts.
      * @return Les dégâts physiques subis.
      */
-    protected double subitDegatPhysique(double attaqueEntite,double degatArme) {return Math.abs(attaqueEntite+degatArme - statsDefense.getDefense());}
+    protected double calculeDegatPhysique(double attaqueEntite, double degatArme) {return Math.abs(attaqueEntite+degatArme - statsDefense.getDefense());}
 
     /**
      * Calcule les dégâts spéciaux subis par l'entité.
@@ -71,8 +67,7 @@ public abstract class Entite extends Acteur
      * @param degatArme    La force de l'entité qui inflige les dégâts spéciaux.
      * @return Les dégâts spéciaux subis.
      */
-    protected double subitDegatSpecial(double attaqueSpecialEntite,double degatArme)
-    {
+    protected double calculeDegatSpecial(double attaqueSpecialEntite, double degatArme) {
         return Math.abs(attaqueSpecialEntite+degatArme - statsDefenseSpecial.getDefenseSpecial());
     }
     public void setDefenseMaximum(double statsDefense){this.statsDefense.setDefenseMaximum(statsDefense);}

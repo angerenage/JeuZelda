@@ -10,8 +10,8 @@ public class Aetoile {
     private Sommet[][] graphe;
     private ArrayList<Position> chemin;
 
-    public Aetoile(Monde monde) {
-        this.monde = monde;
+    public Aetoile() {
+        this.monde = Monde.getMonde();
         this.chemin = new ArrayList<>();
         construireGraphe(); // Construire le graphe lors de l'initialisation
     }

@@ -3,6 +3,8 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Rechargeable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
@@ -11,7 +13,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
-public class Orbe extends Projectile implements Utilisable, Rechargeable
+public class Orbe extends Projectile implements Utilisable<Offensif>, Rechargeable
 {
 
     private static final double PV = ConstanteObjet.PV_ORBE;
@@ -74,7 +76,7 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
     }
 
     @Override
-    public void unTour()
+    public void agit()
     {
         long apelle = System.currentTimeMillis();
 
@@ -107,6 +109,11 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
                 this.positionAsuivre = this.bfs.prochainePosition();
 
         }
+
+    }
+
+    @Override
+    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif) {
 
     }
 
@@ -155,5 +162,12 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
         this.positionAsuivre = bfs.prochainePosition();
 
         return true;
+    }
+
+
+
+    @Override
+    public boolean utiliseePar(Offensif entite) {
+        return false;
     }
 }
