@@ -2,13 +2,26 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
-public abstract class Piece implements Objet {
-    private int valeur;
-    public Piece(int valeur){
-        this.valeur = valeur;
+public class Piece implements Objet {
+    public Piece(){}
+
+    @Override
+    public String getNom() {
+        return "piece";
     }
 
-    public int getValeur() {
-        return valeur;
+    @Override
+    public int stackMax() {
+        return 64;
+    }
+
+    @Override
+    public double durabilitee() {
+        return 0;
+    }
+
+    @Override
+    public int prixAchat() {
+        return 0;
     }
 }
