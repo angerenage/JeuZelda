@@ -1,6 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Map;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
@@ -10,13 +11,14 @@ import java.util.ArrayList;
 public class GestionCollisions {
     public static void verifierCollisions(Monde monde, Acteur acteur) {
         for (Acteur acteur2 : monde.getEntites()) {
-            if (acteur != acteur2 && collisionEntreActeur(acteur, acteur2)) {
+            if (collisionEntreActeur(acteur, acteur2) && acteur != acteur2) {
                 acteur2.subitCollision(acteur);
             }
         }
 
-        if (acteur != monde.getJoueur() && collisionEntreActeur(acteur, monde.getJoueur())) {
-            monde.getJoueur().subitCollision(acteur);
+        Joueur joueur = monde.getJoueur();
+        if (collisionEntreActeur(acteur, joueur) && acteur != joueur) {
+            joueur.subitCollision(acteur);
         }
     }
 
@@ -80,15 +82,18 @@ public class GestionCollisions {
     }
 
     public static boolean collisionEntreActeur(Acteur acteur1, Acteur acteur2) {
+        double vitesse = acteur1.getVitesse();
+
         Position pos1 = acteur1.getPosition();
         Hitbox hitbox1 = acteur1.getHitbox();
+
         Position pos2 = acteur2.getPosition();
         Hitbox hitbox2 = acteur2.getHitbox();
 
-        double x1Min = hitbox1.getPointLePlusAGauche(pos1.getX());
-        double y1Min = hitbox1.getPointLePlusEnHaut(pos1.getY());
-        double x1Max = hitbox1.getPointLePlusADroite(pos1.getX());
-        double y1Max = hitbox1.getPointLePlusEnBas(pos1.getY());
+        double x1Min = hitbox1.getPointLePlusAGauche(pos1.getX() + acteur1.getDirection().getX() * vitesse);
+        double y1Min = hitbox1.getPointLePlusEnHaut(pos1.getY() + acteur1.getDirection().getY() * vitesse);
+        double x1Max = hitbox1.getPointLePlusADroite(pos1.getX() + acteur1.getDirection().getX() * vitesse);
+        double y1Max = hitbox1.getPointLePlusEnBas(pos1.getY() + acteur1.getDirection().getY() * vitesse);
 
         double x2Min = hitbox2.getPointLePlusAGauche(pos2.getX());
         double y2Min = hitbox2.getPointLePlusEnHaut(pos2.getY());
