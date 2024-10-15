@@ -17,8 +17,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
-public class RoiSquelette extends EntiteOffensif
-{
+public class RoiSquelette extends EntiteOffensif {
 
     private long dernierTempsAttaque;
     private long delaiAttaque = 75;
@@ -44,7 +43,7 @@ public class RoiSquelette extends EntiteOffensif
         this.positionInitiale = new Position(x, y);
         this.etapeAttaque = 0;
         this.positionMilieu = new Position(x, y);
-        this.position5_2 = new Position(x-5, y);
+        this.position5_2 = new Position(x - 5, y);
         setPosition(x, y); // Positionnement initial du Roi Squelette
         livreMagique = new LivreMagique();
 
@@ -75,13 +74,12 @@ public class RoiSquelette extends EntiteOffensif
                 return;
             }
         }
-        if (monde.estDansRayon(getPosition(), 2)){
+        if (monde.estDansRayon(getPosition(), 2)) {
             attaque();
         }
 
         long tempsActuel = System.currentTimeMillis();
-        if (tempsActuel - dernierTempsAttaque >= delaiAttaque)
-        {
+        if (tempsActuel - dernierTempsAttaque >= delaiAttaque) {
 
             switch (etapeAttaque) {
                 case 0:
@@ -109,8 +107,6 @@ public class RoiSquelette extends EntiteOffensif
     }
 
 
-
-
     // Détecte si le joueur est dans un certain rayon autour du Roi Squelette
     private boolean detecteJoueurDansRayon(double rayon) {
         Position positionJoueur = getMonde().getJoueur().getPosition();
@@ -121,13 +117,12 @@ public class RoiSquelette extends EntiteOffensif
 
 
     // Invoque des squelettes pour aider le Roi Squelette
-    private void invoquerSquelettes()
-    {
+    private void invoquerSquelettes() {
 
-        Position positionHaut = new Position(getPosition().getX(), getPosition().getY()-2);
-        Position positionBas = new Position(getPosition().getX(), getPosition().getY()+2);
-        Squelette squeletteGauche = new Squelette( getMonde(), positionHaut.getX(), positionHaut.getY(), Direction.BAS, new Hitbox(0.5, 0.5), getMonde().getJoueur(), new Aetoile(getMonde()));
-        Squelette squeletteDroite = new Squelette( getMonde(), positionBas.getX(), positionBas.getY(), Direction.BAS, new Hitbox(0.5, 0.5), getMonde().getJoueur(), new Aetoile(getMonde()));
+        Position positionHaut = new Position(getPosition().getX(), getPosition().getY() - 2);
+        Position positionBas = new Position(getPosition().getX(), getPosition().getY() + 2);
+        Squelette squeletteGauche = new Squelette(getMonde(), positionHaut.getX(), positionHaut.getY(), Direction.BAS, new Hitbox(0.5, 0.5), getMonde().getJoueur(), new Aetoile(getMonde()));
+        Squelette squeletteDroite = new Squelette(getMonde(), positionBas.getX(), positionBas.getY(), Direction.BAS, new Hitbox(0.5, 0.5), getMonde().getJoueur(), new Aetoile(getMonde()));
         getMonde().ajoutActeur(squeletteGauche);
         getMonde().ajoutActeur(squeletteDroite);
         new Potion().utilise(this);
@@ -136,8 +131,7 @@ public class RoiSquelette extends EntiteOffensif
     }
 
     // Déplace le Roi Squelette vers une destination donnée
-    private void seDeplacerVers(Position destination)
-    {
+    private void seDeplacerVers(Position destination) {
         double deltaX = destination.getX() - getPosition().getX();
         double deltaY = destination.getY() - getPosition().getY();
 
@@ -146,11 +140,13 @@ public class RoiSquelette extends EntiteOffensif
         } else {
             setDirection(deltaY > 0 ? Direction.BAS : Direction.HAUT);
         }
-            seDeplace(1);
+        seDeplace(1);
     }
 
     // Vérifie si le Roi Squelette a atteint une certaine position
-    private boolean positionAtteinte(Position position) {return Math.abs(getPosition().getX() - position.getX()) < 0.1 && Math.abs(getPosition().getY() - position.getY()) < 0.1;}
+    private boolean positionAtteinte(Position position) {
+        return Math.abs(getPosition().getX() - position.getX()) < 0.1 && Math.abs(getPosition().getY() - position.getY()) < 0.1;
+    }
 
 
     @Override
@@ -159,14 +155,14 @@ public class RoiSquelette extends EntiteOffensif
     }
 
     @Override
-    public void dropApresMort() {TypeCompetence.COURIR.getCompetence().monterDeNiveau(monde.getJoueur());}
+    public void dropApresMort() {
+        TypeCompetence.COURIR.getCompetence().monterDeNiveau(monde.getJoueur());
+    }
 
     @Override
     public boolean estUnEnemie() {
         return true;
     }
-
-
 
 
 }

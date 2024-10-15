@@ -2,7 +2,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Rechargeable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
@@ -11,18 +10,14 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
-public class Orbe extends Projectile implements Utilisable, Rechargeable
-{
+public class Orbe extends Projectile implements Utilisable, Rechargeable {
 
-    private static final double PV = ConstanteObjet.PV_ORBE;
-    private static final double DEGAT_PHYSIQUE = ConstanteObjet.DEGAT_PHYSIQUE_ORBE;
-    private static final double DEGAT_SPECIAL = ConstanteObjet.DEGAT_SPECIAL_ORBE;
-    private static final double VITESSE = ConstanteObjet.VITESSE_ORBE;
-    private static final Hitbox HITBOX = ConstanteObjet.HITBOX_ORBE;
-    private static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_ORBE;
-    private static final int STACK_MAX  = ConstanteObjet.STACK_MAX_ORBE;
-    private static final int NOMBRE_UTILISATION = ConstanteObjet.NOMBRE_UTLISATION_ORBE;
-    private static final long DELAIE = ConstanteObjet.DELAIE_CHERCHE_POSITION_ORBE;
+    private static final double VITESSE =
+    private static final Hitbox HITBOX =
+    private static final int PRIX_ACHAT =
+    private static final int STACK_MAX =
+    private static final int NOMBRE_UTILISATION =
+    private static final long DELAIE = ;
 
     private final BFS bfs;
     private Position positionAsuivre;
@@ -30,40 +25,26 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
     private long derniereApelle;
     private Acteur acteurAsuivre;
 
-    public Orbe()
-    {
-        super(PV,VITESSE,HITBOX);
+    public Orbe() {
+        super(ConstanteObjet.PV_ORBE, ConstanteObjet.VITESSE_ORBE, ConstanteObjet.HITBOX_ORBE);
         this.positionAsuivre = null;
-        this.nombreUtilisationRestant = NOMBRE_UTILISATION;
+        this.nombreUtilisationRestant = ConstanteObjet.NOMBRE_UTLISATION_ORBE;
         this.derniereApelle = 0;
         this.bfs = new BFS();
-    }
-
-    public Orbe(Joueur joueur)
-    {
-        super(PV,VITESSE,HITBOX);
-        this.positionAsuivre = null;
-        this.nombreUtilisationRestant = NOMBRE_UTILISATION;
-        this.derniereApelle = 0;
-        this.bfs = new BFS();
-        acteurAsuivre = joueur;
     }
 
     @Override
-    public void utilise(Entite entite)
-    {
-        if (nombreUtilisationRestant > 0)
-        {
+    public void utilise(Entite entite) {
+        if (nombreUtilisationRestant > 0) {
             setMonde(entite.getMonde());
             setNewPosition(entite.getPosition().getX(), entite.getPosition().getY());
 
             if (acteurAsuivre == null)
-                this.acteurAsuivre =  monde.chercheEnemie();
+                this.acteurAsuivre = monde.chercheEnemie();
 
-            if (acteurAsuivre != null)
-            {
+            if (acteurAsuivre != null) {
                 setUtilisateur(entite);
-                this.bfs.chercherChemin(monde, getPosition(),acteurAsuivre.getPosition());
+                this.bfs.chercherChemin(monde, getPosition(), acteurAsuivre.getPosition());
 
                 entite.getMonde().ajoutActeur(this);
                 this.positionAsuivre = this.bfs.prochainePosition();
@@ -74,8 +55,7 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
     }
 
     @Override
-    public void unTour()
-    {
+    public void unTour() {
         long apelle = System.currentTimeMillis();
 
 
@@ -83,10 +63,7 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
             cooldown();
 
 
-
-
-        if (positionAsuivre != null)
-        {
+        if (positionAsuivre != null) {
             double deltaX = positionAsuivre.getX() - getPosition().getX();
             double deltaY = positionAsuivre.getY() - getPosition().getY();
 
@@ -110,15 +87,16 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
 
     }
 
-    private boolean positionAtteinte(Position position)
-    {
-        return  this.position != null
+    private boolean positionAtteinte(Position position) {
+        return this.position != null
                 && Math.abs(getPosition().getX() - position.getX()) < 0.1
                 && Math.abs(getPosition().getY() - position.getY()) < 0.1;
     }
 
     @Override
-    public String typeActeur() { return "orbe"; }
+    public String typeActeur() {
+        return "orbe";
+    }
 
     @Override
     public void dropApresMort() {
@@ -126,30 +104,52 @@ public class Orbe extends Projectile implements Utilisable, Rechargeable
     }
 
     @Override
-    public boolean estUnEnemie() { return false; }
-    @Override
-    public double degatPhysique() { return DEGAT_PHYSIQUE; }
-    @Override
-    public double degatSpecial() { return DEGAT_SPECIAL; }
-    @Override
-    public String getNom() {return "orbe";}
-    @Override
-    public int stackMax() { return STACK_MAX; }
-    @Override
-    public double durabilitee() { return nombreUtilisationRestant; }
-    @Override
-    public int prixAchat() { return PRIX_ACHAT; }
-
-    @Override
-    public long delaie() {
-        return DELAIE+500;
+    public boolean estUnEnemie() {
+        return false;
     }
 
     @Override
-    public boolean peutSeDeplacer() {return !monde.estHorsMap(this);}
+    public double degatPhysique() {
+        return ConstanteObjet.DEGAT_PHYSIQUE_ORBE;
+    }
+
     @Override
-    public boolean cooldown()
-    {
+    public double degatSpecial() {
+        return ConstanteObjet.DEGAT_SPECIAL_ORBE;
+    }
+
+    @Override
+    public String getNom() {
+        return "orbe";
+    }
+
+    @Override
+    public int stackMax() {
+        return ConstanteObjet.STACK_MAX_ORBE;
+    }
+
+    @Override
+    public double durabilitee() {
+        return nombreUtilisationRestant;
+    }
+
+    @Override
+    public int prixAchat() {
+        return ConstanteObjet.PRIX_ACHAT_ORBE;
+    }
+
+    @Override
+    public long delaie() {
+        return ConstanteObjet.DELAI_CHERCHE_POSITION_ORBE;
+    }
+
+    @Override
+    public boolean peutSeDeplacer() {
+        return !monde.estHorsMap(this);
+    }
+
+    @Override
+    public boolean cooldown() {
         this.derniereApelle = System.currentTimeMillis();
         this.bfs.chercherChemin(monde, getPosition(), acteurAsuivre.getPosition());
         this.positionAsuivre = bfs.prochainePosition();

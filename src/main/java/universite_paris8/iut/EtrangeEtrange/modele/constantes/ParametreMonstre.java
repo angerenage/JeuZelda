@@ -12,9 +12,7 @@ public class ParametreMonstre {
     // Paramètres pour Slime
 
     public static final int PV_SLIME = 100;
-    public static final int ATTAQUE_SLIME = 30;
     public static final int DEFENSE_SLIME = 20;
-    public static final int ATTAQUE_SPECIALE_SLIME = 20;
     public static final int DEFENSE_SPECIALE_SLIME = 50;
     public static final double VITESSE_SLIME = 0.005;
 

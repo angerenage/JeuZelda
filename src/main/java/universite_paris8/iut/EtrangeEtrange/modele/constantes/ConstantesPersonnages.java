@@ -9,7 +9,6 @@ public class ConstantesPersonnages
     public static final double GUERRIER_ATTAQUE_SPECIAL = 10;
     public static final double GUERRIER_DEFENSE_SEPCIAL = 25;
     public static final double GUERRIER_VITESSE = 0.015;
-    public static final double GUERRIER_HITBOX = 0.50;
 
 
 
@@ -31,7 +30,6 @@ public class ConstantesPersonnages
     public static final double MAGE_ATTAQUE_SPECIAL = 60;
     public static final double MAGE_DEFENSE_SEPCIAL = 45;
     public static final double MAGE_VITESSE = 0.06;
-    public static final double MAGE_HITBOX = 0.50;
 
 
 
@@ -41,7 +39,6 @@ public class ConstantesPersonnages
     public static final double NECROMANCIER_ATTAQUE_SPECIAL = 45;
     public static final double NECROMANCIER_DEFENSE_SEPCIAL = 50;
     public static final double NECROMANCIER_VITESSE = 0.04;
-    public static final double NECROMANCIER_HITBOX = 0.50;
 
 
 

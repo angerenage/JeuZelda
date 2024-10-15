@@ -36,8 +36,7 @@ import java.util.Set;
 /**
  * Représente le joueur dans le jeu.
  */
-public abstract class Joueur extends Humanoide
-{
+public abstract class Joueur extends Humanoide {
     private Set<Direction> directions;
     private Competences competences;
     protected Carquois carquois;
@@ -46,23 +45,23 @@ public abstract class Joueur extends Humanoide
     /**
      * Crée un nouveau joueur.
      *
-     * @param pv             Les points de vie du joueur.
-     * @param attaque        La valeur de l'attaque du joueur.
-     * @param defense        La valeur de la défense du joueur.
-     * @param attaqueSpecial La valeur de l'attaque spéciale du joueur.
-     * @param defenseSpecial La valeur de la défense spéciale du joueur.
-     * @param vitesse        La vitesse de déplacement du joueur.
-     * @param sac            Le sac à dos du joueur.
-     * @param objetMainGauche   L'objet tenu dans la main gauche du joueur.
+     * @param pv              Les points de vie du joueur.
+     * @param attaque         La valeur de l'attaque du joueur.
+     * @param defense         La valeur de la défense du joueur.
+     * @param attaqueSpecial  La valeur de l'attaque spéciale du joueur.
+     * @param defenseSpecial  La valeur de la défense spéciale du joueur.
+     * @param vitesse         La vitesse de déplacement du joueur.
+     * @param sac             Le sac à dos du joueur.
+     * @param objetMainGauche L'objet tenu dans la main gauche du joueur.
      * @param objetMainDroite L'objet tenu dans la main droite du joueur.
-     * @param monde          Le monde dans lequel évolue le joueur.
-     * @param x              La position horizontale du joueur dans le monde.
-     * @param y              La position verticale du joueur dans le monde.
-     * @param direction      La direction vers laquelle le joueur est orienté.
-     * @param hitbox         La hitbox du joueur.
+     * @param monde           Le monde dans lequel évolue le joueur.
+     * @param x               La position horizontale du joueur dans le monde.
+     * @param y               La position verticale du joueur dans le monde.
+     * @param direction       La direction vers laquelle le joueur est orienté.
+     * @param hitbox          La hitbox du joueur.
      */
     public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Sac sac, Objet objetMainGauche, Objet objetMainDroite, Monde monde, double x, double y, Direction direction, Hitbox hitbox) {
-        super(monde, x, y, direction, pv,attaque,defense,attaqueSpecial,defenseSpecial,vitesse,hitbox,sac,objetMainGauche,new Epee());
+        super(monde, x, y, direction, pv, attaque, defense, attaqueSpecial, defenseSpecial, vitesse, hitbox, sac, objetMainGauche, new Epee());
         this.competences = CreationArbre.arbres();
         this.estEntrainDeCourir = false;
         this.directions = new HashSet<>();
@@ -70,13 +69,10 @@ public abstract class Joueur extends Humanoide
     }
 
 
-    public void actionMainDroite()
-    {
-        if (objetMainDroite != null)
-        {
-            if (objetMainDroite instanceof Utilisable utilisable)
-            {
-                if (objetMainDroite instanceof Arme )
+    public void actionMainDroite() {
+        if (objetMainDroite != null) {
+            if (objetMainDroite instanceof Utilisable utilisable) {
+                if (objetMainDroite instanceof Arme)
                     attaque();
 
 
@@ -90,11 +86,9 @@ public abstract class Joueur extends Humanoide
     }
 
     @Override
-    public void unTour()
-    {
+    public void unTour() {
         double coeff = 1;
-        for (Direction direction1 : directions)
-        {
+        for (Direction direction1 : directions) {
             setDirection(direction1);
 
             if (estEntrainDeCourir)
@@ -106,10 +100,8 @@ public abstract class Joueur extends Humanoide
     }
 
     @Override
-    public void attaque()
-    {
-        if (objetMainDroite instanceof Arc arc)
-        {
+    public void attaque() {
+        if (objetMainDroite instanceof Arc arc) {
             Fleche flecheSimple = carquois.retourneUneFleche();
 
             if (flecheSimple != null)
@@ -118,52 +110,57 @@ public abstract class Joueur extends Humanoide
     }
 
     @Override
-    public void lanceUnSort(int numSort)
-    {
-        if (objetMainDroite instanceof LivreMagique livreMagique)
-        {
+    public void lanceUnSort(int numSort) {
+        if (objetMainDroite instanceof LivreMagique livreMagique) {
             Sortilege sortilege = livreMagique.getSortilege(numSort);
             if (sortilege != null)
                 sortilege.utilise(this);
         }
     }
+
     @Override
-    public void setDirection(Direction direction)
-    {
+    public void setDirection(Direction direction) {
         this.direction = direction;
         this.directions.add(direction);
     }
 
-    public void enleveDirection(Direction direction)
-    {
+    public void enleveDirection(Direction direction) {
         this.directions.remove(direction);
     }
-    @Override
-    public boolean estUnEnemie(){return false;}
-    @Override
-    public String typeActeur(){ return "Joueur" ;}
 
-    public void estEntrainDeCourir(boolean bool)
-    {
-        if (TypeCompetence.COURIR.getCompetence().estDebloquer())
-        {
+    @Override
+    public boolean estUnEnemie() {
+        return false;
+    }
+
+    @Override
+    public String typeActeur() {
+        return "Joueur";
+    }
+
+    public void estEntrainDeCourir(boolean bool) {
+        if (TypeCompetence.COURIR.getCompetence().estDebloquer()) {
             this.estEntrainDeCourir = bool;
         }
     }
-    public Competences getCompetences() { return this.competences; }
-    public int getPiece(){
+
+    public Competences getCompetences() {
+        return this.competences;
+    }
+
+    public int getPiece() {
         int totalPiece = 0;
-        for(int i = 0 ; i < sac.getTailleMax() ; i++){
-            if(sac.getEmplacement(i).nomObjet()=="pieceor")
-                totalPiece+= sac.getEmplacement(i).quantiteObjet();
+        for (int i = 0; i < sac.getTailleMax(); i++) {
+            if (sac.getEmplacement(i).nomObjet() == "pieceor")
+                totalPiece += sac.getEmplacement(i).quantiteObjet();
         }
 
         return totalPiece;
     }
 
 
-
     @Override
-    public void dropApresMort() {}
+    public void dropApresMort() {
+    }
 
 }

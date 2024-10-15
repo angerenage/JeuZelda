@@ -1,7 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.constantes;
 
-public class ConstantesSortilege
-{
+public class ConstantesSortilege {
     public static final int NOMBRE_FLECHE_PLUIT_DE_FLECHES = 15;
     public static final long DELAIE_PLUIT_DE_FLECHES = 200;
 

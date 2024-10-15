@@ -3,35 +3,36 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
-public class Carquois extends ObjetConteneur<Fleche>
-{
-    private static final int STACK_MAX = ConstanteObjet.STACK_MAX_CARQUOIS;
-    private static final int DURABILITEE = ConstanteObjet.DURABILITE_CARQUOIS;
-    private static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_CARQUOIS;
+public class Carquois extends ObjetConteneur<Fleche> {
+
     public Carquois() {
         super(1);
-    }
+    } // le passer en objet non stackable
 
-    public Fleche retourneUneFleche()
-    {
+    public Fleche retourneUneFleche() {
         return retourneObjet(0);
     }
+
     @Override
     public String getNom() {
         return "Carquois";
     }
+
     @Override
     public int stackMax() {
-        return STACK_MAX;
+        return ConstanteObjet.STACK_MAX_CARQUOIS;
     }
+
     @Override
     public double durabilitee() {
-        return DURABILITEE;
+        return ConstanteObjet.DURABILITE_CARQUOIS;
     }
+
     @Override
     public int prixAchat() {
-        return PRIX_ACHAT;
+        return ConstanteObjet.PRIX_ACHAT_CARQUOIS;
     }
+
     @Override
     public Fleche objetALemplacement(int emplacement) {
         return super.objetALemplacement(emplacement);

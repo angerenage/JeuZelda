@@ -3,42 +3,30 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
-public class Fleche extends Projectile
-{
-    public static final double DEGAT_PHYSIQUE = ConstanteObjet.DEGAT_PHYSIQUE_FLECHE;
-    public static final double DEGAT_SPECIAL = ConstanteObjet.DEGAT_SPECIAL_FLECHE;
-    public static final double VITESSE = ConstanteObjet.VITESSE_FLECHE;
-    public static final Hitbox HITBOX = ConstanteObjet.HITBOX_FLECHE;
-    public static final int PV = ConstanteObjet.DURABILITE_FLECHE;
-    public static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_FLECHE;
-    public static final int STACK_MAX = ConstanteObjet.STACK_MAX_FLECHE;
-    private static final int NOMBRE_UTILISATION = ConstanteObjet.NOMBRE_UTLISATION_FLECHE;
-    private int nombreUtilisationRestant;
+public class Fleche extends Projectile {
 
-    public Fleche()
-    {
-        super(PV,VITESSE,HITBOX);
-        this.nombreUtilisationRestant = NOMBRE_UTILISATION;
-
+    public Fleche() {
+        super(ConstanteObjet.DURABILITE_FLECHE, ConstanteObjet.VITESSE_FLECHE, ConstanteObjet.HITBOX_FLECHE);
     }
 
     @Override
     public double degatPhysique() {
-        return DEGAT_PHYSIQUE;
+        return ConstanteObjet.DEGAT_PHYSIQUE_FLECHE;
     }
+
     @Override
     public double degatSpecial() {
-        return DEGAT_SPECIAL;
+        return ConstanteObjet.DEGAT_SPECIAL_FLECHE;
     }
+
     @Override
     public String getNom() {
         return "fleche";
     }
 
 
-
     @Override
-    public String typeActeur(){
+    public String typeActeur() {
         return "fleche";
     }
 
@@ -51,11 +39,20 @@ public class Fleche extends Projectile
     public boolean estUnEnemie() {
         return false;
     }
+
     @Override
-    public int stackMax() {return STACK_MAX;}
+    public int stackMax() {
+        return ConstanteObjet.STACK_MAX_FLECHE;
+    }
+
     @Override
-    public double durabilitee(){ return getPv(); }
+    public double durabilitee() {
+        return getPv();
+    }
+
     @Override
-    public int prixAchat() { return PRIX_ACHAT; }
+    public int prixAchat() {
+        return ConstanteObjet.PRIX_ACHAT_FLECHE;
+    }
 
 }

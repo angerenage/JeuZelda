@@ -17,7 +17,7 @@ public class Squelette extends EntiteOffensif {
     private Joueur joueur;
     private Aetoile aetoile;
     private long lastPathCalculationTime;
-    private Epee epee ;
+    private Epee epee;
 
     public Squelette(Monde monde, double x, double y, Direction direction, Hitbox hitbox, Joueur joueur, Aetoile aetoile) {
         super(monde, x, y, direction,
@@ -33,9 +33,6 @@ public class Squelette extends EntiteOffensif {
         this.lastPathCalculationTime = System.currentTimeMillis();
         epee = new Epee();
     }
-
-
-
 
 
     public void seDeplacerVers(Position joueurPosition) {
@@ -99,33 +96,29 @@ public class Squelette extends EntiteOffensif {
 
     @Override
     public void unTour() {
-        if (monde.estDansRayon(getPosition(), 6)){
+        if (monde.estDansRayon(getPosition(), 6)) {
             seDeplacerVers(joueur.getPosition());
-            if (monde.estDansRayon(getPosition(), 2)){
+            if (monde.estDansRayon(getPosition(), 2)) {
                 attaque();
             }
-        }
-        else {
+        } else {
             seDeplaceAleatoire();
         }
     }
 
-    public void seDeplaceAleatoire(){
+    public void seDeplaceAleatoire() {
         if (peutSeDeplacer()) {
-            if(Math.random()>0.95){
+            if (Math.random() > 0.95) {
                 setSeDeplace(false);
-            }
-            else {
+            } else {
                 seDeplace(1);
             }
-        }
-        else if(Math.random()>0.95)
+        } else if (Math.random() > 0.95)
             setSeDeplace(true);
 
-        if(Math.random()>0.95)
+        if (Math.random() > 0.95)
             setDirection(Direction.randomDirection());
     }
-
 
 
     @Override

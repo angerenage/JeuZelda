@@ -12,17 +12,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 {
-
-    private static final int DURABILITE = ConstanteObjet.DURABILITE_EPEE;
-    private static final double DEGAT_PHYSIQUE = ConstanteObjet.DEGAT_PHYSIQUE_EPEE;
-    private static final double DEGAT_SPECIAL = ConstanteObjet.DEGAT_SPECIAL_EPEE;
-    private static final double VITESSE = ConstanteObjet.VITESSE_EPEE;
-    private static final Hitbox HITBOX = ConstanteObjet.HITBOX_EPEE;
-    private static final long DELAIE_UTILISATION = ConstanteObjet.DELAIE_UTILISATION_EPEE;
-    private final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_EPEE;
-    private final int STACK_MAX = ConstanteObjet.STACK_MAX_EPEE;
-
-
     private boolean peutTaper;
     private short cycle;
     private long derniereApelle;
@@ -31,7 +20,7 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 
     public Epee()
     {
-        super(DURABILITE, VITESSE, HITBOX);
+        super(ConstanteObjet.DURABILITE_EPEE, ConstanteObjet.VITESSE_EPEE, ConstanteObjet.HITBOX_EPEE);
         this.peutTaper = true;
         this.cycle = 0;
         this.derniereApelle = 0;
@@ -119,8 +108,8 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
         double y = this.direction.getY() ;
 
 
-        position.setX(position.getX() + x * VITESSE * coeff);
-        position.setY(position.getY() + y * VITESSE * coeff);
+        position.setX(position.getX() + x * ConstanteObjet.VITESSE_EPEE * coeff);
+        position.setY(position.getY() + y * ConstanteObjet.VITESSE_EPEE * coeff);
 
     }
 
@@ -137,7 +126,7 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 
     @Override
     public int prixAchat() {
-        return PRIX_ACHAT;
+        return ConstanteObjet.PRIX_ACHAT_EPEE;
     }
     @Override
     public boolean peutSeDeplacer() { return true; }
@@ -154,7 +143,7 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 
     @Override
     public long delaie() {
-        return DELAIE_UTILISATION;
+        return ConstanteObjet.DELAI_UTILISATION_EPEE;
     }
 
     @Override
@@ -181,7 +170,7 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 
     @Override
     public int stackMax() {
-        return STACK_MAX;
+        return ConstanteObjet.STACK_MAX_EPEE;
     }
 
     @Override
@@ -192,12 +181,12 @@ public class Epee extends Acteur implements Dommageable,Rechargeable,Arme
 
     @Override
     public double degatPhysique() {
-        return DEGAT_PHYSIQUE;
+        return ConstanteObjet.DEGAT_PHYSIQUE_EPEE;
     }
 
     @Override
     public double degatSpecial() {
-        return DEGAT_SPECIAL;
+        return ConstanteObjet.DEGAT_SPECIAL_EPEE;
     }
 
     @Override
