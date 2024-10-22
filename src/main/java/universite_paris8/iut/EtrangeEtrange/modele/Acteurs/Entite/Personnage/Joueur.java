@@ -151,7 +151,7 @@ public abstract class Joueur extends Humanoide {
     public int getPiece() {
         int totalPiece = 0;
         for (int i = 0; i < sac.getTailleMax(); i++) {
-            if (sac.getEmplacement(i).nomObjet() == "pieceor")
+            if (sac.getEmplacement(i).nomObjet() == "piece")
                 totalPiece += sac.getEmplacement(i).quantiteObjet();
         }
 
