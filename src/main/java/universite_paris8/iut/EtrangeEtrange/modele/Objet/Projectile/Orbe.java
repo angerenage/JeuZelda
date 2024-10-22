@@ -12,13 +12,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class Orbe extends Projectile implements Utilisable, Rechargeable {
 
-    private static final double VITESSE =
-    private static final Hitbox HITBOX =
-    private static final int PRIX_ACHAT =
-    private static final int STACK_MAX =
-    private static final int NOMBRE_UTILISATION =
-    private static final long DELAIE = ;
-
     private final BFS bfs;
     private Position positionAsuivre;
     private int nombreUtilisationRestant;

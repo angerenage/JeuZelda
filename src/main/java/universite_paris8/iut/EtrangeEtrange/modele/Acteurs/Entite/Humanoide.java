@@ -54,7 +54,7 @@ public abstract class Humanoide extends EntiteOffensif {
     }
 
 
-    public Objet retournerObjetMainDroite() {
+    public Objet lacherObjetMainDroite() {
         Objet objet = this.objetMainDroite;
         this.objetMainDroite = null;
         return objet;
@@ -64,7 +64,7 @@ public abstract class Humanoide extends EntiteOffensif {
         this.objetMainGauche = objet;
     }
 
-    public Objet retournerObjetMainGauche() {
+    public Objet lacherObjetMainGauche() {
         Objet objet = this.objetMainGauche;
         this.objetMainGauche = null;
         return objet;

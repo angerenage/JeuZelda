@@ -7,7 +7,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 public class ActionAchat extends Action
 {
-    private Marchand marchand;
     private Objet objet;
     private Joueur joueur;
     private ActionVendre marchander;
@@ -15,7 +14,6 @@ public class ActionAchat extends Action
     {
         this.joueur = joueur;
         this.objet = objet;
-        this.marchand = marchand;
         this.marchander = marchander;
     }
 
@@ -32,7 +30,7 @@ public class ActionAchat extends Action
                 int resteAPayer = objet.prixAchat();
 
                 for(int i = 0 ; i < joueur.getSac().getTailleMax() && resteAPayer!=0 ; i++){
-                    if(joueur.getSac().getEmplacement(i).nomObjet().equals("pieceor")) {
+                    if(joueur.getSac().getEmplacement(i).nomObjet().equals("piece")) {
                         int quantite = joueur.getSac().getEmplacement(i).quantiteObjet();
                         for(int j = 0 ; j <  quantite &&  resteAPayer!=0; j++){
                             joueur.getSac().getEmplacement(i).enleveObjet();
