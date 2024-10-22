@@ -42,10 +42,8 @@ public class BFS {
                     ajouterVoisins(graphe[y][x], x, y);
     }
 
-    private void ajouterVoisins(Sommet sommet, int x, int y)
-    {
-        for (Direction dir : Direction.values())
-        {
+    private void ajouterVoisins(Sommet sommet, int x, int y) {
+        for (Direction dir : Direction.values()) {
             int nx = x + dir.getX();
             int ny = y + dir.getY();
 
@@ -62,21 +60,17 @@ public class BFS {
         sommetsAvisite.add(graphe[y][x]);
         predecesseurs.put(graphe[y][x], null);
 
-        while (!sommetsAvisite.isEmpty() && !cheminTrouver)
-        {
+        while (!sommetsAvisite.isEmpty() && !cheminTrouver) {
             Sommet actuelle = sommetsAvisite.poll();
 
-            for (int i = 0;i<actuelle.getVoisins().size() && !cheminTrouver;i++)
-            {
+            for (int i = 0; i < actuelle.getVoisins().size() && !cheminTrouver; i++) {
                 Sommet voisin = actuelle.getVoisins().get(i);
 
-                if (!predecesseurs.containsKey(voisin))
-                {
+                if (!predecesseurs.containsKey(voisin)) {
                     predecesseurs.put(voisin, actuelle);
                     sommetsAvisite.add(voisin);
 
-                    if (cheminTrouver(voisin.getPosition().getX(), voisin.getPosition().getY()))
-                    {
+                    if (cheminTrouver(voisin.getPosition().getX(), voisin.getPosition().getY())) {
                         cheminTrouver = true;
                         construireChemin(voisin, predecesseurs);
                     }
@@ -85,26 +79,25 @@ public class BFS {
         }
     }
 
-    private void construireChemin(Sommet sommet, HashMap<Sommet, Sommet> predecesseurs)
-    {
+    private void construireChemin(Sommet sommet, HashMap<Sommet, Sommet> predecesseurs) {
         this.chemins.clear();
         Sommet actuel = sommet;
 
-        while (actuel != null)
-        {
+        while (actuel != null) {
             this.chemins.add(0, actuel);
             actuel = predecesseurs.get(actuel);
         }
     }
 
-    private boolean cheminTrouver(double x, double y) {return x == xArrive && y == yArrive;}
+    private boolean cheminTrouver(double x, double y) {
+        return x == xArrive && y == yArrive;
+    }
 
-    public Position prochainePosition()
-    {
+    public Position prochainePosition() {
         Position position = null;
 
         if (chemins != null && !chemins.isEmpty())
-            position =  chemins.remove(0).getPosition();
+            position = chemins.remove(0).getPosition();
 
 
         return position;

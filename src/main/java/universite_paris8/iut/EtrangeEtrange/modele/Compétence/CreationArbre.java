@@ -29,7 +29,7 @@ public class CreationArbre {
         ArrayList<TypeCompetence> attaqueEnfants = new ArrayList<>();
 
         ArrayList<TypeCompetence> vitesseParents = new ArrayList<>(Arrays.asList(attaqueSpecial));
-        ArrayList<TypeCompetence> vitesseEnfants = new ArrayList<>(Arrays.asList(defense,pv));
+        ArrayList<TypeCompetence> vitesseEnfants = new ArrayList<>(Arrays.asList(defense, pv));
 
         ArrayList<TypeCompetence> pvParents = new ArrayList<>(Arrays.asList(vitesse));
         ArrayList<TypeCompetence> pvEnfants = new ArrayList<>();
@@ -41,7 +41,6 @@ public class CreationArbre {
         ArrayList<TypeCompetence> defenseSpecialEnfants = new ArrayList<>(Arrays.asList(invoquer));
 
 
-
         // Ajout des compétences dans l'arbre
         competences.ajoutCompetence(root, rootParents, rootEnfants);
         competences.ajoutCompetence(attaqueSpecial, attaqueSpecialParents, attaqueSpecial1Enfants);
@@ -50,7 +49,7 @@ public class CreationArbre {
         competences.ajoutCompetence(defense, defenseParents, defenseEnfants);
         competences.ajoutCompetence(defenseSpecial, defenseSpecialParents, defenseSpecialEnfants);
         competences.ajoutCompetence(pv, pvParents, pvEnfants);
-        competences.ajoutCompetence(invoquer, new ArrayList<>(List.of(defenseSpecial)),new ArrayList<>() );
+        competences.ajoutCompetence(invoquer, new ArrayList<>(List.of(defenseSpecial)), new ArrayList<>());
 
         // Définir la racine de l'arbre
         competences.setRoot(root);

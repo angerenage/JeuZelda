@@ -1,7 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
 public class Fleche extends Projectile {
 

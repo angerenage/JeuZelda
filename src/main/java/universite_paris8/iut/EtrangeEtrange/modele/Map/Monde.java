@@ -58,16 +58,12 @@ public class Monde {
     private ArrayList<Acteur> acteursAsupprimer = new ArrayList<>();
 
 
-
-
-
-
     /**
      * Méthode création de monde à partir d'une TiledMap
+     *
      * @param nommap
      */
-    public Monde(String nommap, int hauteur, int largeur)
-    {
+    public Monde(String nommap, int hauteur, int largeur) {
         this.sol = new int[hauteur][largeur];
         this.traversable = new int[hauteur][largeur];
         this.nontraversable = new int[hauteur][largeur];
@@ -80,7 +76,7 @@ public class Monde {
 
         String[] fichiers = {"sol", "traversable", "nontraversable"};
 
-        for(int i = 0 ; i < coucheMap.size() ; i++) {
+        for (int i = 0; i < coucheMap.size(); i++) {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONDE_BASE_PATH, nommap, fichiers[i])));
                 String ligne;
@@ -110,7 +106,7 @@ public class Monde {
     public static void setSizeMondeHauteur(int hauteurMonde) {
     }
 
-    public void creationMonstre(String nommap, int hauteur){
+    public void creationMonstre(String nommap, int hauteur) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONSTRE_BASE_PATH, nommap)));
             String ligne;
@@ -124,15 +120,15 @@ public class Monde {
                     Acteur acteur = null;
                     if (monstre != -1) {
                         if (monstre == 4)
-                            acteur = new Marchand(this, j+0.5 ,ligneIndex+0.5, Direction.BAS);
-                        else if(monstre == 2)
-                            acteur = new Slime(this, j+0.5, ligneIndex+0.5, Direction.BAS, new Hitbox(0.25, 0.5));
-                        else if(monstre == 3)
-                            acteur = new Squelette(this, j+0.5, ligneIndex+0.5,  Direction.BAS, new Hitbox(0.5, 0.5),joueur , new Aetoile(this));
-                        else if(monstre == 1)
-                            acteur = new RoiSquelette(this, j+0.5 , ligneIndex+0.5, Direction.BAS);
-                        else if(monstre == 0)
-                            acteur = new Bloc(this, j+0.5, ligneIndex+0.5, Direction.BAS, 1, 1, new Hitbox(1,1 ));
+                            acteur = new Marchand(this, j + 0.5, ligneIndex + 0.5, Direction.BAS);
+                        else if (monstre == 2)
+                            acteur = new Slime(this, j + 0.5, ligneIndex + 0.5, Direction.BAS, new Hitbox(0.25, 0.5));
+                        else if (monstre == 3)
+                            acteur = new Squelette(this, j + 0.5, ligneIndex + 0.5, Direction.BAS, new Hitbox(0.5, 0.5), joueur, new Aetoile(this));
+                        else if (monstre == 1)
+                            acteur = new RoiSquelette(this, j + 0.5, ligneIndex + 0.5, Direction.BAS);
+                        else if (monstre == 0)
+                            acteur = new Bloc(this, j + 0.5, ligneIndex + 0.5, Direction.BAS, 1, 1, new Hitbox(1, 1));
                         ajoutActeur(acteur);
                     }
                 }
@@ -150,39 +146,36 @@ public class Monde {
     public int[][] getSol() {
         return sol;
     }
-    public int[][] getNontraversable(){
+
+    public int[][] getNontraversable() {
         return nontraversable;
     }
-    public int[][] getTraversable(){
+
+    public int[][] getTraversable() {
         return this.traversable;
     }
+
     /**
      * Génération totalement aléatoire d'un monde (pour les tests).
      */
 
 
-    public void verifCollision(Acteur acteur)
-    {
-        for (Acteur acteur2 : acteurs)
-        {
-            if (collisionAvecActeur(acteur,acteur2) && acteur != acteur2)
-            {
+    public void verifCollision(Acteur acteur) {
+        for (Acteur acteur2 : acteurs) {
+            if (collisionAvecActeur(acteur, acteur2) && acteur != acteur2) {
                 acteur2.subitCollision(acteur);
             }
         }
 
-        if (collisionAvecActeur(acteur,joueur) && acteur != joueur)
-        {
+        if (collisionAvecActeur(acteur, joueur) && acteur != joueur) {
             joueur.subitCollision(acteur);
         }
     }
 
-    public Acteur chercheEnemie()
-    {
+    public Acteur chercheEnemie() {
         Acteur acteur = null;
 
-        for (Acteur act : acteurs)
-        {
+        for (Acteur act : acteurs) {
             if (act.estUnEnemie())
                 acteur = act;
         }
@@ -190,41 +183,51 @@ public class Monde {
         return acteur;
     }
 
-    public void ajoutActeurAsupprimer(Acteur acteur)
-    {
+    public void ajoutActeurAsupprimer(Acteur acteur) {
         this.acteursAsupprimer.add(acteur);
     }
 
-    public void ajouterDropAuSol(DropAuSol dropAuSol){
+    public void ajouterDropAuSol(DropAuSol dropAuSol) {
         this.dropsAuSol.add(dropAuSol);
         System.out.println("passage2");
     }
 
 
-
-    public static double getxPointDeDepart(){
+    public static double getxPointDeDepart() {
         return xPointDeDepart;
     }
+
     public static double getyPointDeDepart() {
         return yPointDeDepart;
     }
-    public static int getSizeMondeHauteur(){
+
+    public static int getSizeMondeHauteur() {
         return sizeMondeHauteur;
     }
+
     public static int getSizeMondeLargeur() {
         return sizeMondeLargeur;
     }
-    public ArrayList<DropAuSol> getDropAuSol() {return new ArrayList<>(this.dropsAuSol);}
-    public void enleverDropAuSol(DropAuSol dropAuSol){
+
+    public ArrayList<DropAuSol> getDropAuSol() {
+        return new ArrayList<>(this.dropsAuSol);
+    }
+
+    public void enleverDropAuSol(DropAuSol dropAuSol) {
         this.dropsAuSol.remove(dropAuSol);
     }
-    public void setJoueur(Joueur joueur){this.joueur = joueur;}
-    public Joueur getJoueur(){return this.joueur;}
+
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
+
+    public Joueur getJoueur() {
+        return this.joueur;
+    }
 
 
-    public ArrayList<int[][]> getToutesLesCouches()
-    {
-        ArrayList<int[][] > couches = new ArrayList<>();
+    public ArrayList<int[][]> getToutesLesCouches() {
+        ArrayList<int[][]> couches = new ArrayList<>();
         couches.add(this.sol);
         couches.add(this.traversable);
         couches.add(this.nontraversable);
@@ -237,32 +240,29 @@ public class Monde {
         } else {
             return -1;
         }
-        
+
     }
 
 
+    public void ajoutActeur(Acteur acteur) {
+        this.acteurs.add(acteur);
+    }
 
 
-    public void ajoutActeur(Acteur acteur) {this.acteurs.add(acteur);}
-
-
-
-    public void unTour()
-    {
+    public void unTour() {
         this.joueur.unTour();
 
-        for(int i = acteurs.size()-1 ; i>=0 ; i--)
+        for (int i = acteurs.size() - 1; i >= 0; i--)
             acteurs.get(i).unTour();
 
-        for(int i = 0 ; i < acteursAsupprimer.size(); i++){
+        for (int i = 0; i < acteursAsupprimer.size(); i++) {
             enleveActeur(acteursAsupprimer.get(i));
         }
 
         this.acteursAsupprimer.clear();
 
 
-        for(int i = rechargeables.size()-1 ; i>=0 ; i--)
-        {
+        for (int i = rechargeables.size() - 1; i >= 0; i--) {
             Rechargeable rechargeable = rechargeables.get(i);
 
             if (rechargeable.cooldown())
@@ -270,26 +270,22 @@ public class Monde {
         }
     }
 
-    public void ajoutRechargeable(Rechargeable rechargeable)
-    {
+    public void ajoutRechargeable(Rechargeable rechargeable) {
         this.rechargeables.add(rechargeable);
     }
 
 
-    public boolean positionHorsMap(int x,int y)
-    {
+    public boolean positionHorsMap(int x, int y) {
         return x < 0 || x >= sizeMondeLargeur || y < 0 || y >= sizeMondeHauteur;
     }
 
-    public boolean estHorsMap(Acteur acteur)
-    {
+    public boolean estHorsMap(Acteur acteur) {
         boolean collision;
 
         Position position = acteur.getPosition();
         Direction direction = acteur.getDirection();
         Hitbox hitbox = acteur.getHitbox();
         double vitesse = acteur.getVitesse();
-
 
 
         if (direction == Direction.BAS) {
@@ -300,16 +296,13 @@ public class Monde {
             collision = hitbox.getPointLePlusADroite(position.getX()) + vitesse >= Monde.getSizeMondeLargeur();
         } else if (direction == Direction.GAUCHE) {
             collision = hitbox.getPointLePlusAGauche(position.getX()) - vitesse < 0;
-        }
-        else
-        {
+        } else {
             collision = false;
         }
 
 
         return collision;
     }
-
 
 
     public boolean collisionMap(Acteur acteur) {
@@ -351,8 +344,7 @@ public class Monde {
         return collision;
     }
 
-    public boolean collisionAvecActeur(Acteur acteur1,Acteur acteur2)
-    {
+    public boolean collisionAvecActeur(Acteur acteur1, Acteur acteur2) {
         double vitesse = acteur1.getVitesse();
         Position pos1 = new Position(acteur1.getPosition().getX(), acteur1.getPosition().getY());
 
@@ -361,10 +353,10 @@ public class Monde {
         Position pos2 = acteur2.getPosition();
         Hitbox hitbox2 = acteur2.getHitbox();
 
-        double x1Min = hitbox1.getPointLePlusAGauche(pos1.getX()+acteur1.getDirection().getX()*vitesse);
-        double y1Min = hitbox1.getPointLePlusEnHaut(pos1.getY()+acteur1.getDirection().getY()*vitesse);
-        double x1Max = hitbox1.getPointLePlusADroite(pos1.getX()+acteur1.getDirection().getX()*vitesse);
-        double y1Max = hitbox1.getPointLePlusEnBas(pos1.getY()+acteur1.getDirection().getY()*vitesse);
+        double x1Min = hitbox1.getPointLePlusAGauche(pos1.getX() + acteur1.getDirection().getX() * vitesse);
+        double y1Min = hitbox1.getPointLePlusEnHaut(pos1.getY() + acteur1.getDirection().getY() * vitesse);
+        double x1Max = hitbox1.getPointLePlusADroite(pos1.getX() + acteur1.getDirection().getX() * vitesse);
+        double y1Max = hitbox1.getPointLePlusEnBas(pos1.getY() + acteur1.getDirection().getY() * vitesse);
 
         double x2Min = hitbox2.getPointLePlusAGauche(pos2.getX());
         double y2Min = hitbox2.getPointLePlusEnHaut(pos2.getY());
@@ -378,27 +370,26 @@ public class Monde {
     }
 
 
-    public boolean collision(Acteur acteur) { return collisionMap(acteur) || collisionAvecActeurs(acteur); }
+    public boolean collision(Acteur acteur) {
+        return collisionMap(acteur) || collisionAvecActeurs(acteur);
+    }
 
-    private boolean collisionAvecActeurs(Acteur acteur1)
-    {
+    private boolean collisionAvecActeurs(Acteur acteur1) {
         boolean aCollision = false;
 
-        for (int i = 0;i<acteurs.size() && !aCollision;i++)
-        {
+        for (int i = 0; i < acteurs.size() && !aCollision; i++) {
             Acteur acteur2 = acteurs.get(i);
 
-            if (collisionAvecActeur(acteur1,acteur2) && acteur2 != acteur1)
+            if (collisionAvecActeur(acteur1, acteur2) && acteur2 != acteur1)
                 aCollision = true;
         }
-        if(collisionAvecActeur(acteur1,joueur) && joueur != acteur1)
+        if (collisionAvecActeur(acteur1, joueur) && joueur != acteur1)
             aCollision = true;
 
         return aCollision;
     }
 
-    public void setListenerActeur(GestionActeur listenerActeur)
-    {
+    public void setListenerActeur(GestionActeur listenerActeur) {
         this.acteurs.addListener(listenerActeur);
     }
 
@@ -407,11 +398,11 @@ public class Monde {
         this.dropsAuSol.addListener(gestionAffichageDropAuSol);
     }
 
-    public boolean estDansRayon(Position positionCentre, double rayon){
+    public boolean estDansRayon(Position positionCentre, double rayon) {
         Position positionJoueur = getJoueur().getPosition();
 
         double distance = Math.sqrt(Math.pow(positionJoueur.getX() - positionCentre.getX(), 2) +
-        Math.pow(positionJoueur.getY() - positionCentre.getY(), 2));
+                Math.pow(positionJoueur.getY() - positionCentre.getY(), 2));
 
         return distance <= rayon;
     }
@@ -427,33 +418,24 @@ public class Monde {
     }
 
 
-
-
-
-
-
-    public Acteur interactionAvecActeur()
-    {
+    public Acteur interactionAvecActeur() {
         Acteur act = null;
         double distance = -1;
 
 
-        for (Acteur acteur : acteurs)
-        {
+        for (Acteur acteur : acteurs) {
             double distancePretendant = estEnFace(acteur);
 
-             if (distancePretendant > distance)
-             {
-                 act = acteur;
-                 distance = distancePretendant;
-             }
+            if (distancePretendant > distance) {
+                act = acteur;
+                distance = distancePretendant;
+            }
         }
 
         return act;
     }
 
-    private double estEnFace(Acteur acteur)
-    {
+    private double estEnFace(Acteur acteur) {
         final double yDistanceMax = 2;
         final double xDistanceMax = 2;
 
@@ -462,16 +444,15 @@ public class Monde {
         Direction directionJoueur = joueur.getDirection();
 
 
-        if (directionJoueur == Direction.BAS ||directionJoueur == Direction.HAUT) {
+        if (directionJoueur == Direction.BAS || directionJoueur == Direction.HAUT) {
             dX = Math.abs(acteur.getPosition().getX() - joueur.getPosition().getX());
             dY = Math.abs(acteur.getPosition().getY() - joueur.getPosition().getY());
-        }
-        else {
+        } else {
             dY = Math.abs(acteur.getPosition().getX() - joueur.getPosition().getX());
             dX = Math.abs(acteur.getPosition().getY() - joueur.getPosition().getY());
         }
 
-        return dX <= xDistanceMax && dY <= yDistanceMax ?  dX+dY : -1;
+        return dX <= xDistanceMax && dY <= yDistanceMax ? dX + dY : -1;
     }
 
 

@@ -130,7 +130,7 @@ public class Squelette extends EntiteOffensif {
     public void dropApresMort() {
         double x = getPosition().getX();
         double y = getPosition().getY();
-        getMonde().ajouterDropAuSol(new DropAuSol(new Piece(), 1, new Position(x, y)));
+        getMonde().ajouterDropAuSol(new DropAuSol(new Piece(), new Position(x, y)));
         System.out.println("passage");
     }
 

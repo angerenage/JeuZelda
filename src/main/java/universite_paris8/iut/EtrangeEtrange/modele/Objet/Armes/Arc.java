@@ -17,7 +17,7 @@ public class Arc implements Arme, Rechargeable {
     public Arc() {
         this.peutTirer = true;
         this.derniereApelle = -1;
-        this.durabilitee = ConstanteObjet.DURABILITE_ARC;;
+        this.durabilitee = ConstanteObjet.DURABILITE_ARC;
         this.fleche = null;
     }
 

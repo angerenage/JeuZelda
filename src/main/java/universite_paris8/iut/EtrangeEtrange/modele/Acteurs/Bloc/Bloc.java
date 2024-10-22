@@ -36,13 +36,13 @@ public class Bloc extends Acteur implements Dropable {
     public void dropApresMort() {
         double x = getPosition().getX();
         double y = getPosition().getY();
-        getMonde().ajouterDropAuSol(new DropAuSol(new Piece(), 1, new Position(x, y)));
+        getMonde().ajouterDropAuSol(new DropAuSol(new Piece(), new Position(x, y)));
     }
 
     @Override
     public boolean estUnEnemie() { return false; }
     @Override
-    public void drop() { monde.ajouterDropAuSol(new DropAuSol(new Arc(), 1, new Position(position.getX(), position.getY()))); }
+    public void drop() { monde.ajouterDropAuSol(new DropAuSol(new Arc(),  new Position(position.getX(), position.getY()))); }
     @Override
     public void unTour() {/*NE FAIT RIEN*/}
     @Override

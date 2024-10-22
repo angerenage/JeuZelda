@@ -4,72 +4,55 @@ package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 import java.util.ArrayList;
-public class Emplacement <T extends Objet>
-{
+
+public class Emplacement<T extends Objet> {
     private int stackPossible;
     private ArrayList<T> objets;
 
-    public Emplacement()
-    {
+    public Emplacement() {
         this.objets = new ArrayList<>();
         this.stackPossible = 1;
     }
 
-    public void ajoutObjet(T objet)
-    {
-        if (this.objets.isEmpty())
-        {
+    public void ajoutObjet(T objet) {
+        if (this.objets.isEmpty()) {
             stackPossible = objet.stackMax();
             this.objets.add(objet);
-        }
-        else if (this.objets.get(0).getClass().equals(objet.getClass()))
-        {
-            if (this.objets.size()+1 < stackPossible)
+        } else if (this.objets.get(0).getClass().equals(objet.getClass())) {
+            if (this.objets.size() + 1 < stackPossible)
                 this.objets.add(objet);
         }
     }
 
-
-    /**
-     * La méthode enlève l'objet de l'inventaire
-     * @return
-     */
-    public T enleveObjet()
-    {
+    public T enleveObjet() {
         return this.objets.remove(0);
     }
 
-    public ArrayList<T> enleverToutLesObjets()
-    {
+    public ArrayList<T> enleverToutLesObjets() {
         ArrayList<T> nvList = new ArrayList<>(this.objets);
         vider();
         return nvList;
     }
 
-    public void vider()
-    {
+    public void vider() {
         this.objets.clear();
     }
-    public int quantiteObjet()
-    {
+
+    public int quantiteObjet() {
         return this.objets.size();
     }
 
-    public boolean estVide()
-    {
+    public boolean estVide() {
         return this.objets.isEmpty();
     }
 
-    public boolean estDeMemeClass(Objet objet)
-    {
+    public boolean estDeMemeClass(Objet objet) {
         return this.objets.get(0).getClass().equals(objet.getClass());
     }
 
-    public boolean peuEncoreStacker()
-    {
-        return quantiteObjet()+1 < this.stackPossible;
+    public boolean peuEncoreStacker() {
+        return quantiteObjet() + 1 < this.stackPossible;
     }
-
 
 
     public <U extends Objet> boolean estDuMemeType(Class<U> typeObjet) {
@@ -82,8 +65,7 @@ public class Emplacement <T extends Objet>
     }
 
 
-    public String nomObjet()
-    {
+    public String nomObjet() {
         String nom = "";
 
         if (!this.objets.isEmpty())

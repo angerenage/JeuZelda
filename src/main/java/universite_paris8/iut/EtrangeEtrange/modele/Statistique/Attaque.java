@@ -4,13 +4,11 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.StatistiqueInvalideExeption;
 
-public class Attaque
-{
+public class Attaque {
     private DoubleProperty attaqueMaximum;
     private DoubleProperty attaque;
 
-    public Attaque(double attaque)
-    {
+    public Attaque(double attaque) {
         this.attaqueMaximum = new SimpleDoubleProperty();
         this.attaque = new SimpleDoubleProperty();
 
@@ -18,16 +16,14 @@ public class Attaque
         setAttaqueMaximum(attaque);
     }
 
-    public void setAttaque(double attaque)
-    {
+    public void setAttaque(double attaque) {
         if (attaque < 0)
             throw new StatistiqueInvalideExeption("Attaque négatif interdis");
 
         this.attaque.set(attaque);
     }
 
-    public void setAttaqueMaximum(double attaqueMaximum)
-    {
+    public void setAttaqueMaximum(double attaqueMaximum) {
         if (attaqueMaximum < 0)
             throw new StatistiqueInvalideExeption("Attaque négatif interdis");
 
@@ -38,7 +34,4 @@ public class Attaque
         return this.attaque.get();
     }
 
-    public double getAttaqueMaximum() {
-        return this.attaqueMaximum.get();
-    }
 }

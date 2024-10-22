@@ -144,7 +144,7 @@ public class Marchand extends Humanoide implements Dropable
 
             for (Objet objet : obs)
             {
-                monde.ajouterDropAuSol(new DropAuSol(objet, obs.size(), new Position(position.getX(), position.getY())));
+                monde.ajouterDropAuSol(new DropAuSol(objet, new Position(position.getX(), position.getY())));
             }
         }
 

@@ -40,8 +40,7 @@ public class Sommet {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return position.toString();
     }
 }

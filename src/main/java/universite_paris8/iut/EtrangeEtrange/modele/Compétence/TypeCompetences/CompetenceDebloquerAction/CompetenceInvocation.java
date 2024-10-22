@@ -4,16 +4,14 @@ import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetences.C
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 
 
-public class CompetenceInvocation extends Competence
-{
+public class CompetenceInvocation extends Competence {
     @Override
     public int niveauMax() {
         return 1;
     }
 
     @Override
-    public void monterDeNiveau(Joueur joueur)
-    {
+    public void monterDeNiveau(Joueur joueur) {
         if (niveauCompetence < niveauMax())
             niveauCompetence++;
     }

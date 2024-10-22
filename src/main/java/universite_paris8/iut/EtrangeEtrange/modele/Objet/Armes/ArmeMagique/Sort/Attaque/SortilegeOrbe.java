@@ -5,22 +5,18 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Orbe;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesSortilege;
 
-public class SortilegeOrbe extends Sortilege
-{
+public class SortilegeOrbe extends Sortilege {
     private Orbe orbe;
 
-    public SortilegeOrbe()
-    {
+    public SortilegeOrbe() {
         this.orbe = new Orbe();
     }
 
     @Override
-    public void utilise(Entite entite)
-    {
+    public void utilise(Entite entite) {
         this.orbe = new Orbe();
 
-        if (peutLancerSort)
-        {
+        if (peutLancerSort) {
             this.peutLancerSort = false;
             this.derniereApelle = System.currentTimeMillis();
 

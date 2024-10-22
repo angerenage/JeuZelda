@@ -5,14 +5,11 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Guerrisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesSortilege;
 
-public class SortilegeDeSoins extends Sortilege implements Guerrisable
-{
+public class SortilegeDeSoins extends Sortilege implements Guerrisable {
 
     @Override
-    public void utilise(Entite entite)
-    {
-        if (peutLancerSort)
-        {
+    public void utilise(Entite entite) {
+        if (peutLancerSort) {
             this.peutLancerSort = false;
             entite.soigner(restoration());
             this.derniereApelle = System.currentTimeMillis();

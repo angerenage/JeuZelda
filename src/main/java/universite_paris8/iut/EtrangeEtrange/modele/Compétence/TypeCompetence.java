@@ -6,8 +6,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetences.C
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetences.CompetenceStats.*;
 
 
-public enum TypeCompetence
-{
+public enum TypeCompetence {
     UP_PV(new CompetenceUpPV()),
     UP_PV2(new CompetenceUpPV()),
     UP_PV3(new CompetenceUpPV()),
@@ -19,14 +18,14 @@ public enum TypeCompetence
     UP_DEFENSE_SPECIAL(new CompetenceUpDefenseSpecial()),
     COURIR(new CompetenceCourir()),
     INVOQUER(new CompetenceInvocation());
-    
+
     private Competence competence;
+
     TypeCompetence(Competence competence) {
         this.competence = competence;
     }
 
-    public Competence getCompetence()
-    {
+    public Competence getCompetence() {
         return this.competence;
     }
 

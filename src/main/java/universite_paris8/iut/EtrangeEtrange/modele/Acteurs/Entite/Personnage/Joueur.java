@@ -9,7 +9,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Compétence.Competences;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.CreationArbre;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 
@@ -18,8 +17,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Orbe;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Humanoide;

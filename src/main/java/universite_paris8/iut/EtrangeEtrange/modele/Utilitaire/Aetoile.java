@@ -183,10 +183,6 @@ public class Aetoile {
             this.g = g;
         }
 
-        public double getH() {
-            return h;
-        }
-
         public void setH(double h) {
             this.h = h;
         }

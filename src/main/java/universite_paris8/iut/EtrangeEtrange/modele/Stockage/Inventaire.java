@@ -7,22 +7,19 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 import java.util.ArrayList;
 
-public class Inventaire<T extends Objet> implements Conteneur<T>
-{
+public class Inventaire<T extends Objet> implements Conteneur<T> {
     private IntegerProperty taille;
     private Emplacement<T>[] inventaire;
 
-    public Inventaire(int taille)
-    {
+    public Inventaire(int taille) {
         this.taille = new SimpleIntegerProperty(taille);
         this.inventaire = (Emplacement<T>[]) new Emplacement[taille];
 
-        for (int i = 0;i < this.inventaire.length;i++)
+        for (int i = 0; i < this.inventaire.length; i++)
             this.inventaire[i] = new Emplacement<>();
     }
 
-    public boolean ajoutItem(T objet)
-    {
+    public boolean ajoutItem(T objet) {
         boolean ajoutReussi = false;
 
         Emplacement<T> emplacement = null;
@@ -40,35 +37,15 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
 
         return ajoutReussi;
     }
-    public Emplacement<T> chercheEmplacementStackable(T objet)
-    {
+
+    public Emplacement<T> chercheEmplacementStackable(T objet) {
         Emplacement<T> emplacement = null;
         boolean emplacementTrouver = false;
 
-        for (int i = 0; i < this.inventaire.length && !emplacementTrouver ;i++)
-        {
+        for (int i = 0; i < this.inventaire.length && !emplacementTrouver; i++) {
             Emplacement<T> emplacementAverifier = this.inventaire[i];
 
-            if (emplacementAverifier.peuEncoreStacker() &&emplacementAverifier.estDeMemeClass(objet))
-            {
-                emplacement = emplacementAverifier;
-                emplacementTrouver = true;
-            }
-        }
-
-        return emplacement;
-    }
-    public Emplacement<T> chercheEmplacementVide()
-    {
-        Emplacement<T> emplacement = null;
-        boolean emplacementTrouver = false;
-
-        for (int i = 0; i < this.inventaire.length && !emplacementTrouver;i++)
-        {
-            Emplacement<T> emplacementAverifier = this.inventaire[i];
-
-            if (emplacementAverifier.estVide())
-            {
+            if (emplacementAverifier.peuEncoreStacker() && emplacementAverifier.estDeMemeClass(objet)) {
                 emplacement = emplacementAverifier;
                 emplacementTrouver = true;
             }
@@ -77,6 +54,21 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
         return emplacement;
     }
 
+    public Emplacement<T> chercheEmplacementVide() {
+        Emplacement<T> emplacement = null;
+        boolean emplacementTrouver = false;
+
+        for (int i = 0; i < this.inventaire.length && !emplacementTrouver; i++) {
+            Emplacement<T> emplacementAverifier = this.inventaire[i];
+
+            if (emplacementAverifier.estVide()) {
+                emplacement = emplacementAverifier;
+                emplacementTrouver = true;
+            }
+        }
+
+        return emplacement;
+    }
 
 
     public void vider() {
@@ -84,24 +76,22 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
             emplacement.vider();
         }
     }
-    public boolean estPlein()
-    {
+
+    public boolean estPlein() {
         boolean plein = true;
 
-        for (int i = 0; i < inventaire.length; i++)
-        {
+        for (int i = 0; i < inventaire.length; i++) {
             if (inventaire[i].estVide())
                 plein = false;
         }
 
         return plein;
     }
-    public boolean estVide()
-    {
+
+    public boolean estVide() {
         boolean vide = true;
 
-        for (int i = 0; i < inventaire.length; i++)
-        {
+        for (int i = 0; i < inventaire.length; i++) {
             if (!inventaire[i].estVide())
                 vide = false;
         }
@@ -109,8 +99,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
         return vide;
     }
 
-    public int nombresObjets()
-    {
+    public int nombresObjets() {
         int total = 0;
         for (Emplacement emplacement : inventaire) {
             total += emplacement.quantiteObjet();
@@ -118,11 +107,11 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
         return total;
     }
 
-    public int getTailleMax()
-    {
+    public int getTailleMax() {
         return this.taille.get();
     }
-    public IntegerProperty getTailleMaxProperty(){
+
+    public IntegerProperty getTailleMaxProperty() {
         return this.taille;
     }
 
@@ -136,7 +125,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
     }
 
 
-    public T objetALemplacement(int emplacement){
+    public T objetALemplacement(int emplacement) {
         T objet = null;
 
         if (emplacement >= 0 && emplacement < this.inventaire.length && !this.inventaire[emplacement].estVide())
@@ -146,8 +135,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
     }
 
 
-    public T retourneObjet(int emplacement)
-    {
+    public T retourneObjet(int emplacement) {
         T objet = null;
 
         if (emplacement >= 0 && emplacement < this.inventaire.length && !this.inventaire[emplacement].estVide())
@@ -157,12 +145,10 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
     }
 
 
-    public <U extends Objet> U trouveObjet(Class<U> typeObjet)
-    {
+    public <U extends Objet> U trouveObjet(Class<U> typeObjet) {
         U objet = null;
 
-        for (int i = 0; i < inventaire.length && objet == null; i++)
-        {
+        for (int i = 0; i < inventaire.length && objet == null; i++) {
             Emplacement<T> emplacement = inventaire[i];
 
             if (emplacement.estDuMemeType(typeObjet))
@@ -173,11 +159,13 @@ public class Inventaire<T extends Objet> implements Conteneur<T>
         return objet;
     }
 
-    public Emplacement<T> getEmplacement(int emplacement){
+    public Emplacement<T> getEmplacement(int emplacement) {
         return inventaire[emplacement];
     }
 
-    public Emplacement<T>[] getInventaire(){return this.inventaire;}
+    public Emplacement<T>[] getInventaire() {
+        return this.inventaire;
+    }
 
     @Override
     public String toString() {

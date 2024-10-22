@@ -3,7 +3,8 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 public class Piece implements Objet {
-    public Piece(){}
+    public Piece() {
+    }
 
     @Override
     public String getNom() {

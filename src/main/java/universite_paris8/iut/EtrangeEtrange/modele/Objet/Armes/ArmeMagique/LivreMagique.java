@@ -41,11 +41,6 @@ public class LivreMagique implements Arme, Rechargeable {
         }
     }
 
-    public void ajoutSortilege(Sortilege sortilege) {
-        if (sortileges.size() + 1 < ConstanteObjet.SORT_MAXIMUM_LIVRE_MAGIQUE)
-            sortileges.add(sortilege);
-    }
-
     public Sortilege getSortilege(int num) {
         Sortilege sortilege = null;
 

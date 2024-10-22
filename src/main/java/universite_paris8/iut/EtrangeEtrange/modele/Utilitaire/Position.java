@@ -9,8 +9,7 @@ public class Position {
     private DoubleProperty x;
     private DoubleProperty y;
 
-    public Position(double x, double y)
-    {
+    public Position(double x, double y) {
         this.x = new SimpleDoubleProperty();
         this.y = new SimpleDoubleProperty();
 
@@ -26,16 +25,14 @@ public class Position {
         return y.get();
     }
 
-    public void setX(double x)
-    {
+    public void setX(double x) {
         if (x < 0 || x > Monde.getSizeMondeLargeur())
             throw new PositionInvalideExeption("x hors map");
 
         this.x.set(x);
     }
 
-    public void setY(double y)
-    {
+    public void setY(double y) {
         if (y < 0 || y > Monde.getSizeMondeHauteur())
             throw new PositionInvalideExeption("y hors map");
 
@@ -50,15 +47,8 @@ public class Position {
         return y;
     }
 
-    public double distance(Position other) {
-        double dx = this.getX() - other.getX();
-        double dy = this.getY() - other.getY();
-        return Math.sqrt(dx * dx + dy * dy);
-    }
-
     @Override
-    public String toString()
-    {
-        return x.get() + " - "+y.get();
+    public String toString() {
+        return x.get() + " - " + y.get();
     }
 }

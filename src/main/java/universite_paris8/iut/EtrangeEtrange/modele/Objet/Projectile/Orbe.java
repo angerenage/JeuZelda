@@ -7,7 +7,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.BFS;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class Orbe extends Projectile implements Utilisable, Rechargeable {

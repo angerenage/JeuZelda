@@ -13,38 +13,33 @@ public class SortilegePluitDeFleche extends Sortilege {
 
 
     @Override
-    public void utilise(Entite utilisateur)
-    {
-        if (peutLancerSort)
-        {
+    public void utilise(Entite utilisateur) {
+        if (peutLancerSort) {
             double x = utilisateur.getPosition().getX();
             double y = utilisateur.getPosition().getY();
 
             Direction direction = utilisateur.getDirection();
 
-            for (int i = 0;i<NOMBRE_FLECHE;i++)
-            {
+            for (int i = 0; i < NOMBRE_FLECHE; i++) {
 
-                int delaie = i+1;
-                Rechargeable rechargeable = new Rechargeable()
-                {
+                int delaie = i + 1;
+                Rechargeable rechargeable = new Rechargeable() {
                     private long derniereApelle = 0;
+
                     @Override
                     public long delaie() {
-                        return delaie * 2 ;
+                        return delaie * 2;
                     }
 
                     @Override
-                    public boolean cooldown()
-                    {
+                    public boolean cooldown() {
                         boolean actionFait = false;
                         long apelle = System.currentTimeMillis();
 
-                        if (apelle - derniereApelle >= delaie())
-                        {
+                        if (apelle - derniereApelle >= delaie()) {
                             Fleche flecheSimple = new Fleche();
                             flecheSimple.setDirection(direction);
-                            flecheSimple.setPosition(positionAleaAutourDe(x,y, direction));
+                            flecheSimple.setPosition(positionAleaAutourDe(x, y, direction));
                             flecheSimple.setMonde(utilisateur.getMonde());
                             flecheSimple.setUtilisateur(utilisateur);
                             utilisateur.getMonde().ajoutActeur(flecheSimple);
@@ -86,7 +81,6 @@ public class SortilegePluitDeFleche extends Sortilege {
     public long delaie() {
         return ConstantesSortilege.DELAIE_PLUIT_DE_FLECHES;
     }
-
 
 
 }
