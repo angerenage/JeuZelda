@@ -15,7 +15,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Livre
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
