@@ -16,7 +16,7 @@ public class PatternPrendrePotion implements Pattern
 
     @Override
     public void effectue() {
-        new Potion().estUtiliseePar(npe);
+        new Potion().utiliseePar(npe);
 
     }
 }

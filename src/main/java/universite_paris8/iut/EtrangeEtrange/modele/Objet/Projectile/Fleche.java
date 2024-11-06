@@ -1,5 +1,8 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
+
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementFleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
@@ -17,7 +20,7 @@ public class Fleche extends Projectile
 
     public Fleche()
     {
-        super(PV,VITESSE,HITBOX);
+        super(VITESSE,HITBOX);
         this.nombreUtilisationRestant = NOMBRE_UTILISATION;
 
     }
@@ -37,25 +40,16 @@ public class Fleche extends Projectile
 
 
 
-    @Override
-    public String typeActeur(){
-        return "fleche";
-    }
 
-    @Override
-    public void dropApresMort() {
-
-    }
-
-    @Override
-    public boolean estUnEnemie() {
-        return false;
-    }
     @Override
     public int stackMax() {return STACK_MAX;}
     @Override
-    public double durabilitee(){ return getPv(); }
+    public double durabilitee(){ return this.nombreUtilisationRestant; }
     @Override
     public int prixAchat() { return PRIX_ACHAT; }
 
+    @Override
+    public Comportement getComportement() {
+        return new ComportementFleche(this);
+    }
 }

@@ -167,8 +167,7 @@ public class gestionAffichageInventaire {
         }
         if(joueur.getObjetMainDroite()!=null)
             objetMainDroite.setImage(getImageObjet(joueur.getObjetMainDroite()));
-        if(joueur.getObjetMainGauche()!=null)
-            objetMainGauche.setImage(getImageObjet(joueur.getObjetMainGauche()));
+        
 
     }
 

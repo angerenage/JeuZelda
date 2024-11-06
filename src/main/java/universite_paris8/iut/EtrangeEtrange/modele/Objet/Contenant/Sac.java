@@ -1,5 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.ObjetConteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
@@ -32,4 +33,8 @@ public class Sac extends ObjetConteneur<Objet>
         return PRIX_ACHAT;
     }
 
+    @Override
+    public boolean utiliseePar(Entite entite) {
+        return false;
+    }
 }

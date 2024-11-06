@@ -26,13 +26,8 @@ public class PatternEnvoieOrbe implements Pattern
     @Override
     public void effectue() {
 
-        Orbe orbe;
+        Orbe orbe = new Orbe();
 
-        if (cible != null)
-            orbe = new Orbe(cible);
-        else
-            orbe = new Orbe();
-
-        orbe.estUtiliseePar(monstre);
+        orbe.utiliseePar(monstre);
     }
 }

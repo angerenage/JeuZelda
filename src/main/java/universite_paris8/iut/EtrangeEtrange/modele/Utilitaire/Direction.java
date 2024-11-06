@@ -54,6 +54,8 @@ public enum  Direction
         } else if (deltaY > 0) {
             return BAS;
         }
+
+
         // Si deltaX et deltaY sont tous les deux égaux à zéro, il n'y a pas de direction
         return null; // Ou une direction spéciale pour indiquer l'absence de mouvement
     }

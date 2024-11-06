@@ -3,6 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PatternCompositeStrategie implements Pattern
 {
@@ -14,6 +15,11 @@ public class PatternCompositeStrategie implements Pattern
     {
         this.patterns = new ArrayList<>(patterns);
         this.patternElse = patternElse;
+    }
+
+
+    public PatternCompositeStrategie(ConditionPatternDecorateur pattern, Pattern patternElse) {
+        this(new ArrayList<>(List.of(pattern)), patternElse);
     }
 
 

@@ -1,5 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 
@@ -35,5 +36,10 @@ public class Carquois extends ObjetConteneur<Fleche>
     @Override
     public Fleche objetALemplacement(int emplacement) {
         return super.objetALemplacement(emplacement);
+    }
+
+    @Override
+    public boolean utiliseePar(Entite entite) {
+        return false;
     }
 }

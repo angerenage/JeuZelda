@@ -63,9 +63,7 @@ public class RoiSquelette extends Boss
 
         if ((epee = sac.trouveObjet(Epee.class)) != null)
         {
-            epee.estUtiliseePar(this);
-
-            if (epee.durabilitee() == 0)
+            if (epee.utiliseePar(this))
                 sac.supprimeObjet(epee);
         }
 

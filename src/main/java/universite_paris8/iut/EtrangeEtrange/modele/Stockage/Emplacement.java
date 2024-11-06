@@ -102,6 +102,7 @@ public class Emplacement <T extends Objet> implements Conteneur<T>
 
     @Override
     public int getTailleMax() {
+        return 64;
     }
 
     @Override

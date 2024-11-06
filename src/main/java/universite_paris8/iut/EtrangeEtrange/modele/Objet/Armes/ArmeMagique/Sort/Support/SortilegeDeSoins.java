@@ -9,15 +9,16 @@ public class SortilegeDeSoins extends Sortilege implements Guerrisable
 {
 
     @Override
-    public boolean estUtiliseePar(Entite entite)
+    public boolean utiliseePar(Entite entite)
     {
-        if (peutLancerSort)
+        if (peutLancerSort())
         {
-            this.peutLancerSort = false;
+            estPossibleDeLancerSort(false);
             entite.soigner(restoration());
-            this.derniereApelle = System.currentTimeMillis();
-            entite.getMonde().ajoutRechargeable(this);
+            startCooldown();
         }
+
+        return false;
     }
 
     @Override

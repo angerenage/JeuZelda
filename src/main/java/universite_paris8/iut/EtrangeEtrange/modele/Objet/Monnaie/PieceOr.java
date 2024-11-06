@@ -1,5 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
+
 public class PieceOr extends Piece{
 
     public PieceOr(){
@@ -24,5 +26,10 @@ public class PieceOr extends Piece{
     @Override
     public int prixAchat() {
         return 0;
+    }
+
+    @Override
+    public boolean utiliseePar(Entite entite) {
+        return false;
     }
 }

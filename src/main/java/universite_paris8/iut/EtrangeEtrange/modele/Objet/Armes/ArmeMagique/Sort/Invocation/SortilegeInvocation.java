@@ -27,11 +27,13 @@ public abstract class SortilegeInvocation extends Sortilege implements Utilisabl
         return peuInvoquer;
     }
     @Override
-    public boolean estUtiliseePar(Entite entite)
+    public boolean utiliseePar(Entite entite)
     {
         if (peuInvoquer(entite))
         {
             FabriquePnj.fabriquePnj(acteur,5,entite.getMonde(),entite.getPosition());
         }
+
+        return false;
     }
 }

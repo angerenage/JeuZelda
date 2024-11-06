@@ -6,19 +6,17 @@ import universite_paris8.iut.EtrangeEtrange.modele.Compétence.Competences;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.CreationArbre;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Attaque;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.AttaqueSpecial;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
@@ -35,7 +33,8 @@ public abstract class Joueur extends Entite implements Offensif
 {
 
 
-    protected Utilisable<Entite> objetMainDroite;
+    protected Objet objetMainDroite;
+    protected Objet objetMainGauche;
     protected Sac sac;
 
     private Attaque attaque;
@@ -62,7 +61,7 @@ public abstract class Joueur extends Entite implements Offensif
      * @param direction      La direction vers laquelle le joueur est orienté.
      * @param hitbox         La hitbox du joueur.
      */
-    public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Utilisable<Entite> objetMainDroite, double x, double y, Direction direction, Hitbox hitbox) {
+    public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Objet objetMainDroite, double x, double y, Direction direction, Hitbox hitbox) {
         super(x, y, direction, pv,defense,defenseSpecial,vitesse,hitbox);
         this.competences = CreationArbre.arbres();
         this.estEntrainDeCourir = false;
@@ -91,8 +90,11 @@ public abstract class Joueur extends Entite implements Offensif
     {
         if (objetMainDroite != null)
         {
-            if (objetMainDroite instanceof Arc arc )
+            if (objetMainDroite instanceof Arc arc ) {
                 arc.setFleche(carquois.retourneUneFleche());
+            }
+
+
 
             if (objetMainDroite.utiliseePar(this))
                 objetMainDroite = null;
@@ -174,9 +176,9 @@ public abstract class Joueur extends Entite implements Offensif
     }
 
 
-    public Utilisable<Entite> retournerObjetMainDroite()
+    public Objet retournerObjetMainDroite()
     {
-        Utilisable<Entite> objet = this.objetMainDroite;
+        Objet objet = this.objetMainDroite;
         this.objetMainDroite = null;
         return objet;
     }
@@ -186,9 +188,19 @@ public abstract class Joueur extends Entite implements Offensif
         return this.objetMainDroite;
     }
 
-    public void setObjetMainDroite(Utilisable<Entite> objet){
+    public void setObjetMainDroite(Objet objet){
         this.objetMainDroite = objet;
     }
+
+    public void setObjetMainGauche(Objet objet){
+        this.objetMainGauche = objet;
+    }
+
+
+    public Objet retournerObjetMainGauche(){
+        return objetMainGauche;
+    }
+
 
     public void ramasserObjet() {
         ArrayList<DropAuSol> dropAuSols = getMonde().getDropAuSol();
@@ -204,5 +216,6 @@ public abstract class Joueur extends Entite implements Offensif
                 }
         }
     }
+
 
 }

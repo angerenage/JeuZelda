@@ -14,6 +14,6 @@ public class ConditionJoueurDansRayonAttaqueDecorateur extends ConditionPatternD
 
     @Override
     public boolean conditionRespecter() {
-        return monstre.getMonde().estDansRayon(monstre.getPosition(),0.8);
+        return monstre.getMonde().estDansRayon(monstre.getPosition(),1);
     }
 }

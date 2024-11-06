@@ -7,7 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 
-public class Potion implements Guerrisable, Objet, Utilisable<Entite>
+public class Potion implements Guerrisable, Objet
 {
 
     private static final int DURABILITEE = ConstanteObjet.DURABILITE_POTION;

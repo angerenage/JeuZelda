@@ -15,18 +15,19 @@ public class SortilegeOrbe extends Sortilege
     }
 
     @Override
-    public boolean estUtiliseePar(Entite entite)
+    public boolean utiliseePar(Entite entite)
     {
         this.orbe = new Orbe();
 
-        if (peutLancerSort)
+        if (peutLancerSort())
         {
-            this.peutLancerSort = false;
-            this.derniereApelle = System.currentTimeMillis();
+            estPossibleDeLancerSort(false);
+            startCooldown();
 
-            entite.getMonde().ajoutRechargeable(this);
-            this.orbe.estUtiliseePar(entite);
+            this.orbe.utiliseePar(entite);
         }
+
+        return false;
     }
 
     @Override

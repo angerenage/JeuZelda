@@ -15,6 +15,6 @@ public class CompetenceUpAttaque extends Competence
     @Override
     public void monterDeNiveau(Joueur joueur)
     {
-        joueur.augmenterAttaqueMaximum(boostAttaque[niveauCompetence]);
+       // joueur.augmenterAttaqueMaximum(boostAttaque[niveauCompetence]);
     }
 }

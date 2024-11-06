@@ -26,6 +26,7 @@ public abstract class Acteur
     protected Pv statsPv;
 
 
+
     protected boolean seDeplace;
 
 
@@ -56,6 +57,11 @@ public abstract class Acteur
         this.statsVitesse = new Vitesse(vitesse);
     }
 
+
+
+
+
+
     /**
      * Constructeur avec paramètres pour initialiser un Acteur.
      *
@@ -79,6 +85,7 @@ public abstract class Acteur
      */
     public boolean peutSeDeplacer(){
         return !monde.estHorsMap(this) && !monde.collision(this);}
+
 
 
 
@@ -109,7 +116,6 @@ public abstract class Acteur
     public abstract String typeActeur();
 
     public void setSeDeplace(boolean seDeplace){ this.seDeplace = seDeplace;}
-    public void setMonde(Monde monde) {this.monde = monde;}
     public void setDirection(Direction direction) {this.direction = direction;}
     public void setPosition(double x,double y){
         this.position.setX(x);
@@ -128,7 +134,7 @@ public abstract class Acteur
     public void seDeplace(boolean seDeplace) {this.seDeplace = seDeplace;}
     public Direction getDirection() {return this.direction;}
     public boolean getSeDeplace(){return this.seDeplace;}
-    public Hitbox getHitbox() {return this.hitbox;}
+    public Hitbox getHitbox() { return this.hitbox; }
     public Monde getMonde() {return this.monde;}
     public Position getPosition() {return this.position;}
     public Pv getStatsPv() {return this.statsPv;}
@@ -169,6 +175,7 @@ public abstract class Acteur
             position.setY(position.getY() + y * statsVitesse.getVitesse() * coef);
         }
     }
+
 
 
     public void setVitesse(double vitesse)
