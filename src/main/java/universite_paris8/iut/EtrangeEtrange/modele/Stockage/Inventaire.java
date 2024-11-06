@@ -173,7 +173,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         sb.append("Inventaire{");
         for (Emplacement emplacement : inventaire) {
             if (!emplacement.estVide()) {
-                sb.append(emplacement.nomObjet());
+                sb.append(emplacement.toString());
                 sb.append(", ");
             }
         }

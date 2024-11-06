@@ -64,8 +64,15 @@ public class Emplacement<T extends Objet> {
         return estDuMemeType;
     }
 
+    public Object getObjet() {
+        if (this.objets.isEmpty())
+            return null;
+        else
+            return this.objets.get(0);
+    }
 
-    public String nomObjet() {
+    @Override
+    public String toString() {
         String nom = "";
 
         if (!this.objets.isEmpty())

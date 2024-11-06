@@ -4,6 +4,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisa
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 
 public class ActionAchat extends Action {
     private Objet objet;
@@ -25,7 +26,7 @@ public class ActionAchat extends Action {
                 int resteAPayer = objet.prixAchat();
 
                 for (int i = 0; i < joueur.getSac().getTailleMax() && resteAPayer != 0; i++) {
-                    if (joueur.getSac().getEmplacement(i).nomObjet().equals("piece")) {
+                    if (joueur.getSac().getEmplacement(i).getObjet() instanceof Piece) {
                         int quantite = joueur.getSac().getEmplacement(i).quantiteObjet();
                         for (int j = 0; j < quantite && resteAPayer != 0; j++) {
                             joueur.getSac().getEmplacement(i).enleveObjet();
