@@ -12,12 +12,13 @@ public abstract class Projectile implements Dommageable,Objet
 {
     private double vitesse;
     private Hitbox hitbox;
+    private int durabilite;
 
-
-    public Projectile(double vitesse,Hitbox hitbox)
+    public Projectile(double vitesse,int durabilite,Hitbox hitbox)
     {
         this.vitesse = vitesse;
         this.hitbox = hitbox;
+        this.durabilite = durabilite;
     }
 
 
@@ -27,21 +28,25 @@ public abstract class Projectile implements Dommageable,Objet
     }
 
     public Hitbox getHitbox(){
-
-        for (int i = 0; i <100;i++)
-            System.out.println(hitbox);
-
         return hitbox;
     }
 
     public abstract Comportement getComportement();
 
+
+    @Override
+    public double durabilitee(){ return durabilite; }
+
     @Override
     public boolean utiliseePar(Entite entite)
     {
-        this.getComportement().lancer(entite);
+        boolean estCasser = durabilite <= 0;
 
-        return durabilitee() <= 0;
+        if (!estCasser) {
+            this.getComportement().lancer(entite);
+        }
+
+        return estCasser;
     }
     
 

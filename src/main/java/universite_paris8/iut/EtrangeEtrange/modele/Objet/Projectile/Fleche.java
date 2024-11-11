@@ -12,39 +12,33 @@ public class Fleche extends Projectile
     public static final double DEGAT_SPECIAL = ConstanteObjet.DEGAT_SPECIAL_FLECHE;
     public static final double VITESSE = ConstanteObjet.VITESSE_FLECHE;
     public static final Hitbox HITBOX = ConstanteObjet.HITBOX_FLECHE;
-    public static final int PV = ConstanteObjet.DURABILITE_FLECHE;
     public static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_FLECHE;
     public static final int STACK_MAX = ConstanteObjet.STACK_MAX_FLECHE;
-    private static final int NOMBRE_UTILISATION = ConstanteObjet.NOMBRE_UTLISATION_FLECHE;
-    private int nombreUtilisationRestant;
+
 
     public Fleche()
     {
-        super(VITESSE,HITBOX);
-        this.nombreUtilisationRestant = NOMBRE_UTILISATION;
-
+        super(VITESSE,ConstanteObjet.NOMBRE_UTLISATION_FLECHE,HITBOX);
     }
 
     @Override
     public double degatPhysique() {
         return DEGAT_PHYSIQUE;
     }
+
     @Override
     public double degatSpecial() {
         return DEGAT_SPECIAL;
     }
+
     @Override
     public String getNom() {
         return "fleche";
     }
 
-
-
-
     @Override
     public int stackMax() {return STACK_MAX;}
-    @Override
-    public double durabilitee(){ return this.nombreUtilisationRestant; }
+
     @Override
     public int prixAchat() { return PRIX_ACHAT; }
 

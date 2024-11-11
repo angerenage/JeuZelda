@@ -29,7 +29,7 @@ public class Arc extends Arme
         return new Comportement() {
             @Override
             public void finit() {
-
+                fleche = null;
             }
 
             @Override

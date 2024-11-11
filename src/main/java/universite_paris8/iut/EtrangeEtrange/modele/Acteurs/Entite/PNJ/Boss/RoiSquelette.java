@@ -2,12 +2,12 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Boss;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Boss;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConstructeurDePattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ParametreMonstre;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
@@ -17,6 +17,7 @@ public class RoiSquelette extends Boss
     private final int nbrPotion = 6;
     private final int nbrEpee = 3;
     private Sac sac;
+
     public RoiSquelette(double x, double y, Direction direction)
     {
         super(  x,y,direction,
@@ -26,21 +27,19 @@ public class RoiSquelette extends Boss
                 new Hitbox(1,1)
         );
 
-
         initInventaire();
     }
-
 
     private void initInventaire()
     {
         this.sac = new Sac();
 
+        for (int i = 0; i < nbrEpee; i++)
+            this.sac.ajoutItem(new Epee());
 
+        for (int i = 0; i < nbrPotion; i++)
+            this.sac.ajoutItem(new Potion());
     }
-
-
-
-
 
 
     @Override
@@ -56,9 +55,9 @@ public class RoiSquelette extends Boss
         return true;
     }
 
-
     @Override
-    public void faitUneAttaque() {
+    public void faitUneAttaque()
+    {
         Epee epee;
 
         if ((epee = sac.trouveObjet(Epee.class)) != null)
@@ -66,13 +65,10 @@ public class RoiSquelette extends Boss
             if (epee.utiliseePar(this))
                 sac.supprimeObjet(epee);
         }
-
-
     }
-
 
     @Override
     protected Pattern initPattern() {
-        return ConstructeurDePattern.initPattern(this);
+
     }
 }

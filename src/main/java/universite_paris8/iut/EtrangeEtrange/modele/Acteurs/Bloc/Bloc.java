@@ -28,7 +28,6 @@ public class Bloc extends Acteur implements Dropable {
             setVitesse(0);
         }
 
-
     }
 
     @Override

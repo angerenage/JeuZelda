@@ -94,8 +94,6 @@ public abstract class Joueur extends Entite implements Offensif
                 arc.setFleche(carquois.retourneUneFleche());
             }
 
-
-
             if (objetMainDroite.utiliseePar(this))
                 objetMainDroite = null;
         }

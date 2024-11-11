@@ -5,13 +5,12 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementFleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
 public abstract class ComportementDynamique extends Acteur implements Comportement
 {
-    private Pattern comportement;
+    private Pattern pattern;
     private Entite utilisateur;
     private long tourFait;
 
@@ -24,9 +23,7 @@ public abstract class ComportementDynamique extends Acteur implements Comporteme
     @Override
     public void agit()
     {
-        if (this instanceof ComportementFleche)
-            System.out.println("Je bougeeeeeeeee");
-        comportement.effectue();
+        pattern.effectue();
     }
 
     public long getTourFait(){
@@ -42,12 +39,12 @@ public abstract class ComportementDynamique extends Acteur implements Comporteme
     public Entite getUtilisateur(){
         return utilisateur;
     }
-    public abstract Pattern initComportement();
+    public abstract Pattern getPattern();
 
     public void lancer(Entite entite)
     {
         this.utilisateur = entite;
-        comportement = initComportement();
+        pattern = getPattern();
         new PatternSetPosition(this).effectue();
         Monde.getMonde().ajoutActeur(this);
 

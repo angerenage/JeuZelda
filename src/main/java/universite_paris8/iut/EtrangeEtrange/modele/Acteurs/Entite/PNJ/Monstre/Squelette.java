@@ -16,9 +16,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Squelette extends Monstre {
 
     private Epee epee ;
@@ -35,15 +32,6 @@ public class Squelette extends Monstre {
 
         epee = new Epee();
     }
-
-
-
-
-    public void attaque() {
-        epee.utiliseePar(this);
-    }
-
-
 
 
     @Override

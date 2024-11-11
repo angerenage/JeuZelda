@@ -35,7 +35,5 @@ public abstract class NPEs extends Entite {
         pattern.effectue();
     }
 
-
-
     protected abstract Pattern initPattern();
 }

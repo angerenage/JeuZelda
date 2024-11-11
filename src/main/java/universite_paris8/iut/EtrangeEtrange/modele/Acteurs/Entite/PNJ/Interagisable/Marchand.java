@@ -1,23 +1,21 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
+
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternGenereItem;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionVendre;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.Soigner;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.TypeObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
@@ -25,7 +23,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Marchand extends NPEs implements Dropable
 {
@@ -47,27 +44,14 @@ public class Marchand extends NPEs implements Dropable
 
     public void genereMarchandises()
     {
-        cycle++;
-
-        if (cycle % 2000 == 0)
-        {
-            sac.ajoutItem(new Epee());
-            sac.ajoutItem(new Arc());
-            sac.ajoutItem(new Potion());
-            cycle = 0;
-        }
+        sac.ajoutItem(new Epee());
+        sac.ajoutItem(new Arc());
+        sac.ajoutItem(new Potion());
     }
 
     @Override
     protected Pattern initPattern() {
-        return new ConditionDelaieRespecter(new PatternGenereItem(),5000);
-    }
-
-
-
-    @Override
-    public void subitCollision(Acteur acteur) {
-
+        return new ConditionDelaieRespecter(this::genereMarchandises,5000);
     }
 
     @Override
@@ -107,29 +91,17 @@ public class Marchand extends NPEs implements Dropable
     }
 
 
-
-
-
-
-
-
-
-
-
     @Override
-    public void drop() {
+    public void drop()
+    {
         for (Emplacement<Objet> objets : sac.getInventaire())
         {
             ArrayList<Objet> obs = objets.enleverToutLesObjets();
 
-            for (Objet objet : obs)
-            {
+            for (Objet objet : obs) {
                 monde.ajouterDropAuSol(new DropAuSol(objet, obs.size(), new Position(position.getX(), position.getY())));
             }
         }
-
-
-
     }
 
     public Sac getMarchandise()

@@ -21,24 +21,16 @@ public class Orbe extends Projectile
     private static final Hitbox HITBOX = ConstanteObjet.HITBOX_ORBE;
     private static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_ORBE;
     private static final int STACK_MAX  = ConstanteObjet.STACK_MAX_ORBE;
-    private static final int NOMBRE_UTILISATION = ConstanteObjet.NOMBRE_UTLISATION_ORBE;
 
-
-
-    private int nombreUtilisationRestant;
-
-
-    public Orbe()
-    {
-        super(VITESSE,HITBOX);
-        this.nombreUtilisationRestant = NOMBRE_UTILISATION;
+    public Orbe() {
+        super(VITESSE,ConstanteObjet.NOMBRE_UTLISATION_ORBE,HITBOX);
     }
-
 
     @Override
     public Comportement getComportement() {
         return new ComportementOrbe(this);
     }
+    @Override
     public double degatPhysique() { return DEGAT_PHYSIQUE; }
     @Override
     public double degatSpecial() { return DEGAT_SPECIAL; }
@@ -46,8 +38,6 @@ public class Orbe extends Projectile
     public String getNom() {return "orbe";}
     @Override
     public int stackMax() { return STACK_MAX; }
-    @Override
-    public double durabilitee() { return nombreUtilisationRestant; }
     @Override
     public int prixAchat() { return PRIX_ACHAT; }
 

@@ -12,12 +12,15 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
 public class Epee extends Arme implements Dommageable {
 
-    private  Hitbox hitbox = ConstanteObjet.HITBOX_EPEE;
+    private Hitbox hitbox = ConstanteObjet.HITBOX_EPEE;
     private Hitbox h;
+
+    private int durabiliteeRestant;
 
     public Epee()
     {
         h = hitbox;
+        durabiliteeRestant = ConstanteObjet.DURABILITE_EPEE;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class Epee extends Arme implements Dommageable {
 
     @Override
     public double durabilitee() {
-        return ConstanteObjet.DURABILITE_EPEE;
+        return durabiliteeRestant;
     }
 
     @Override
@@ -74,9 +77,10 @@ public class Epee extends Arme implements Dommageable {
             initComportement().lancer(entite);
             peutEtreUtiliser(false);
             startCooldown();
+            durabiliteeRestant--;
         }
 
-        return false;
+        return durabiliteeRestant <= 0;
     }
 
 }

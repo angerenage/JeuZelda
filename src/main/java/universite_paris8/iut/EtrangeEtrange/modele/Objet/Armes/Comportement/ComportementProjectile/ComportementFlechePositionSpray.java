@@ -10,7 +10,7 @@ public class ComportementFlechePositionSpray extends ComportementFleche{
     }
 
     @Override
-    public Pattern initComportement(){
+    public Pattern getPattern(){
         return new PatternFlechePositionSpray(this);
     }
 }

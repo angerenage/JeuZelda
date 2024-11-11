@@ -2,12 +2,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.StategyDeplacement.DeplacementStrategy;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
-
-
-
-
 
 public class PatternDeplacementAleatoire implements Pattern
 {
@@ -16,8 +11,6 @@ public class PatternDeplacementAleatoire implements Pattern
     public PatternDeplacementAleatoire(Acteur acteur) {
         this.acteur = acteur;
     }
-
-
 
     @Override
     public void effectue() {

@@ -25,7 +25,7 @@ public class ComportementOrbe extends ComportementDynamique
     }
 
     @Override
-    public Pattern initComportement() {
+    public Pattern getPattern() {
         return new PatternOrbe(this);
     }
 

@@ -193,9 +193,9 @@ public class Controller implements Initializable {
         String guerrier = switchDonnees.getClasseJoueur();
 
         if (guerrier.equals("Guerrier")) {
-            joueur = new Guerrier(monde, Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            joueur = new Guerrier(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
         } else if (guerrier.equals("Archer")) {
-            joueur = new Archer(monde, Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            joueur = new Archer(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
         } else if (guerrier.equals("Mage")) {
             // pas encore implementer
         } else if (guerrier.equals("Necromancier")) {

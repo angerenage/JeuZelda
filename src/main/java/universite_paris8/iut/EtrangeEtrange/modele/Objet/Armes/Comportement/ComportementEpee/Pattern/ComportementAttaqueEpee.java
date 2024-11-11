@@ -20,7 +20,7 @@ public class ComportementAttaqueEpee extends ComportementDynamique
 
 
     @Override
-    public Pattern initComportement() {
+    public Pattern getPattern() {
         return new PatternCoupEpee(this);
 
     }

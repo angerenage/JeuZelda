@@ -23,7 +23,7 @@ public class ComportementFleche extends ComportementDynamique
     }
 
     @Override
-    public Pattern initComportement() {
+    public Pattern getPattern() {
         return new PatternFleche(this);
     }
 

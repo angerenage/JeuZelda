@@ -48,7 +48,6 @@ public class Slime extends NPEs {
         double x = getPosition().getX();
         double y = getPosition().getY();
         getMonde().ajouterDropAuSol(new DropAuSol(new PieceOr(), 1, new Position(x, y)));
-        System.out.println("passage");
     }
 
     @Override
