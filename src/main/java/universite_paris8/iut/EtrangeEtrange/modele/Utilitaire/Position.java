@@ -2,7 +2,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Utilitaire;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.PositionInvalideExeption;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public class Position {
@@ -26,16 +25,10 @@ public class Position {
     }
 
     public void setX(double x) {
-        if (x < 0 || x > Monde.getSizeMondeLargeur())
-            throw new PositionInvalideExeption("x hors map");
-
         this.x.set(x);
     }
 
     public void setY(double y) {
-        if (y < 0 || y > Monde.getSizeMondeHauteur())
-            throw new PositionInvalideExeption("y hors map");
-
         this.y.set(y);
     }
 

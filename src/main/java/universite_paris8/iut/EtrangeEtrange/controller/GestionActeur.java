@@ -37,11 +37,11 @@ public class GestionActeur implements ListChangeListener<Acteur>
                 {
                     if (acteur.typeActeur().equals("fleche") || acteur.typeActeur().equals("orbe")) {
                         initSpriteProjectile(acteur);
-                        gestionSon.lanceSong((Objet) acteur);
+                        gestionSon.lanceSong(acteur);
                     }
 
                     else if(acteur.typeActeur().equals("epee")){
-                        gestionSon.lanceSong((Objet) acteur);
+                        gestionSon.lanceSong(acteur);
                     }
                     else if(acteur.typeActeur().equals("bloc")){
                         initSpriteBloc(acteur);

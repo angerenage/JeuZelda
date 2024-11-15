@@ -53,6 +53,9 @@ public class Pv {
     public double getPvMaximum() {
         return this.pvMaximum.get();
     }
+    public int getPourcentageDePv(){
+        return (int) ((pv.get() / pvMaximum.get()) * 100);
+    }
 
     public DoubleProperty getPvActuelleProperty() {
         return this.pv;

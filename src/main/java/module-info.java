@@ -6,6 +6,7 @@ module com.example.essaie {
     requires junit;
     requires org.junit.jupiter.api;
     requires java.desktop;
+    requires jcommander;
 
     opens universite_paris8.iut.EtrangeEtrange to javafx.fxml;
     exports universite_paris8.iut.EtrangeEtrange;

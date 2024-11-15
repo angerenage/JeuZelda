@@ -1,5 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
@@ -18,6 +20,4 @@ public class Guerrier extends Joueur {
             carquois.ajoutItem(new Fleche());
         }
     }
-
-
 }

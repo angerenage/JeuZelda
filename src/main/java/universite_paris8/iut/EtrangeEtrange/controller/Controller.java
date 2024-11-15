@@ -10,22 +10,29 @@ import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
 import universite_paris8.iut.EtrangeEtrange.Runner;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Bloc.Bloc;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Marchand;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.GestionPrompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Archer;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Guerrier;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.PieceOr;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import universite_paris8.iut.EtrangeEtrange.vues.AfficheBulleConversation;
@@ -178,16 +185,17 @@ public class Controller implements Initializable {
     }
     public void initMonde()
     {
-        monde = new Monde("mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
+        Monde.initMonde("src/main/resources/universite_paris8/iut/EtrangeEtrange/TiledMap/", "mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
+        monde = Monde.getMonde();
     }
 
     public void initJoueur() {
         String guerrier = switchDonnees.getClasseJoueur();
 
         if (guerrier.equals("Guerrier")) {
-            joueur = new Guerrier(monde, Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            joueur = new Guerrier(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
         } else if (guerrier.equals("Archer")) {
-            joueur = new Archer(monde, Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            joueur = new Archer(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
         } else if (guerrier.equals("Mage")) {
             // pas encore implementer
         } else if (guerrier.equals("Necromancier")) {

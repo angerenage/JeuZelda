@@ -1,6 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Interfaces;
 
-public interface Objet {
+public interface Objet extends Utilisable {
 
     public String getNom();
 
