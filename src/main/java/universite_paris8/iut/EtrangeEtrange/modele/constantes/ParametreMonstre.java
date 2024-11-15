@@ -23,5 +23,5 @@ public class ParametreMonstre {
     public static final int DEFENSE_ROI_SQUELETTE = 20;
     public static final int ATTAQUE_SPECIALE_ROI_SQUELETTE = 20;
     public static final int DEFENSE_SPECIALE_ROI_SQUELETTE = 20;
-    public static final double VITESSE_ROI_SQUELETTE = 0.3;
+    public static final double VITESSE_ROI_SQUELETTE = 0.003;
 }

@@ -32,7 +32,8 @@ public abstract class NPEs extends Entite {
 
     @Override
     public void agit() {
-        pattern.effectue();
+        if (pattern != null)
+            pattern.effectue();
     }
 
     protected abstract Pattern initPattern();
