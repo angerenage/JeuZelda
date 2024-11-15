@@ -100,8 +100,8 @@ public class Monde {
         return monde;
     }
 
-    public static void initMonde(String chemin, String nommap, int hauteur, int largeur) {
-        if (monde == null) monde = new Monde(chemin, nommap, hauteur, largeur);
+    public static void initMonde(String nommap, int hauteur, int largeur) {
+        if (monde == null) monde = new Monde(nommap, hauteur, largeur);
     }
 
     public static void setSizeMondeLargeur(int largeurMonde) {

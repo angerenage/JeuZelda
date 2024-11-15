@@ -2,7 +2,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Rechargeable;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegeOrbe;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegePluitDeFleche;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
@@ -13,7 +12,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 import java.util.ArrayList;
 
 public class LivreMagique extends Arme {
-
     private ArrayList<Sortilege> sortileges;
 
     public LivreMagique() {
@@ -74,6 +72,6 @@ public class LivreMagique extends Arme {
 
     @Override
     public long delaie() {
-        return ConstanteObjet.SORTILEGE1_LIVRE_MAGIQUE.delaie();
+        return this.getSortilege(0).delaie();
     }
 }

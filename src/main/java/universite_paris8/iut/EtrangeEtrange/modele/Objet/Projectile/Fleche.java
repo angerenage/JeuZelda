@@ -3,12 +3,11 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementFleche;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Fleche extends Projectile {
     public Fleche() {
-        super(ConstanteObjet.DURABILITE_FLECHE, ConstanteObjet.VITESSE_FLECHE, ConstanteObjet.HITBOX_FLECHE);
+        super(ConstanteObjet.VITESSE_FLECHE, ConstanteObjet.DURABILITE_FLECHE, ConstanteObjet.HITBOX_FLECHE);
     }
 
     @Override
@@ -26,11 +25,6 @@ public class Fleche extends Projectile {
         return "fleche";
     }
 
-    @Override
-    public int stackMax() {
-        return STACK_MAX;
-    }
-
     public int stackMax() {
         return ConstanteObjet.STACK_MAX_FLECHE;
     }
@@ -38,10 +32,6 @@ public class Fleche extends Projectile {
     @Override
     public int prixAchat() {
         return ConstanteObjet.PRIX_ACHAT_FLECHE;
-    }
-
-    public double durabilitee() {
-        return getPv();
     }
 
     @Override

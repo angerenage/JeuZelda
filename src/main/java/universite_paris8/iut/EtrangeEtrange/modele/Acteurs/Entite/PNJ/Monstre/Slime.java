@@ -4,12 +4,12 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternDeplacement.PatternDeplacementAleatoire;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.PieceOr;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ParametreMonstre;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ParametreMonstre;
 
 public class Slime extends NPEs {
     /**
@@ -20,8 +20,6 @@ public class Slime extends NPEs {
      * @param direction La direction dans laquelle l'entité est orientée.
      * @param hitbox    La hitbox de l'entité.
      */
-
-
     public Slime(double x, double y, Direction direction, Hitbox hitbox) {
         super(x, y, direction,
               ParametreMonstre.PV_SLIME,
@@ -45,7 +43,7 @@ public class Slime extends NPEs {
     public void dropApresMort() {
         double x = getPosition().getX();
         double y = getPosition().getY();
-        getMonde().ajouterDropAuSol(new DropAuSol(new PieceOr(), 1, new Position(x, y)));
+        getMonde().ajouterDropAuSol(new DropAuSol(new Piece(), new Position(x, y)));
     }
 
     @Override

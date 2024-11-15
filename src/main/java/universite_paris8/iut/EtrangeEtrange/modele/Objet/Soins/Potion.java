@@ -14,14 +14,6 @@ public class Potion implements Guerrisable, Objet {
     }
 
     @Override
-    public void utilise(Entite entite) {
-        if (durabilitee > 0) {
-            entite.soigner(restoration());
-            this.durabilitee--;
-        }
-    }
-
-    @Override
     public double restoration() {
         return ConstanteObjet.RESTORATION;
     }

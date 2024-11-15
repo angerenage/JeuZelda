@@ -10,5 +10,4 @@ public class ConstantesSortilege {
 
 
     public static final long DELAIE_ORBE = 600;
-
 }

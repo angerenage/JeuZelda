@@ -96,7 +96,7 @@ public class Marchand extends NPEs implements Dropable {
             ArrayList<Objet> obs = objets.enleverToutLesObjets();
 
             for (Objet objet : obs) {
-                monde.ajouterDropAuSol(new DropAuSol(objet, obs.size(), new Position(position.getX(), position.getY())));
+                monde.ajouterDropAuSol(new DropAuSol(objet, new Position(position.getX(), position.getY())));
             }
         }
     }

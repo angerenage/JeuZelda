@@ -9,22 +9,21 @@ public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> impl
         super(taille);
     }
 
-
     public void echangerEmplacement(Joueur joueur, int caseVerouille, int caseSurvole) {
         int tailleInventaire = joueur.getSac().getTailleMax();
-        Objet o1;
-        Objet o2;
+        Objet o1, o2;
 
         if (caseSurvole == tailleInventaire)
-            o1 = joueur.lacherObjetMainDroite();
+            o1 = joueur.retournerObjetMainDroite();
         else if (caseSurvole == tailleInventaire + 1)
-            o1 = joueur.lacherObjetMainGauche();
+            o1 = joueur.retournerObjetMainGauche();
         else
             o1 = retourneObjet(caseSurvole);
+
         if (caseVerouille == tailleInventaire)
-            o2 = joueur.lacherObjetMainDroite();
+            o2 = joueur.retournerObjetMainDroite();
         else if (caseVerouille == tailleInventaire + 1)
-            o2 = joueur.lacherObjetMainGauche();
+            o2 = joueur.retournerObjetMainGauche();
         else
             o2 = retourneObjet(caseVerouille);
 
@@ -34,9 +33,10 @@ public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> impl
             else if (caseSurvole == tailleInventaire + 1)
                 joueur.setObjetMainGauche(o2);
             else
-                getEmplacement(caseSurvole).ajoutItem((T) o2);
+                getEmplacement(caseSurvole).ajoutItem((T)o2);
         }
-        if (o1 != null) {
+
+        if (o1 != null){
             if (caseVerouille == tailleInventaire)
                 joueur.setObjetMainDroite(o1);
             else if (caseVerouille == tailleInventaire + 1)
@@ -44,6 +44,5 @@ public abstract class ObjetConteneur<T extends Objet> extends Inventaire<T> impl
             else
                 getEmplacement(caseVerouille).ajoutItem((T)o1);
         }
-
     }
 }

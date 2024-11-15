@@ -4,11 +4,9 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Tache;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementEpee.Pattern.ComportementAttaqueEpee;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Epee extends Arme implements Dommageable {
     private Hitbox hitbox = ConstanteObjet.HITBOX_EPEE;

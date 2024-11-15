@@ -1,27 +1,12 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementOrbe;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstanteObjet;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.BFS;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Orbe extends Projectile {
-    private static final double DEGAT_PHYSIQUE = ConstanteObjet.DEGAT_PHYSIQUE_ORBE;
-    private static final double DEGAT_SPECIAL = ConstanteObjet.DEGAT_SPECIAL_ORBE;
-    private static final double VITESSE = ConstanteObjet.VITESSE_ORBE;
-    private static final Hitbox HITBOX = ConstanteObjet.HITBOX_ORBE;
-    private static final int PRIX_ACHAT = ConstanteObjet.PRIX_ACHAT_ORBE;
-    private static final int STACK_MAX  = ConstanteObjet.STACK_MAX_ORBE;
-
     public Orbe() {
-        super(VITESSE,ConstanteObjet.NOMBRE_UTLISATION_ORBE,HITBOX);
+        super(ConstanteObjet.VITESSE_ORBE, ConstanteObjet.NOMBRE_UTLISATION_ORBE, ConstanteObjet.HITBOX_ORBE);
     }
 
     @Override

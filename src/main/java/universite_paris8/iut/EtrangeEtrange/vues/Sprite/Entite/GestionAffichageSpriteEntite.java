@@ -1,15 +1,11 @@
 package universite_paris8.iut.EtrangeEtrange.vues.Sprite.Entite;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.ListChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-;
+
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Boss.RoiSquelette;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Slime;

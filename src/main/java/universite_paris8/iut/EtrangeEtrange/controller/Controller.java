@@ -10,31 +10,22 @@ import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
 
 import universite_paris8.iut.EtrangeEtrange.Runner;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Bloc.Bloc;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Marchand;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.GestionPrompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Archer;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
-import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ConstantesAffichage;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Guerrier;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.PieceOr;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.vues.AfficheBulleConversation;
 import universite_paris8.iut.EtrangeEtrange.vues.BarreDeVie.GestionAffichageVieJoueur;
 
@@ -42,9 +33,10 @@ import universite_paris8.iut.EtrangeEtrange.vues.GestionSon;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.DropAuSol.gestionAffichageSpriteDropAuSol;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.Entite.GestionAffichageSpriteEntite;
 
-
 import universite_paris8.iut.EtrangeEtrange.vues.gestionAffichageMap;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,7 +61,6 @@ public class Controller implements Initializable {
     private GestionSon gestionSon;
     private GestionAffichageSpriteEntite gestionAffichageSpriteEntite;
     private SwitchScene switchDonnees;
-    private GestionAffichageVieJoueur vueVie;
     private boolean interactionAvecPnj = false;
     private ListView<String> listProposition;
     private Label textePnj;
@@ -78,7 +69,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        switchDonnees = switchDonnees.getSwitchScene();
+        switchDonnees = SwitchScene.getSwitchScene();
         switchDonnees.setControllerJeu(this);
         initMonde();
         initJoueur();
@@ -125,14 +116,11 @@ public class Controller implements Initializable {
         });
     }
 
-
     private void initVie() {
-        vueVie = new GestionAffichageVieJoueur(joueur.getStatsPv());
+        GestionAffichageVieJoueur vueVie = new GestionAffichageVieJoueur(joueur.getStatsPv());
         vueVie.setHboxCoeurs(hboxCoeurs); // Passez l'HBox à la gestion de la vue
         vueVie.initialize(); // Initialiser la vue
-
     }
-
 
     private void initGameLoop() {
         gameLoop = new Timeline();
@@ -147,8 +135,8 @@ public class Controller implements Initializable {
 
     public void initPane(){
         // Initialisation taille en fonction de la taille de la map
-        int largeur = Monde.getSizeMondeLargeur()* ConstantesAffichage.tailleTile;
-        int hauteur = Monde.getSizeMondeHauteur()* ConstantesAffichage.tailleTile;
+        int largeur = Monde.getSizeMondeLargeur() * ConstantesAffichage.tailleTile;
+        int hauteur = Monde.getSizeMondeHauteur() * ConstantesAffichage.tailleTile;
 
         TilePaneSol.setMaxSize(largeur, hauteur);
         TilePaneSol.setMinSize(largeur, hauteur);
@@ -158,7 +146,6 @@ public class Controller implements Initializable {
 
         TilePaneNontraversable.setMaxSize(largeur, hauteur);
         TilePaneNontraversable.setMinSize(largeur, hauteur);
-
 
         // Listener pour que la TilePane et la Pane suivent le joueur
         joueur.getPosition().getXProperty().addListener((obs, old, nouv)-> {
@@ -179,35 +166,35 @@ public class Controller implements Initializable {
      */
     public double scrollMap(double position, int longueurAxe, double positionInitiale){
         if (-position * ConstantesAffichage.tailleTile + longueurAxe / 2.0 < 0)
-            if (-position * ConstantesAffichage.tailleTile + longueurAxe / 2.0 > -Monde.getSizeMondeLargeur()* ConstantesAffichage.tailleTile+longueurAxe )
+            if (-position * ConstantesAffichage.tailleTile + longueurAxe / 2.0 > -Monde.getSizeMondeLargeur() * ConstantesAffichage.tailleTile + longueurAxe)
                 return -position * ConstantesAffichage.tailleTile + longueurAxe / 2.0;
         return positionInitiale;
     }
-    public void initMonde()
-    {
-        Monde.initMonde("src/main/resources/universite_paris8/iut/EtrangeEtrange/TiledMap/", "mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
+
+    public void initMonde() {
+        Monde.initMonde("mapfinal", Monde.getSizeMondeHauteur(), Monde.getSizeMondeLargeur());
         monde = Monde.getMonde();
     }
 
     public void initJoueur() {
         String guerrier = switchDonnees.getClasseJoueur();
 
-        if (guerrier.equals("Guerrier")) {
-            joueur = new Guerrier(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
-        } else if (guerrier.equals("Archer")) {
-            joueur = new Archer(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
-        } else if (guerrier.equals("Mage")) {
-            // pas encore implementer
-        } else if (guerrier.equals("Necromancier")) {
-            // pas encore implementer
+        switch (guerrier) {
+            case "Guerrier" -> joueur = new Guerrier(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            case "Archer" -> joueur = new Archer(Monde.getxPointDeDepart(), Monde.getyPointDeDepart(), Direction.BAS);
+            case "Mage" -> {
+                // pas encore implementer
+            }
+            case "Necromancier" -> {
+                // pas encore implementer
+            }
         }
+
         switchDonnees.setJoueur(joueur);
         monde.setJoueur(joueur);
         joueur.getSac().ajoutItem(new Epee());
         joueur.getSac().ajoutItem(new Potion());
     }
-
-
 
     public void keyPressed(KeyEvent keyEvent) throws IOException {
         KeyCode keyCode = keyEvent.getCode();
@@ -314,18 +301,14 @@ public class Controller implements Initializable {
         switchDonnees.recupererPane(paneEntite, TilePaneSol, TilePaneTraversable, TilePaneNontraversable);
     }
 
-    public void interaction()
-    {
+    public void interaction() {
         Acteur acteur = monde.interactionAvecActeur();
         System.out.println(acteur);
 
-        if (acteur != null)
-        {
+        if (acteur != null) {
             Prompt prompt = acteur.getPrompt();
 
-
-            if (prompt != null)
-            {
+            if (prompt != null) {
                 this.interactionAvecPnj = true;
 
                 this.afficheBulleConversation = new AfficheBulleConversation(joueur,acteur,paneInteraction);
@@ -339,9 +322,7 @@ public class Controller implements Initializable {
         }
     }
 
-
     // Permet de passer un tour du prompt
-
     private void promptSuivant() {
         // Exécute l'action associée au prompt actuel, s'il y en a une
         if (gestionPrompt.getPrompt().getAction() != null) {
@@ -361,31 +342,27 @@ public class Controller implements Initializable {
         // Affiche le nouveau prompt si disponible
         if (gestionPrompt.getPrompt() != null) {
             this.afficheBulleConversation.affichePrompt(gestionPrompt.getPrompt());
-        } else {
+        }
+        else {
             interactionFinie(); // Terminer l'interaction si aucun prompt suivant n'est disponible
         }
     }
 
     //  Permet de changer le choix de réponse
-    private void defile(int scroll)
-    {
+    private void defile(int scroll) {
         int index = listProposition.getSelectionModel().getSelectedIndex();
         int indexSuivant = index + scroll;
 
-        if (indexSuivant >= 0 && indexSuivant < listProposition.getItems().size())
-        {
+        if (indexSuivant >= 0 && indexSuivant < listProposition.getItems().size()) {
             listProposition.getSelectionModel().select(indexSuivant);
             listProposition.scrollTo(indexSuivant);
         }
     }
 
-
-    public void interactionFinie()
-    {
+    public void interactionFinie() {
         this.textePnj.setVisible(false);
         this.listProposition.setVisible(false);
         this.interactionAvecPnj = false;
-
     }
 
     private String choixSelectionner()
@@ -393,22 +370,17 @@ public class Controller implements Initializable {
         return listProposition.getSelectionModel().getSelectedItem();
     }
 
-    private void handleInteractionPnj(KeyEvent event)
-    {
+    private void handleInteractionPnj(KeyEvent event) {
         KeyCode keyCode = event.getCode();
 
-        if (keyCode == KeyCode.ENTER)
-        {
+        if (keyCode == KeyCode.ENTER) {
             promptSuivant();
         }
-        else if (keyCode == KeyCode.S || keyCode == KeyCode.D)
-        {
+        else if (keyCode == KeyCode.S || keyCode == KeyCode.D) {
             defile(1);
         }
-        else if (keyCode == KeyCode.Z || keyCode == KeyCode.Q)
-        {
+        else if (keyCode == KeyCode.Z || keyCode == KeyCode.Q) {
             defile(-1);
         }
     }
-
 }

@@ -15,20 +15,15 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         this.taille = new SimpleIntegerProperty(taille);
         this.inventaire = (Emplacement<T>[]) new Emplacement[taille];
 
-        for (int i = 0; i < this.inventaire.length; i++)
-            this.inventaire[i] = new Emplacement<>();
+        for (int i = 0; i < this.inventaire.length; i++) this.inventaire[i] = new Emplacement<>();
     }
 
     public boolean ajoutItem(T objet) {
         boolean ajoutReussi = false;
 
         Emplacement<T> emplacement = null;
-
-        if (objet.stackMax() > 1)
-            emplacement = chercheEmplacementStackable(objet);
-
-        if (emplacement == null)
-            emplacement = chercheEmplacementVide();
+        if (objet.stackMax() > 1) emplacement = chercheEmplacementStackable(objet);
+        if (emplacement == null) emplacement = chercheEmplacementVide();
 
         if (emplacement != null) {
             emplacement.ajoutItem(objet);
@@ -89,8 +84,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         boolean plein = true;
 
         for (int i = 0; i < inventaire.length; i++) {
-            if (inventaire[i].estVide())
-                plein = false;
+            if (inventaire[i].estVide()) plein = false;
         }
 
         return plein;
@@ -100,8 +94,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         boolean vide = true;
 
         for (int i = 0; i < inventaire.length; i++) {
-            if (!inventaire[i].estVide())
-                vide = false;
+            if (!inventaire[i].estVide()) vide = false;
         }
 
         return vide;
@@ -192,12 +185,11 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         sb.append("Inventaire{");
         for (Emplacement emplacement : inventaire) {
             if (!emplacement.estVide()) {
-                sb.append(emplacement.toString());
+                sb.append(emplacement);
                 sb.append(", ");
             }
         }
         sb.append('}');
         return sb.toString();
     }
-
 }

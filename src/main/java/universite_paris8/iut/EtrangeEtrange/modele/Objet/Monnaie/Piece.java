@@ -1,11 +1,9 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 public class Piece implements Objet {
-    public Piece() {
-    }
-
     @Override
     public String getNom() {
         return "piece";
@@ -24,5 +22,10 @@ public class Piece implements Objet {
     @Override
     public int prixAchat() {
         return 0;
+    }
+
+    @Override
+    public boolean utiliseePar(Entite entite) {
+        return false;
     }
 }

@@ -1,13 +1,12 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
 
-
 import javafx.beans.property.IntegerProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Conteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 import java.util.ArrayList;
 
-public class Emplacement<T extends Objet> {
+public class Emplacement <T extends Objet> implements Conteneur<T> {
     private int stackPossible;
     private ArrayList<T> objets;
 
@@ -26,8 +25,7 @@ public class Emplacement<T extends Objet> {
             ajoutReussi = true;
         }
         else if (this.objets.get(0).getClass().equals(objet.getClass())) {
-            if (this.objets.size()+1 < stackPossible)
-                this.objets.add(objet);
+            if (this.objets.size()+1 < stackPossible) this.objets.add(objet);
             ajoutReussi = true;
         }
         else {
@@ -122,8 +120,7 @@ public class Emplacement<T extends Objet> {
     public <U extends Objet> boolean estDuMemeType(Class<U> typeObjet) {
         boolean estDuMemeType = false;
 
-        if (!objets.isEmpty())
-            estDuMemeType = typeObjet.isInstance(objets.get(0));
+        if (!objets.isEmpty()) estDuMemeType = typeObjet.isInstance(objets.get(0));
 
         return estDuMemeType;
     }
@@ -139,8 +136,7 @@ public class Emplacement<T extends Objet> {
     public String toString() {
         String nom = "";
 
-        if (!this.objets.isEmpty())
-            nom = this.objets.get(0).getNom();
+        if (!this.objets.isEmpty()) nom = this.objets.get(0).getNom();
 
         return nom;
     }

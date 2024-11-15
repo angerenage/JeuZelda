@@ -12,6 +12,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Livre
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Attaque;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.AttaqueSpecial;
@@ -147,8 +148,7 @@ public abstract class Joueur extends Entite implements Offensif {
     public int getPiece() {
         int totalPiece = 0;
         for (int i = 0; i < sac.getTailleMax(); i++) {
-            if (sac.getEmplacement(i).getObjet() instanceof Piece)
-                totalPiece += sac.getEmplacement(i).quantiteObjet();
+            if (sac.getEmplacement(i).getObjet() instanceof Piece) totalPiece += sac.getEmplacement(i).quantiteObjet();
         }
 
         return totalPiece;
@@ -190,13 +190,14 @@ public abstract class Joueur extends Entite implements Offensif {
 
         for(int i = 0 ; i < dropAuSols.size() ; i++){
             Position position1 = dropAuSols.get(i).getPosition();
-            if(Math.abs(getPosition().getX()+getDirection().getX()-position1.getX())<1)
-                if(Math.abs(getPosition().getY()+getDirection().getY()-position1.getY())<1) {
+            if (Math.abs(getPosition().getX() + getDirection().getX() - position1.getX()) < 1) {
+                if (Math.abs(getPosition().getY() + getDirection().getY() - position1.getY()) < 1) {
                     if (sac.ajoutItem(dropAuSols.get(i).getObjet())) {
                         getMonde().enleverDropAuSol(dropAuSols.get(i));
                         i++;
                     }
                 }
+            }
         }
     }
 }

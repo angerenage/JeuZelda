@@ -76,6 +76,4 @@ public class ConstanteObjet {
     public static int STACK_MAX_LIVRE_MAGIQUE = 1;
     public static int PRIX_ACHAT_LIVRE_MAGIQUE = 120;
     public static int DURABILITE_LIVRE_MAGIQUE = -1;
-
-
 }
