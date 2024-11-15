@@ -10,6 +10,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternDeplacement.PatternDeplacementAleatoire;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternDeplacement.PatternSeDirigerVersCible;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternsBasique.PatternAttaque;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternsBasique.PatternTourSurSois;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 import java.util.ArrayList;
@@ -53,6 +54,9 @@ public class PatternSquelette implements Pattern
                         new PatternDeplacementAleatoire(squelette))))
 
         );
+
+
+
 
 
     }

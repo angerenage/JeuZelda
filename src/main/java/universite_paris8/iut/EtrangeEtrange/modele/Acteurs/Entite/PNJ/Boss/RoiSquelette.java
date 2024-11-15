@@ -3,6 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Boss;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Boss;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternMonstre.PatternRoiSquelette;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
@@ -11,11 +12,13 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Parametres.ParametreMonstre;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
+import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class RoiSquelette extends Boss
 {
     private final int nbrPotion = 6;
     private final int nbrEpee = 3;
+    private Position positionDepart;
     private Sac sac;
 
     public RoiSquelette(double x, double y, Direction direction)
@@ -27,6 +30,7 @@ public class RoiSquelette extends Boss
                 new Hitbox(1,1)
         );
 
+        this.positionDepart = new Position(x,y);
         initInventaire();
     }
 
@@ -69,6 +73,15 @@ public class RoiSquelette extends Boss
 
     @Override
     protected Pattern initPattern() {
+        return new PatternRoiSquelette(this);
+    }
 
+    public void invoqueSquelette() {
+        
+    }
+
+    public void teleportePosDepart()
+    {
+        setPosition(positionDepart);
     }
 }
