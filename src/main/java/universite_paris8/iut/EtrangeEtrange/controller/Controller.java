@@ -311,6 +311,7 @@ public class Controller implements Initializable {
 
         if (acteur instanceof Interagisable interagisable) {
             promptGraph = interagisable.getPromptGraph();
+            promptGraph.initPrompt();
 
             this.interactionAvecPnj = true;
 
@@ -325,7 +326,9 @@ public class Controller implements Initializable {
 
     private void promptSuivant() {
 
+        System.out.println("Début de promptSuivant() avec nœud actuel : " + promptGraph.getNoeudActuel());
         promptGraph.avancerPrompt(ChoixPrompt.fromString(choixSelectionner()));
+        System.out.println("Fin de promptSuivant() avec nœud actuel : " + promptGraph.getNoeudActuel());
 
         if (promptGraph.noeudExists()) {
             this.afficheBulleConversation.affichePrompt(promptGraph.getNoeudActuel());
@@ -358,15 +361,12 @@ public class Controller implements Initializable {
     }
 
     private void handleInteractionPnj(KeyEvent event) {
-        KeyCode keyCode = event.getCode();
-
-        if (keyCode == KeyCode.ENTER) {
+        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER) {
             promptSuivant();
-        }
-        else if (keyCode == KeyCode.S || keyCode == KeyCode.D) {
+            event.consume();
+        } else if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.D) {
             defile(1);
-        }
-        else if (keyCode == KeyCode.Z || keyCode == KeyCode.Q) {
+        } else if (event.getCode() == KeyCode.Z || event.getCode() == KeyCode.Q) {
             defile(-1);
         }
     }

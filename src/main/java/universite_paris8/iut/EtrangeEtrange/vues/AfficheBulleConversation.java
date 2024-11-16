@@ -71,7 +71,9 @@ public class AfficheBulleConversation
 
     public void affichePrompt(PromptNode prompt)
     {
+        System.out.println(prompt.afficherPrompt());
         afficherMessagePNJ(prompt.afficherPrompt());
+        System.out.println(prompt.getChoixPossibles().size());
         afficherPropositionReponse(prompt.getChoixPossibles());
     }
 

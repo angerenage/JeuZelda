@@ -7,6 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.action.ActionVendre;
 
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.action.ActionSoigner;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.condition.ConditionJoueurBlesse;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.ChoixPrompt;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptGraph;
@@ -69,17 +70,32 @@ public class Marchand extends NPEs implements Interagisable {
     }
 
     private void initPrompt() {
-        PromptNode racine = new PromptNode("Bonjour ! Que vous ramene ici ?", null);
+        PromptNode racine = new PromptNode("Bonjour ! Que vous amene ici ?", null);
 
         PromptNode p1 = new PromptNode("Voici ce que je propose.", new ActionVendre(this));
-        PromptNode p2 = new PromptNode("Vous avez entendu parlé du monstre qui rôde dans dans les coins", null);
+        PromptNode p2 = new PromptNode("Vous avez entendu parler du monstre qui rôde dans dans les coins", null);
 
-        racine.ajouterTransition(ChoixPrompt.MARCHANDER, p1, null);
-        racine.ajouterTransition(ChoixPrompt.PARLER, p2, null);
+        racine.ajouterTransition(ChoixPrompt.MARCHANDER, p1);
+        racine.ajouterTransition(ChoixPrompt.PARLER, p2);
 
-        PromptNode p21 = new PromptNode("Faite attention...   D'ailleur, attendez je vais vous soigner !", new ActionSoigner());
+        PromptNode p21 = new PromptNode("Faites attention...  C'est un dur !", null);
+        PromptNode p22 = new PromptNode("Faites attention...  Il est terrifiant !", null);
 
-        p2.ajouterTransition(ChoixPrompt.PARLER, p21, null);
+        p2.ajouterTransition(ChoixPrompt.NON, p22);
+        p2.ajouterTransition(ChoixPrompt.OUI, p21);
+
+        PromptNode p3 = new PromptNode("J'ai de quoi te soigner, ca t'interesse ?", null);
+        PromptNode p4 = new PromptNode("Okay, à la prochaine", null);
+
+        p21.ajouterTransition(ChoixPrompt.SUIVANT, p3);
+        p22.ajouterTransition(ChoixPrompt.SUIVANT, p3);
+
+        PromptNode p31 = new PromptNode("Voila c'est fait", new ActionSoigner());
+
+        p3.ajouterTransition(ChoixPrompt.NON, p4);
+        p3.ajouterTransition(ChoixPrompt.OUI, p31, new ConditionJoueurBlesse());
+        p3.setFallback(new PromptNode("Vous n'avez pas besoin de soin", null));
+
 
         this.promptGraph = new PromptGraph(racine);
 
