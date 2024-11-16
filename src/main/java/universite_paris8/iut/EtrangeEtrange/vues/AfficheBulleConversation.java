@@ -11,6 +11,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 //  universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
 
 import java.util.ArrayList;
 
@@ -68,11 +69,11 @@ public class AfficheBulleConversation
 
     public ListView<String> getListProposition() {return this.listProposition;}
 
-//    public void affichePrompt(Prompt prompt)
-//    {
-//        afficherMessagePNJ(prompt.getTextePrompt());
-//        afficherPropositionReponse(prompt.getChoixPossible());
-//    }
+    public void affichePrompt(PromptNode prompt)
+    {
+        afficherMessagePNJ(prompt.afficherPrompt());
+        afficherPropositionReponse(prompt.getChoixPossibles());
+    }
 
     public Label getTextePnj(){ return this.textePnj;}
 

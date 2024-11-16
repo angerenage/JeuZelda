@@ -18,15 +18,12 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
+
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
-import java.util.ArrayList;
 
-public class Marchand extends NPEs {
+public class Marchand extends NPEs implements Interagisable {
 
     private final Sac sac;
 
@@ -84,6 +81,7 @@ public class Marchand extends NPEs {
 
         p2.ajouterTransition(ChoixPrompt.PARLER, p21, null);
 
+        this.promptGraph = new PromptGraph(racine);
 
 //        Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?", null);
 //
@@ -104,4 +102,8 @@ public class Marchand extends NPEs {
         return sac;
     }
 
+    @Override
+    public PromptGraph getPromptGraph() {
+        return this.promptGraph;
+    }
 }

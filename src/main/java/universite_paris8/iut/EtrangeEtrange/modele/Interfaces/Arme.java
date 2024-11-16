@@ -7,8 +7,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public abstract class Arme implements Objet {
 
-
-
     private boolean peuUtiliser;
 
     public Arme() {
