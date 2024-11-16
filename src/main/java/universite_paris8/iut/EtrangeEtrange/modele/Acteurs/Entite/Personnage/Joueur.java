@@ -186,7 +186,7 @@ public abstract class Joueur extends Entite implements Offensif {
     }
 
     public boolean estBlesse() {
-        return false;
+        return statsPv.getPv() < statsPv.getPvMaximum();
     }
 
     public void ramasserObjet() {
