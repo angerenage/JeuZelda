@@ -15,9 +15,6 @@ public class ActionVendre implements Action {
 
     @Override
     public void execute() {
-        System.out.println("Voici ce que j'ai à vendre :");
-
-        // Parcours de chaque emplacement d'inventaire pour afficher les objets
         for (Emplacement<Objet> emplacement : marchand.getMarchandise().getInventaire()) {
             ArrayList<Objet> objets = emplacement.enleverToutLesObjets();
             for (Objet objet : objets) {

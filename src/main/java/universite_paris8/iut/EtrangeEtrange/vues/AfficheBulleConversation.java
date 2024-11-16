@@ -8,7 +8,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
+//  universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
 
@@ -68,11 +68,11 @@ public class AfficheBulleConversation
 
     public ListView<String> getListProposition() {return this.listProposition;}
 
-    public void affichePrompt(Prompt prompt)
-    {
-        afficherMessagePNJ(prompt.getTextePrompt());
-        afficherPropositionReponse(prompt.getChoixPossible());
-    }
+//    public void affichePrompt(Prompt prompt)
+//    {
+//        afficherMessagePNJ(prompt.getTextePrompt());
+//        afficherPropositionReponse(prompt.getChoixPossible());
+//    }
 
     public Label getTextePnj(){ return this.textePnj;}
 

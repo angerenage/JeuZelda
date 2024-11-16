@@ -4,10 +4,10 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagis
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.ActionVendre;
-
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.Soigner;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
+//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.ActionVendre;
+//
+//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.Soigner;
+//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 
 
@@ -29,14 +29,14 @@ public class Marchand extends NPEs implements Dropable {
     private int cycle;
     private Sac sac;
 
-    private Prompt prompt;
+    // private Prompt prompt;
 
     public Marchand(double x, double y, Direction direction) {
         super(x, y, direction, 10, 10 , 10, 0.5, new Hitbox(0.5,0.5));
         this.cycle = 0;
         this.sac = new Sac();
 
-        initPrompt();
+        // initPrompt();
 
     }
 
@@ -73,21 +73,21 @@ public class Marchand extends NPEs implements Dropable {
 
     }
 
-    private void initPrompt() {
-        Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?", null);
-
-        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionVendre(this));
-
-        Prompt reponseRacine2 = new Prompt("Vous avez entendu parlé du monstre qui rôde dans dans les coins", null);
-
-        racine.ajoutPrompt(reponseRacine1, "J'aimerais marchander un peu avec avec vous");
-        racine.ajoutPrompt(reponseRacine2, "J'aimerais parler un peu..");
-
-        Prompt reponseReponceRacine2 = new Prompt("Faite attention...   D'ailleur, attendez je vais vous soigner !", new Soigner(monde.getJoueur()));
-        reponseRacine2.ajoutPrompt(reponseReponceRacine2, "");
-
-        prompt = racine;
-    }
+//    private void initPrompt() {
+//        Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?", null);
+//
+//        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionVendre(this));
+//
+//        Prompt reponseRacine2 = new Prompt("Vous avez entendu parlé du monstre qui rôde dans dans les coins", null);
+//
+//        racine.ajoutPrompt(reponseRacine1, "J'aimerais marchander un peu avec avec vous");
+//        racine.ajoutPrompt(reponseRacine2, "J'aimerais parler un peu..");
+//
+//        Prompt reponseReponceRacine2 = new Prompt("Faite attention...   D'ailleur, attendez je vais vous soigner !", new Soigner(monde.getJoueur()));
+//        reponseRacine2.ajoutPrompt(reponseReponceRacine2, "");
+//
+//        prompt = racine;
+//    }
 
 
     @Override
@@ -105,7 +105,4 @@ public class Marchand extends NPEs implements Dropable {
         return sac;
     }
 
-    public Prompt getPrompt(){
-        return prompt;
-    }
 }
