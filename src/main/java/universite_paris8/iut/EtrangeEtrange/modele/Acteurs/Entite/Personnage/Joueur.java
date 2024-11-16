@@ -185,6 +185,10 @@ public abstract class Joueur extends Entite implements Offensif {
         return objetMainGauche;
     }
 
+    public boolean estBlesse() {
+        return false;
+    }
+
     public void ramasserObjet() {
         ArrayList<DropAuSol> dropAuSols = getMonde().getDropAuSol();
 

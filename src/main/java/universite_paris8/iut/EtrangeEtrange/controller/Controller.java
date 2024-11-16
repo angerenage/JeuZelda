@@ -14,8 +14,8 @@ import javafx.util.Duration;
 
 import universite_paris8.iut.EtrangeEtrange.Runner;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.GestionPrompt;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.GestionPrompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Archer;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 

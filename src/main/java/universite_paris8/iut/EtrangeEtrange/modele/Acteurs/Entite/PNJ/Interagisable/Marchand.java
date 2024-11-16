@@ -4,10 +4,10 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagis
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionVendre;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.ActionVendre;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.Soigner;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.Soigner;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 
 

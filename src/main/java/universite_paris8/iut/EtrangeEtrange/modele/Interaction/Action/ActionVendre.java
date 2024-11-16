@@ -1,13 +1,12 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action;
+package universite_paris8.iut.EtrangeEtrange.modele.interaction.action;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Marchand;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
-
 import java.util.ArrayList;
 
-public class ActionVendre extends Action {
+
+public class ActionVendre implements Action {
     private Marchand marchand;
 
     public ActionVendre(Marchand marchand) {
@@ -15,19 +14,16 @@ public class ActionVendre extends Action {
     }
 
     @Override
-    public Prompt execute() {
-        Prompt racine = new Prompt("Voici ce que j'ai", null);
+    public void execute() {
+        System.out.println("Voici ce que j'ai à vendre :");
 
-        for (Emplacement<Objet> objets : marchand.getMarchandise().getInventaire()) {
-            ArrayList<Objet> obs = objets.enleverToutLesObjets();
-
-            for (Objet objet : obs) {
-                racine.ajoutPrompt(new Prompt("Ta fais une bonne affaire !", new ActionAchat(marchand, objet, marchand.getMonde().getJoueur(), this)), objet.getNom() + "     [" + objet.prixAchat() + "]");
-                System.out.println("nv objet");
+        // Parcours de chaque emplacement d'inventaire pour afficher les objets
+        for (Emplacement<Objet> emplacement : marchand.getMarchandise().getInventaire()) {
+            ArrayList<Objet> objets = emplacement.enleverToutLesObjets();
+            for (Objet objet : objets) {
+                System.out.println(objet.getNom() + "     [" + objet.prixAchat() + "]");
             }
         }
-
-
-        return racine;
     }
 }
+

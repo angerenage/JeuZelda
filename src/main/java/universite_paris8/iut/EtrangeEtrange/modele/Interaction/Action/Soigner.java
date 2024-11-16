@@ -1,9 +1,8 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action;
+package universite_paris8.iut.EtrangeEtrange.modele.interaction.action;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 
-public class Soigner extends Action {
+public class Soigner implements Action {
     private Joueur joueur;
 
     public Soigner(Joueur joueur) {
@@ -11,8 +10,8 @@ public class Soigner extends Action {
     }
 
     @Override
-    public Prompt execute() {
+    public void execute() {
         joueur.getStatsPv().ajoutPv(joueur.getStatsPv().getPvMaximum());
-        return null;
+        System.out.println("Le joueur a été complètement soigné !");
     }
 }

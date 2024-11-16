@@ -1,9 +1,6 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action;
+package universite_paris8.iut.EtrangeEtrange.modele.interaction.action;
 
 
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
-
-
-public abstract class Action {
-    public abstract Prompt execute();
+public interface Action {
+    void execute();
 }
