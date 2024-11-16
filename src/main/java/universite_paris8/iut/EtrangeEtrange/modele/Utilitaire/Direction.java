@@ -6,9 +6,10 @@ public enum Direction {
     HAUT(0, -1),
     BAS(0, 1);
 
-    private int x, y;
+    private final int x;
+    private final int y;
 
-    private Direction(int x, int y) {
+    Direction(int x, int y) {
         this.x = x;
         this.y = y;
     }

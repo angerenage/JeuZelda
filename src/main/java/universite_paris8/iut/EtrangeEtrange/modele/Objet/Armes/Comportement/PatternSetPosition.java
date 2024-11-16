@@ -7,7 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class PatternSetPosition implements Pattern
 {
-    private ComportementDynamique comportement;
+    private final ComportementDynamique comportement;
 
     public PatternSetPosition(ComportementDynamique comportement)
     {

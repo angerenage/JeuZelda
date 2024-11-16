@@ -4,8 +4,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class ConditionDelaieRespecter extends ConditionPatternDecorateur
 {
-    private long derniereApelle;
-    private long delaie;
+    private final long derniereApelle;
+    private final long delaie;
 
     public ConditionDelaieRespecter(Pattern patternAeffectuer,long delaie) {
         super(patternAeffectuer);

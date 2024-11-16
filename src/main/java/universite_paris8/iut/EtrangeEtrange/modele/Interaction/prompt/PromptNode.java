@@ -7,9 +7,9 @@ import universite_paris8.iut.EtrangeEtrange.modele.interaction.condition.Transit
 import java.util.*;
 
 public class PromptNode {
-    private String textePrompt;
-    private Action action;
-    private Map<ChoixPrompt, TransitionConditionnelle> transitions;
+    private final String textePrompt;
+    private final Action action;
+    private final Map<ChoixPrompt, TransitionConditionnelle> transitions;
     private PromptNode fallback;  // Nœud à afficher si aucune transition n'est valide
 
     public PromptNode(String textePrompt, Action action) {

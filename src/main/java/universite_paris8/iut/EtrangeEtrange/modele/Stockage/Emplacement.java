@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Emplacement <T extends Objet> implements Conteneur<T> {
     private int stackPossible;
-    private ArrayList<T> objets;
+    private final ArrayList<T> objets;
 
     public Emplacement() {
         this.objets = new ArrayList<>();

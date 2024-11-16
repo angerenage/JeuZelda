@@ -4,8 +4,8 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 public class Pv {
-    private DoubleProperty pvMaximum;
-    private DoubleProperty pv;
+    private final DoubleProperty pvMaximum;
+    private final DoubleProperty pv;
 
     public Pv(double pv) {
         this.pvMaximum = new SimpleDoubleProperty(pv);

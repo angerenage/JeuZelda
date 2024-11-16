@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 
 public class PatternTourSurSois implements Pattern {
-    private Acteur acteur;
+    private final Acteur acteur;
 
     public PatternTourSurSois(Acteur acteur) {
         this.acteur = acteur;

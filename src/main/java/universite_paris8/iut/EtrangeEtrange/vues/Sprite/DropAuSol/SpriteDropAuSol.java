@@ -8,13 +8,13 @@ import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 
 public class SpriteDropAuSol {
 
-    private static int tailleFlottementMax = 20;
-    private DropAuSol dropAuSol;
-    private String skin;
-    private ImageView SpriteDropAuSol;
-    private ImageView ombre;
-    private int id;
-    private IntegerProperty positionFlottement;
+    private static final int tailleFlottementMax = 20;
+    private final DropAuSol dropAuSol;
+    private final String skin;
+    private final ImageView SpriteDropAuSol;
+    private final ImageView ombre;
+    private final int id;
+    private final IntegerProperty positionFlottement;
     private boolean animationDescendante;
 
     public SpriteDropAuSol(DropAuSol dropAuSol, String skin){

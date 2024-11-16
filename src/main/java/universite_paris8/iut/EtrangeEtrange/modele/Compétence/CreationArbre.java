@@ -22,23 +22,23 @@ public class CreationArbre {
         ArrayList<TypeCompetence> rootParents = new ArrayList<>();
         ArrayList<TypeCompetence> rootEnfants = new ArrayList<>(List.of(attaqueSpecial));
 
-        ArrayList<TypeCompetence> attaqueSpecialParents = new ArrayList<>(Arrays.asList(root));
+        ArrayList<TypeCompetence> attaqueSpecialParents = new ArrayList<>(List.of(root));
         ArrayList<TypeCompetence> attaqueSpecial1Enfants = new ArrayList<>(Arrays.asList(attaque, vitesse));
 
-        ArrayList<TypeCompetence> attaqueParents = new ArrayList<>(Arrays.asList(attaqueSpecial));
+        ArrayList<TypeCompetence> attaqueParents = new ArrayList<>(List.of(attaqueSpecial));
         ArrayList<TypeCompetence> attaqueEnfants = new ArrayList<>();
 
-        ArrayList<TypeCompetence> vitesseParents = new ArrayList<>(Arrays.asList(attaqueSpecial));
+        ArrayList<TypeCompetence> vitesseParents = new ArrayList<>(List.of(attaqueSpecial));
         ArrayList<TypeCompetence> vitesseEnfants = new ArrayList<>(Arrays.asList(defense, pv));
 
-        ArrayList<TypeCompetence> pvParents = new ArrayList<>(Arrays.asList(vitesse));
+        ArrayList<TypeCompetence> pvParents = new ArrayList<>(List.of(vitesse));
         ArrayList<TypeCompetence> pvEnfants = new ArrayList<>();
 
-        ArrayList<TypeCompetence> defenseParents = new ArrayList<>(Arrays.asList(vitesse));
-        ArrayList<TypeCompetence> defenseEnfants = new ArrayList<>(Arrays.asList(defenseSpecial));
+        ArrayList<TypeCompetence> defenseParents = new ArrayList<>(List.of(vitesse));
+        ArrayList<TypeCompetence> defenseEnfants = new ArrayList<>(List.of(defenseSpecial));
 
-        ArrayList<TypeCompetence> defenseSpecialParents = new ArrayList<>(Arrays.asList(defenseSpecial));
-        ArrayList<TypeCompetence> defenseSpecialEnfants = new ArrayList<>(Arrays.asList(invoquer));
+        ArrayList<TypeCompetence> defenseSpecialParents = new ArrayList<>(List.of(defenseSpecial));
+        ArrayList<TypeCompetence> defenseSpecialEnfants = new ArrayList<>(List.of(invoquer));
 
 
         // Ajout des compétences dans l'arbre

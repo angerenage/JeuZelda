@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public class AfficheBulleConversation
 {
 
-    private Pane pane;
-    private Label textePnj;
-    private ListView<String> listProposition;
+    private final Pane pane;
+    private final Label textePnj;
+    private final ListView<String> listProposition;
 
 
     public AfficheBulleConversation(Joueur joueur, Acteur pnj, Pane pane)

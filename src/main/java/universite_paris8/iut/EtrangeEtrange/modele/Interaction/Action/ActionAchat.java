@@ -5,8 +5,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 
 public class ActionAchat implements Action {
-    private Objet objet;
-    private Joueur joueur;
+    private final Objet objet;
+    private final Joueur joueur;
 
     public ActionAchat(Objet objet, Joueur joueur) {
         this.joueur = joueur;

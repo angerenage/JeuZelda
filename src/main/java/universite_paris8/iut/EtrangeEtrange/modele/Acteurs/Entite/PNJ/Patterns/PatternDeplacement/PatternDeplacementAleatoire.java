@@ -6,7 +6,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 
 public class PatternDeplacementAleatoire implements Pattern
 {
-    private Acteur acteur;
+    private final Acteur acteur;
 
     public PatternDeplacementAleatoire(Acteur acteur) {
         this.acteur = acteur;

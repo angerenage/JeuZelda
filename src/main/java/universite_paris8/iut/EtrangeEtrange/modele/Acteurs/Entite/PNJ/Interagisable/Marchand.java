@@ -4,10 +4,12 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagis
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.ActionVendre;
-//
-//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Action.Soigner;
-//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.action.ActionVendre;
+
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.action.ActionSoigner;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.ChoixPrompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptGraph;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 
 
@@ -24,20 +26,16 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 import java.util.ArrayList;
 
-public class Marchand extends NPEs implements Dropable {
+public class Marchand extends NPEs {
 
-    private int cycle;
-    private Sac sac;
+    private final Sac sac;
 
-    // private Prompt prompt;
+    private PromptGraph promptGraph;
 
     public Marchand(double x, double y, Direction direction) {
         super(x, y, direction, 10, 10 , 10, 0.5, new Hitbox(0.5,0.5));
-        this.cycle = 0;
         this.sac = new Sac();
-
-        // initPrompt();
-
+        initPrompt();
     }
 
 
@@ -73,7 +71,20 @@ public class Marchand extends NPEs implements Dropable {
 
     }
 
-//    private void initPrompt() {
+    private void initPrompt() {
+        PromptNode racine = new PromptNode("Bonjour ! Que vous ramene ici ?", null);
+
+        PromptNode p1 = new PromptNode("Voici ce que je propose.", new ActionVendre(this));
+        PromptNode p2 = new PromptNode("Vous avez entendu parlé du monstre qui rôde dans dans les coins", null);
+
+        racine.ajouterTransition(ChoixPrompt.MARCHANDER, p1, null);
+        racine.ajouterTransition(ChoixPrompt.PARLER, p2, null);
+
+        PromptNode p21 = new PromptNode("Faite attention...   D'ailleur, attendez je vais vous soigner !", new ActionSoigner());
+
+        p2.ajouterTransition(ChoixPrompt.PARLER, p21, null);
+
+
 //        Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?", null);
 //
 //        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionVendre(this));
@@ -87,18 +98,6 @@ public class Marchand extends NPEs implements Dropable {
 //        reponseRacine2.ajoutPrompt(reponseReponceRacine2, "");
 //
 //        prompt = racine;
-//    }
-
-
-    @Override
-    public void drop() {
-        for (Emplacement<Objet> objets : sac.getInventaire()) {
-            ArrayList<Objet> obs = objets.enleverToutLesObjets();
-
-            for (Objet objet : obs) {
-                monde.ajouterDropAuSol(new DropAuSol(objet, new Position(position.getX(), position.getY())));
-            }
-        }
     }
 
     public Sac getMarchandise() {

@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class ConditionPeutSeDeplacerDecorateur extends ConditionPatternDecorateur
 {
-    private Acteur acteur;
+    private final Acteur acteur;
 
     public ConditionPeutSeDeplacerDecorateur(Acteur acteur,Pattern patternAeffectuer) {
         super(patternAeffectuer);

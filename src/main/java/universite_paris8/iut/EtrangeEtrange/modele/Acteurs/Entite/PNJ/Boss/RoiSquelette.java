@@ -18,7 +18,7 @@ public class RoiSquelette extends Boss {
     private final int nbrPotion = 6;
     private final int nbrEpee = 3;
     private Sac sac;
-    private Position positionDepart;
+    private final Position positionDepart;
 
     private Pattern pattern;
     public RoiSquelette(double x, double y, Direction direction) {

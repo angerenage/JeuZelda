@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.StatistiqueInvalideExeption;
 
 public class Attaque {
-    private DoubleProperty attaqueMaximum;
-    private DoubleProperty attaque;
+    private final DoubleProperty attaqueMaximum;
+    private final DoubleProperty attaque;
 
     public Attaque(double attaque) {
         this.attaqueMaximum = new SimpleDoubleProperty();

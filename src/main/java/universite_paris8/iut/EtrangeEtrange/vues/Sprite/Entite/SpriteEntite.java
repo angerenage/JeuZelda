@@ -15,16 +15,16 @@ public class SpriteEntite
 {
     private static GestionAffichageSpriteEntite gestionAffichageSpriteEntite;
 
-    private Acteur entite;
-    private ImageView SpriteEntite;
+    private final Acteur entite;
+    private final ImageView SpriteEntite;
     private Rectangle SpriteVie;
-    private ColorAdjust effetCouleur;
+    private final ColorAdjust effetCouleur;
 
     private ImageView ombre;
     private boolean appliquerEffet;
-    private int id;
-    private int skin;
-    private int vitesse;
+    private final int id;
+    private final int skin;
+    private final int vitesse;
     private int cptImageChange;
     private int image;
 

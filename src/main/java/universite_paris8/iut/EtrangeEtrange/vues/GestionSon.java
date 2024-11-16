@@ -16,8 +16,8 @@ import java.io.File;
 public class GestionSon
 {
 
-    private AudioClip musiqueFond;
-    private AudioClip musiqueGameOver;
+    private final AudioClip musiqueFond;
+    private final AudioClip musiqueGameOver;
 
     public GestionSon()
     {

@@ -9,8 +9,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Epee extends Arme implements Dommageable {
-    private Hitbox hitbox = ConstanteObjet.HITBOX_EPEE;
-    private Hitbox h;
+    private final Hitbox hitbox = ConstanteObjet.HITBOX_EPEE;
+    private final Hitbox h;
 
     private int durabiliteeRestant;
 

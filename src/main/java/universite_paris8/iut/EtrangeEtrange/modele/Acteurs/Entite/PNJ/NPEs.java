@@ -23,7 +23,7 @@ public abstract class NPEs extends Entite {
 
 
 
-    private Pattern pattern;
+    private final Pattern pattern;
 
     public NPEs(double x, double y, Direction direction, double pv, double defense, double defenseSpecial, double vitesse, Hitbox hitbox) {
         super(x, y, direction, pv, defense, defenseSpecial, vitesse, hitbox);

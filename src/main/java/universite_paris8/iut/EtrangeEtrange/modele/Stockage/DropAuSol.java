@@ -8,9 +8,9 @@ public class DropAuSol {
 
 
     private static int idStatic = 0;
-    private Position position;
-    private Objet objet;
-    private int id;
+    private final Position position;
+    private final Objet objet;
+    private final int id;
 
     public DropAuSol(Objet objet, Position position) {
         this.objet = objet;

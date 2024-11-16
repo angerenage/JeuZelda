@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 public class ActionVendre implements Action {
-    private Marchand marchand;
+    private final Marchand marchand;
 
     public ActionVendre(Marchand marchand) {
         this.marchand = marchand;

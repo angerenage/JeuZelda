@@ -17,7 +17,7 @@ import java.util.List;
 
 public class PatternSquelette implements Pattern
 {
-    private Squelette squelette;
+    private final Squelette squelette;
     private Pattern pattern;
 
     public PatternSquelette(Squelette squelette)

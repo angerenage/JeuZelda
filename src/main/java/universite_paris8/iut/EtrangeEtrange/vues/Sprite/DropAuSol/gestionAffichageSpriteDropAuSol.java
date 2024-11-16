@@ -11,7 +11,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import java.util.ArrayList;
 
 public class gestionAffichageSpriteDropAuSol implements ListChangeListener<DropAuSol> {
-    private Pane pane;
+    private final Pane pane;
     private ArrayList<SpriteDropAuSol> animationDropsAuSol;
 
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.15), event -> {

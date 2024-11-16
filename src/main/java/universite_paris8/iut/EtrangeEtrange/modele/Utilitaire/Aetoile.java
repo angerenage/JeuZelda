@@ -6,7 +6,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import java.util.*;
 
 public class Aetoile {
-    private Monde monde;
+    private final Monde monde;
     private Sommet[][] graphe;
     private ArrayList<Position> chemin;
 
@@ -146,7 +146,7 @@ public class Aetoile {
 
     // Classe interne représentant un nœud dans l'algorithme A*
     private static class Noeud {
-        private Sommet sommet;
+        private final Sommet sommet;
         private Noeud parent;
         private double g; // Coût du chemin depuis le début
         private double h; // Heuristique (estimation du coût restant)

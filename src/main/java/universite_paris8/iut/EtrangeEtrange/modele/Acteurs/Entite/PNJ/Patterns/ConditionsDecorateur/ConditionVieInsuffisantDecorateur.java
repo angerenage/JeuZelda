@@ -5,8 +5,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class ConditionVieInsuffisantDecorateur extends ConditionPatternDecorateur
 {
-    private int pourcentagePvMini;
-    private NPEs npe;
+    private final int pourcentagePvMini;
+    private final NPEs npe;
 
     public ConditionVieInsuffisantDecorateur(NPEs npe,Pattern patternAeffectuer, int pourcentagePvMini) {
         super(patternAeffectuer);

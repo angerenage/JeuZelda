@@ -26,8 +26,8 @@ public class GestionAffichageSpriteEntite implements ListChangeListener<Acteur>
      * Dans la liste, le premier est le chevalier, pnjtest, roiSquelette, slime, squelette
      */
     private static ArrayList<Image[][]> imagesSprite;
-    private Pane paneEntite;
-    private ArrayList<SpriteEntite> animationSprites;
+    private final Pane paneEntite;
+    private final ArrayList<SpriteEntite> animationSprites;
     private long derniereApelle = 0;
     public GestionAffichageSpriteEntite(Pane paneEntite){
         this.paneEntite = paneEntite;

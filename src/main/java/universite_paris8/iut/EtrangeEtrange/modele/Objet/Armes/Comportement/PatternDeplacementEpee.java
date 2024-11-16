@@ -6,7 +6,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class PatternDeplacementEpee implements Pattern {
 
-    private ComportementAttaqueEpee comportementAttaqueEpee;
+    private final ComportementAttaqueEpee comportementAttaqueEpee;
 
     public PatternDeplacementEpee(ComportementAttaqueEpee comportementAttaqueEpee){
         this.comportementAttaqueEpee = comportementAttaqueEpee;

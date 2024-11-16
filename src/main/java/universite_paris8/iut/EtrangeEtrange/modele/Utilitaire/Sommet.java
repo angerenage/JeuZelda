@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sommet {
-    private Position position;
+    private final Position position;
     private boolean traversable;
-    private List<Sommet> voisins;
+    private final List<Sommet> voisins;
 
     public Sommet(Position position, boolean traversable) {
         this.position = position;

@@ -39,21 +39,21 @@ public class Monde {
     private static final int sizeMondeLargeur = 70;
     private static final double xPointDeDepart = 7;
     private static final double yPointDeDepart = 7;
-    private int[][] sol;
-    private int[][] traversable;
-    private int[][] nontraversable;
+    private final int[][] sol;
+    private final int[][] traversable;
+    private final int[][] nontraversable;
     /**
      * Ici sont stocké les informations des éléments du monde traversables (ex : buissons, fleurs, hautes herbes, etc.)
      */
 
-    private ArrayList<Tache> taches = new ArrayList<>();
+    private final ArrayList<Tache> taches = new ArrayList<>();
 
     private Joueur joueur;
 
-    private ObservableList<DropAuSol> dropsAuSol;
+    private final ObservableList<DropAuSol> dropsAuSol;
 
-    private ObservableList<Acteur> acteurs = FXCollections.observableArrayList();
-    private ArrayList<Acteur> acteursAsupprimer = new ArrayList<>();
+    private final ObservableList<Acteur> acteurs = FXCollections.observableArrayList();
+    private final ArrayList<Acteur> acteursAsupprimer = new ArrayList<>();
 
     /**
      * Méthode création de monde à partir d'une TiledMap
@@ -456,7 +456,7 @@ public class Monde {
         // Ajouter tous les acteurs qui sont des entités
         for (Acteur acteur : this.acteurs) {
             if (acteur instanceof Acteur) {
-                toutesLesEntites.add((Acteur) acteur);
+                toutesLesEntites.add(acteur);
             }
         }
         return toutesLesEntites;

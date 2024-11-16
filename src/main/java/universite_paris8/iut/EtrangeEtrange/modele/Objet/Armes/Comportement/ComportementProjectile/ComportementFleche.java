@@ -15,7 +15,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 public class ComportementFleche extends ComportementDynamique
 {
 
-    private Fleche fleche;
+    private final Fleche fleche;
 
     public ComportementFleche(Fleche fleche) {
         super(-1, -1, null, 1, fleche.getVitesse(), fleche.getHitbox());

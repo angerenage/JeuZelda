@@ -7,8 +7,8 @@ import java.util.List;
 
 public class PatternCompositeStrategie implements Pattern
 {
-    private ArrayList<ConditionPatternDecorateur> patterns;
-    private Pattern patternElse;
+    private final ArrayList<ConditionPatternDecorateur> patterns;
+    private final Pattern patternElse;
 
 
     public PatternCompositeStrategie(ArrayList<ConditionPatternDecorateur> patterns, Pattern patternElse)

@@ -8,8 +8,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import java.util.ArrayList;
 
 public class Inventaire<T extends Objet> implements Conteneur<T> {
-    private IntegerProperty taille;
-    private Emplacement<T>[] inventaire;
+    private final IntegerProperty taille;
+    private final Emplacement<T>[] inventaire;
 
     public Inventaire(int taille) {
         this.taille = new SimpleIntegerProperty(taille);

@@ -14,7 +14,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Jou
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ParametreMonstre;
 
 public class Squelette extends Monstre {
-    private Epee epee ;
+    private final Epee epee ;
 
     public Squelette(double x, double y, Direction direction, Hitbox hitbox, Joueur joueur, Aetoile aetoile) {
         super(x, y, direction,

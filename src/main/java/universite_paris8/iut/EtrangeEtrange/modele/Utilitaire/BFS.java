@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class BFS {
     private Monde monde;
-    private ArrayList<Sommet> chemins;
+    private final ArrayList<Sommet> chemins;
     private Sommet[][] graphe;
     private int xArrive, yArrive;
 

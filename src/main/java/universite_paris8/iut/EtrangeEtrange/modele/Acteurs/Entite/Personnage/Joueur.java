@@ -36,11 +36,11 @@ public abstract class Joueur extends Entite implements Offensif {
     protected Objet objetMainGauche;
     protected Sac sac;
 
-    private Attaque attaque;
-    private AttaqueSpecial attaqueSpecial;
+    private final Attaque attaque;
+    private final AttaqueSpecial attaqueSpecial;
 
-    private Set<Direction> directions;
-    private Competences competences;
+    private final Set<Direction> directions;
+    private final Competences competences;
 
     protected Carquois carquois;
     private boolean estEntrainDeCourir;

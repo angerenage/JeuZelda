@@ -9,7 +9,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Pv;
 public class GestionAffichageVieJoueur {
     @FXML
     private HBox hboxCoeurs;
-    private Pv pv;
+    private final Pv pv;
 
     // Chemins d'accès aux images
     private final String coeurPleinPath = "/universite_paris8/iut/EtrangeEtrange/texture/BarreDeVie/0.png";

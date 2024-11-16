@@ -12,7 +12,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 import java.util.ArrayList;
 
 public class LivreMagique extends Arme {
-    private ArrayList<Sortilege> sortileges;
+    private final ArrayList<Sortilege> sortileges;
 
     public LivreMagique() {
         this.sortileges = new ArrayList<>();

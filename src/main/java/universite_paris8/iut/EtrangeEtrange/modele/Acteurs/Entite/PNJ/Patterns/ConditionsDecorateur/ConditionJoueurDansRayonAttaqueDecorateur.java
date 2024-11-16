@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class ConditionJoueurDansRayonAttaqueDecorateur extends ConditionPatternDecorateur
 {
-    private Monstre monstre;
+    private final Monstre monstre;
 
     public ConditionJoueurDansRayonAttaqueDecorateur(Monstre monstre,Pattern patternAeffectuer) {
         super(patternAeffectuer);

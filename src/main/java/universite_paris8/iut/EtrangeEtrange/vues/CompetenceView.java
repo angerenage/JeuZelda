@@ -11,12 +11,12 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Jou
 import java.util.ArrayList;
 
 public class CompetenceView {
-    private Competences competences;
-    private Joueur joueur;
-    private int tailleIcon = 100;
-    private Pane pane;
-    private ColorAdjust colorAdjust;
-    private ArrayList<ImageView> icons;
+    private final Competences competences;
+    private final Joueur joueur;
+    private final int tailleIcon = 100;
+    private final Pane pane;
+    private final ColorAdjust colorAdjust;
+    private final ArrayList<ImageView> icons;
 
     public CompetenceView(Pane pane, Joueur joueur) {
         this.joueur = joueur;

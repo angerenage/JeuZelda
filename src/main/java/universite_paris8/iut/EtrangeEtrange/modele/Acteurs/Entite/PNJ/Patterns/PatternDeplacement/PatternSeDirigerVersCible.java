@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatternSeDirigerVersCible implements Pattern {
-    private Acteur acteur, cible;
-    private Aetoile aetoile;
+    private final Acteur acteur;
+    private final Acteur cible;
+    private final Aetoile aetoile;
     private final int delai = 3000;
     private long derniereMiseAJour;
     private List<Position> chemin;

@@ -7,7 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class PatternAttaque implements Pattern
 {
-    private Monstre monstre;
+    private final Monstre monstre;
 
     public PatternAttaque(Monstre monstre){
         this.monstre = monstre;

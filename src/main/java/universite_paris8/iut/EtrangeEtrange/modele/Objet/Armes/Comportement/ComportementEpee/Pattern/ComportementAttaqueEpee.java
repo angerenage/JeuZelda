@@ -11,7 +11,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 public class ComportementAttaqueEpee extends ComportementDynamique
 {
 
-    private Epee epee;
+    private final Epee epee;
 
     public ComportementAttaqueEpee(Epee epee) {
         super(-1, -1, null, 1, epee.getVitesse(), epee.getHitbox());

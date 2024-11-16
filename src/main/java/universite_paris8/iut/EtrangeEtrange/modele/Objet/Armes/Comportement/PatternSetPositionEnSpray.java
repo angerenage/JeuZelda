@@ -7,7 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class PatternSetPositionEnSpray implements Pattern
 {
-    private ComportementDynamique acteur;
+    private final ComportementDynamique acteur;
 
     public PatternSetPositionEnSpray(ComportementDynamique acteur) {
         this.acteur = acteur;

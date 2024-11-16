@@ -9,9 +9,9 @@ import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 public abstract class Projectile implements Dommageable,Objet {
-    private double vitesse;
-    private Hitbox hitbox;
-    private int durabilite;
+    private final double vitesse;
+    private final Hitbox hitbox;
+    private final int durabilite;
 
     public Projectile(double vitesse,int durabilite,Hitbox hitbox) {
         this.vitesse = vitesse;

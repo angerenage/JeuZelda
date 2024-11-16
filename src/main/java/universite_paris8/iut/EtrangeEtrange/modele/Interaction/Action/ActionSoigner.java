@@ -1,12 +1,13 @@
 package universite_paris8.iut.EtrangeEtrange.modele.interaction.action;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
+import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public class ActionSoigner implements Action {
-    private Joueur joueur;
+    private final Joueur joueur;
 
-    public ActionSoigner(Joueur joueur) {
-        this.joueur = joueur;
+    public ActionSoigner() {
+        this.joueur = Monde.getMonde().getJoueur();
     }
 
     @Override

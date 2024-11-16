@@ -3,7 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.interaction.condition;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 
 public class ConditionJoueurBlesse implements Condition {
-    private Joueur joueur;
+    private final Joueur joueur;
 
     public ConditionJoueurBlesse(Joueur joueur) {
         this.joueur = joueur;

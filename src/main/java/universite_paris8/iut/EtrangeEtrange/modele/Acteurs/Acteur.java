@@ -1,6 +1,5 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs;
 
-//import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
@@ -14,26 +13,18 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
  * La classe abstraite Acteur représente une entité dynamique dans le monde du jeu.
  * Contient des informations sur la position, la direction, les statistiques de santé et de vitesse, ainsi que la hitbox de l'acteur.
  */
-public abstract class Acteur
-{
+public abstract class Acteur {
     protected Monde monde;
 
     protected Position position;
     protected Direction direction;
-    private Vitesse statsVitesse;
+    private final Vitesse statsVitesse;
     protected Hitbox hitbox;
-
     protected Pv statsPv;
-
-
-
     protected boolean seDeplace;
-
 
     private final int ID;
     private static int iid = 0;
-
-
 
 
     /**
@@ -45,10 +36,9 @@ public abstract class Acteur
      * @param pv        Les points de vie initiaux de l'acteur.
      * @param hitbox    La hitbox de l'acteur.
      */
-    public Acteur(double x,double y,Direction direction,double pv,double vitesse, Hitbox hitbox)
-    {
+    public Acteur(double x, double y, Direction direction, double pv, double vitesse, Hitbox hitbox) {
         this.monde = Monde.getMonde();
-        this.position = new Position(x,y);
+        this.position = new Position(x, y);
         this.direction = direction;
         this.statsPv = new Pv(pv);
         this.hitbox = hitbox;
@@ -58,18 +48,13 @@ public abstract class Acteur
     }
 
 
-
-
-
-
     /**
      * Constructeur avec paramètres pour initialiser un Acteur.
      *
-     * @param pv        Les points de vie initiaux de l'acteur.
-     * @param hitbox    La hitbox de l'acteur.
+     * @param pv     Les points de vie initiaux de l'acteur.
+     * @param hitbox La hitbox de l'acteur.
      */
-    public Acteur(double pv,double vitesse,Hitbox hitbox)
-    {
+    public Acteur(double pv, double vitesse, Hitbox hitbox) {
         this.monde = Monde.getMonde();
         this.position = null;
         this.direction = null;
@@ -79,80 +64,109 @@ public abstract class Acteur
         this.statsVitesse = new Vitesse(vitesse);
     }
 
-    /**
-     * Méthode abstraite pour vérifier si l'acteur peut se déplacer dans le monde.
-     * @return true si l'acteur peut se déplacer, false sinon.
-     */
-    public boolean peutSeDeplacer(){
-        return !monde.estHorsMap(this) && !monde.collision(this);}
+    public boolean peutSeDeplacer() {
+        return !monde.estHorsMap(this) && !monde.collision(this);
+    }
 
-
-
-
-
-    /**
-     * Méthode abstraite pour effectuer les actions de l'acteur lors de l'apelle dans la gameloop.
-     */
     public abstract void agit();
 
-    /**
-     * Méthode abstraite pour gérer les réactions de l'acteur lors d'une collision avec un autre acteur.
-     *
-     * @param acteur L'acteur avec lequel la collision s'est produite.
-     */
     public abstract void subitCollision(Acteur acteur);
+
     public abstract void causeCollision(Acteur acteur);
 
-
-
-    /**
-     * Subit des dégâts infligés par une source dommageable.
-     * @param causeDegat La source de dégâts.
-     */
     public abstract void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif);
-
 
 
     public abstract String typeActeur();
 
-    public void setSeDeplace(boolean seDeplace){ this.seDeplace = seDeplace;}
-    public void setDirection(Direction direction) {this.direction = direction;}
-    public void setPosition(double x,double y){
+    public void setSeDeplace(boolean seDeplace) {
+        this.seDeplace = seDeplace;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public void setPosition(double x, double y) {
         this.position.setX(x);
         this.position.setY(y);
     }
+
     public abstract void dropApresMort();
-    public void setPosition(Position pos){ this.position = new Position(pos.getX(),pos.getY());}
-    public void setNewPosition(double x, double y){
-        this.position = new Position(x,y);
+
+    public void setPosition(Position pos) {
+        this.position = new Position(pos.getX(), pos.getY());
     }
-    public void soigner(double pv)
-    {
+
+    public void setNewPosition(double x, double y) {
+        this.position = new Position(x, y);
+    }
+
+    public void soigner(double pv) {
         this.statsPv.ajoutPv(pv);
     }
 
-    public void seDeplace(boolean seDeplace) {this.seDeplace = seDeplace;}
-    public Direction getDirection() {return this.direction;}
-    public boolean getSeDeplace(){return this.seDeplace;}
-    public Hitbox getHitbox() { return this.hitbox; }
-    public Monde getMonde() {return this.monde;}
-    public Position getPosition() {return this.position;}
-    public Pv getStatsPv() {return this.statsPv;}
-    public double getPv(){return this.statsPv.getPv();}
-    public boolean plusDePv(){ return statsPv.pvAzero();}
-    public void setPv(double pv) {this.statsPv.setPv(pv);}
-    public void setPvMaximum(double statsPv) {this.statsPv.setPvMaximum(statsPv);}
-    public void augmentePvMaximum(double pv)
-    {
+    public void seDeplace(boolean seDeplace) {
+        this.seDeplace = seDeplace;
+    }
+
+    public Direction getDirection() {
+        return this.direction;
+    }
+
+    public boolean getSeDeplace() {
+        return this.seDeplace;
+    }
+
+    public Hitbox getHitbox() {
+        return this.hitbox;
+    }
+
+    public Monde getMonde() {
+        return this.monde;
+    }
+
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public Pv getStatsPv() {
+        return this.statsPv;
+    }
+
+    public double getPv() {
+        return this.statsPv.getPv();
+    }
+
+    public boolean plusDePv() {
+        return statsPv.pvAzero();
+    }
+
+    public void setPv(double pv) {
+        this.statsPv.setPv(pv);
+    }
+
+    public void setPvMaximum(double statsPv) {
+        this.statsPv.setPvMaximum(statsPv);
+    }
+
+    public void augmentePvMaximum(double pv) {
         setPvMaximum(getStatsPv().getPvMaximum() + pv);
     }
 
-    public void enleveToutPv(){ this.statsPv.enleveToutPv();}
-    public void enlevePv(double pv){this.statsPv.enleverPv(pv);}
+    public void enleveToutPv() {
+        this.statsPv.enleveToutPv();
+    }
+
+    public void enlevePv(double pv) {
+        this.statsPv.enleverPv(pv);
+    }
 
     public abstract void seFaitPousser(Acteur acteur);
 
-    public int getID(){return this.ID;}
+    public int getID() {
+        return this.ID;
+    }
 
     public boolean isSeDeplace() {
         return seDeplace;
@@ -160,24 +174,25 @@ public abstract class Acteur
 
     public abstract boolean estUnEnemie();
 
-    public void seDeplace(double coef)
-    {
+    public void seDeplace(double coef) {
         int x = this.direction.getX();
         int y = this.direction.getY();
-        this.seDeplace=true;
-        if(peutSeDeplacer())
-        {
+        this.seDeplace = true;
+        if (peutSeDeplacer()) {
             position.setX(position.getX() + x * statsVitesse.getVitesse() * coef);
             position.setY(position.getY() + y * statsVitesse.getVitesse() * coef);
         }
     }
 
-
-
-    public void setVitesse(double vitesse)
-    {
+    public void setVitesse(double vitesse) {
         this.statsVitesse.setVitesse(vitesse);
     }
-    public Vitesse getStatsVitesse() {return statsVitesse;}
-    public double getVitesse() { return this.statsVitesse.getVitesse();}
+
+    public Vitesse getStatsVitesse() {
+        return statsVitesse;
+    }
+
+    public double getVitesse() {
+        return this.statsVitesse.getVitesse();
+    }
 }

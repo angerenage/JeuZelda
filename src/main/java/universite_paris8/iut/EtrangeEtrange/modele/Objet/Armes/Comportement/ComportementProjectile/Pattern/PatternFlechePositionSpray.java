@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PatternFlechePositionSpray implements Pattern
 {
     private Pattern patternActuel;
-    private ComportementFleche comportementFleche;
+    private final ComportementFleche comportementFleche;
 
     public PatternFlechePositionSpray(ComportementFleche comportementFleche){
         initPattern();

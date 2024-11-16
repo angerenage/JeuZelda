@@ -2,7 +2,8 @@ package universite_paris8.iut.EtrangeEtrange.modele.Interfaces;
 
 public abstract class Tache
 {
-    private long msCreation,delaie;
+    private final long msCreation;
+    private final long delaie;
 
     public Tache(long delaie){
         this.msCreation = System.currentTimeMillis();

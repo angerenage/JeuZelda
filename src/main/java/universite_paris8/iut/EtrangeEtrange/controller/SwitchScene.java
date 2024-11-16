@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class SwitchScene {
 
-    private static SwitchScene switchScene = new SwitchScene();
+    private static final SwitchScene switchScene = new SwitchScene();
     private Stage stage;
     private Scene sceneJeu;
     private Controller controllerJeu;
@@ -22,11 +22,11 @@ public class SwitchScene {
     private ControlleurInventaire controlleurInventaire;
     private ControllerCompetence controllerCompetence;
     private Scene sceneMenu;
-    private Pane paneEntite;
+    private final Pane paneEntite;
     private TabPane tabPaneMenuInGame;
-    private TilePane TilePaneSol;
-    private TilePane TilePaneTraversable;
-    private TilePane TilePaneNontraversable;
+    private final TilePane TilePaneSol;
+    private final TilePane TilePaneTraversable;
+    private final TilePane TilePaneNontraversable;
     private GestionSon gestionSon;
     private Joueur joueur;
     private String classeJoueur;
@@ -163,7 +163,7 @@ public class SwitchScene {
         return this.classeJoueur;
     }
 
-    public void gameOver() throws IOException, IOException {
+    public void gameOver() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/universite_paris8/iut/EtrangeEtrange/gameOver.fxml"));
         Scene gameOverScene = new Scene(fxmlLoader.load(), ConstantesAffichage.largeurEcran, ConstantesAffichage.hauteurEcran);

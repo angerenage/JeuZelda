@@ -11,8 +11,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class gestionAffichageMap {
-    private ArrayList<TilePane> TilePaneCouchesMonde;
-    private Monde monde;
+    private final ArrayList<TilePane> TilePaneCouchesMonde;
+    private final Monde monde;
     public gestionAffichageMap(Monde monde, TilePane sol, TilePane traversable, TilePane nontraversable){
         this.TilePaneCouchesMonde = new ArrayList<>();
         this.TilePaneCouchesMonde.add(sol);

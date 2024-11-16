@@ -16,11 +16,11 @@ public class gestionAffichageInventaire {
     /**
      * TilePane qui va stocker les images des objets dans l'inventaire
      */
-    private TilePane objetsInventaire;
+    private final TilePane objetsInventaire;
     /**
      * Tilepane qui va stocker les images des cases de stockage de l'inventaire
      */
-    private TilePane caseStockageInventaire;
+    private final TilePane caseStockageInventaire;
     /**
      * Pane qui permet de stocker l'ImageView de la case de stockage de la main droite et l'ImageView de l'objet dans la main droite
      */
@@ -28,7 +28,7 @@ public class gestionAffichageInventaire {
     /**
      * Pane qui permet de stocker l'ImageView de la case de stockage de la main droite et l'ImageView de l'objet dans la main droite
      */
-    private Pane conteneurObjetMainDroite;
+    private final Pane conteneurObjetMainDroite;
     /**
      * ImageView de l'objet dans la main droite
      */
@@ -36,7 +36,7 @@ public class gestionAffichageInventaire {
     /**
      * Pane qui permet de stocker l'ImageView de la case de stockage de la main droite et l'ImageView de l'objet dans la main gauche
      */
-    private Pane conteneurObjetMainGauche;
+    private final Pane conteneurObjetMainGauche;
     /**
      * ImageView de l'objet dans la main gauche
      */
@@ -45,16 +45,16 @@ public class gestionAffichageInventaire {
     /**
      * Texte "Inventaire" dans le menu inventaire
      */
-    private ImageView titreInventaire;
+    private final ImageView titreInventaire;
     /**
      * Texte "Main droite" dans le menu inventaire
      */
-    private ImageView titreMainDroite;
+    private final ImageView titreMainDroite;
     /**
      * Texte "Main gauche" dans le menu inventaire
      */
-    private ImageView titreMainGauche;
-    private Joueur joueur;
+    private final ImageView titreMainGauche;
+    private final Joueur joueur;
     private int caseVerouilleInventaire;
 
     public gestionAffichageInventaire(Joueur joueur, TilePane objetsInventaire, TilePane caseStockageInventaire, TilePane quantiteInventaire, Pane conteneurObjetMainDroite,

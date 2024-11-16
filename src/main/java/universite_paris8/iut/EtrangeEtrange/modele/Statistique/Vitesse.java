@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.StatistiqueInvalideExeption;
 
 public class Vitesse {
-    private DoubleProperty vitesseMaximum;
-    private DoubleProperty vitesse;
+    private final DoubleProperty vitesseMaximum;
+    private final DoubleProperty vitesse;
 
     public Vitesse(double vitesse) {
         this.vitesseMaximum = new SimpleDoubleProperty();

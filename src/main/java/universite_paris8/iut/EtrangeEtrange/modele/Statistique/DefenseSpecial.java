@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.StatistiqueInvalideExeption;
 
 public class DefenseSpecial {
-    private DoubleProperty defenseSpecialMaximum;
-    private DoubleProperty defenseSpecial;
+    private final DoubleProperty defenseSpecialMaximum;
+    private final DoubleProperty defenseSpecial;
 
     public DefenseSpecial(double defenseSpecial) {
         this.defenseSpecialMaximum = new SimpleDoubleProperty();

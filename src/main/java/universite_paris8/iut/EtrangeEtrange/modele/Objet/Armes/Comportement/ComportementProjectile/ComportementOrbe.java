@@ -16,7 +16,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Orbe;
 public class ComportementOrbe extends ComportementDynamique
 {
 
-    private Orbe orbe;
+    private final Orbe orbe;
     private Pattern deplacement;
 
     public ComportementOrbe(Orbe orbe) {

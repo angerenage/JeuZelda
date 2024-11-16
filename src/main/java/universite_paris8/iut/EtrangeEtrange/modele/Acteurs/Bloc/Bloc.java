@@ -2,10 +2,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Bloc;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dropable;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
@@ -13,7 +10,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 
-public class Bloc extends Acteur implements Dropable {
+public class Bloc extends Acteur {
     public Bloc(double x, double y, Direction direction, double pv ,Hitbox hitbox)
     { super(x, y, direction, pv,0, hitbox);}
 
@@ -45,8 +42,6 @@ public class Bloc extends Acteur implements Dropable {
 
     @Override
     public boolean estUnEnemie() { return false; }
-    @Override
-    public void drop() { monde.ajouterDropAuSol(new DropAuSol(new Arc(),  new Position(position.getX(), position.getY()))); }
     @Override
     public void agit() {/*NE FAIT RIEN*/}
     @Override

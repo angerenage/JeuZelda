@@ -8,8 +8,8 @@ import java.util.HashMap;
 public class Competences {
 
     private TypeCompetence root;
-    private HashMap<TypeCompetence, ArrayList<TypeCompetence>> mapParent;
-    private HashMap<TypeCompetence, ArrayList<TypeCompetence>> mapEnfant;
+    private final HashMap<TypeCompetence, ArrayList<TypeCompetence>> mapParent;
+    private final HashMap<TypeCompetence, ArrayList<TypeCompetence>> mapEnfant;
 
 
     public Competences() {

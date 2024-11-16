@@ -13,7 +13,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import java.util.ArrayList;
 
 public class PatternRoiSquelette implements Pattern {
-    private RoiSquelette roiSquelette;
+    private final RoiSquelette roiSquelette;
     private Pattern pattern1;
     private Pattern pattern2;
     private Pattern patternAct;

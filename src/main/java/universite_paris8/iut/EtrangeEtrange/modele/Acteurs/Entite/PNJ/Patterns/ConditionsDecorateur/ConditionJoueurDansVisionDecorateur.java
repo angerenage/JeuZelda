@@ -5,8 +5,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 public class ConditionJoueurDansVisionDecorateur extends ConditionPatternDecorateur
 {
-    private double rayon;
-    private NPEs npe;
+    private final double rayon;
+    private final NPEs npe;
 
     public ConditionJoueurDansVisionDecorateur(NPEs npe,Pattern patternAeffectuer,double rayon) {
         super(patternAeffectuer);

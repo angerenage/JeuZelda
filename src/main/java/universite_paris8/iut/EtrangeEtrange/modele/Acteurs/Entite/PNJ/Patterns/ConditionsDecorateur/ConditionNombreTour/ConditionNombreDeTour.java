@@ -6,9 +6,9 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comp
 
 public class ConditionNombreDeTour extends ConditionPatternDecorateur
 {
-    private long tour;
-    private ComportementAttaqueEpee comportementAttaqueEpee;
-    private ComparateurStrategy comparateurStrategy;
+    private final long tour;
+    private final ComportementAttaqueEpee comportementAttaqueEpee;
+    private final ComparateurStrategy comparateurStrategy;
 
 
     public ConditionNombreDeTour(ComportementAttaqueEpee comportementAttaqueEpee,Pattern patternAeffectuer,ComparateurStrategy comparateurStrategy,long tour) {

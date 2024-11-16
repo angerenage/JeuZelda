@@ -16,9 +16,9 @@ import universite_paris8.iut.EtrangeEtrange.vues.GestionSon;
 
 public class GestionActeur implements ListChangeListener<Acteur>
 {
-    private Pane pane;
-    private Monde monde;
-    private GestionSon gestionSon;
+    private final Pane pane;
+    private final Monde monde;
+    private final GestionSon gestionSon;
 
     public GestionActeur(Monde monde, Pane pane, GestionSon gestionSon)
     {

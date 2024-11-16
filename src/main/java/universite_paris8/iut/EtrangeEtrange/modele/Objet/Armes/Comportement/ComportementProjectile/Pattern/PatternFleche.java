@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PatternFleche implements Pattern
 {
     private Pattern patternActuel;
-    private ComportementFleche comportementFleche;
+    private final ComportementFleche comportementFleche;
 
     public PatternFleche(ComportementFleche comportementFleche){
         this.comportementFleche = comportementFleche;

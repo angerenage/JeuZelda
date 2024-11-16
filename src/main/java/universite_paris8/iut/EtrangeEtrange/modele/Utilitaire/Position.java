@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public class Position {
-    private DoubleProperty x;
-    private DoubleProperty y;
+    private final DoubleProperty x;
+    private final DoubleProperty y;
 
     public Position(double x, double y) {
         this.x = new SimpleDoubleProperty();

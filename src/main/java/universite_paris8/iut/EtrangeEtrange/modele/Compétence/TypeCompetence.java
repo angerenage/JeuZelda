@@ -19,7 +19,7 @@ public enum TypeCompetence {
     COURIR(new CompetenceCourir()),
     INVOQUER(new CompetenceInvocation());
 
-    private Competence competence;
+    private final Competence competence;
 
     TypeCompetence(Competence competence) {
         this.competence = competence;

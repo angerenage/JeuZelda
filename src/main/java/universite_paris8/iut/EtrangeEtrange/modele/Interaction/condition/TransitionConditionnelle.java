@@ -3,8 +3,8 @@ package universite_paris8.iut.EtrangeEtrange.modele.interaction.condition;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
 
 public class TransitionConditionnelle {
-    private Condition condition;
-    private PromptNode suivant;
+    private final Condition condition;
+    private final PromptNode suivant;
 
     public TransitionConditionnelle(Condition condition, PromptNode suivant) {
         this.condition = condition;
