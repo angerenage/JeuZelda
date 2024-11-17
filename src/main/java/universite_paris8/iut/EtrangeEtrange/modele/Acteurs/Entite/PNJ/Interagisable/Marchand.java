@@ -100,19 +100,6 @@ public class Marchand extends NPEs implements Interagisable {
 
         this.promptGraph = new PromptGraph(racine);
 
-//        Prompt racine = new Prompt("Bonjour ! Que vous ramene ici ?", null);
-//
-//        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionVendre(this));
-//
-//        Prompt reponseRacine2 = new Prompt("Vous avez entendu parlé du monstre qui rôde dans dans les coins", null);
-//
-//        racine.ajoutPrompt(reponseRacine1, "J'aimerais marchander un peu avec avec vous");
-//        racine.ajoutPrompt(reponseRacine2, "J'aimerais parler un peu..");
-//
-//        Prompt reponseReponceRacine2 = new Prompt("Faite attention...   D'ailleur, attendez je vais vous soigner !", new Soigner(monde.getJoueur()));
-//        reponseRacine2.ajoutPrompt(reponseReponceRacine2, "");
-//
-//        prompt = racine;
     }
 
     public Sac getMarchandise() {
