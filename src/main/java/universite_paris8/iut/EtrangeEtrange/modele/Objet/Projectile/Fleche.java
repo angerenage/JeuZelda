@@ -3,11 +3,12 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementFleche;
+import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Fleche extends Projectile {
     public Fleche() {
-        super(ConstanteObjet.VITESSE_FLECHE, ConstanteObjet.DURABILITE_FLECHE, ConstanteObjet.HITBOX_FLECHE);
+        super(ConstanteObjet.VITESSE_FLECHE, ConstanteObjet.DURABILITE_FLECHE, new Hitbox(ConstanteObjet.HITBOX_FLECHE_HAUTEUR, ConstanteObjet.HITBOX_FLECHE_LARGEUR));
     }
 
     @Override

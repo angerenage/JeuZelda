@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import universite_paris8.iut.EtrangeEtrange.Runner;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesDescription;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesPersonnages;
 
 import java.io.IOException;
@@ -93,12 +94,12 @@ public class ControllerChoixClasse implements Initializable
         this.nomGuerrier[3] = "Necromancier";
         this.classActuelle = 0;
 
-        this.pvPlusElevee = ConstantesPersonnages.pvPlusHaut();
-        this.atkPlusElevee = ConstantesPersonnages.attaquePlusHaute();
-        this.defPlusElevee = ConstantesPersonnages.defensePlusHaute();
-        this.atkSpePlusElevee = ConstantesPersonnages.attaqueSpecialPlusHaute();
-        this.defSpePlusElevee = ConstantesPersonnages.defenseSpecialPlusHaute();
-        this.vitPlusElevee = ConstantesPersonnages.vitessePlusHaute();
+        this.pvPlusElevee = ConstantesPersonnages.MAX_PV;
+        this.atkPlusElevee = ConstantesPersonnages.MAX_ATTAQUE;
+        this.defPlusElevee = ConstantesPersonnages.MAX_DEFENSE;
+        this.atkSpePlusElevee = ConstantesPersonnages.MAX_ATTAQUE_SPECIAL;
+        this.defSpePlusElevee = ConstantesPersonnages.MAX_DEFENSE_SPECIAL;
+        this.vitPlusElevee = ConstantesPersonnages.MAX_VITESSE;
 
 
         this.nomActuelle = new SimpleStringProperty();
@@ -120,28 +121,28 @@ public class ControllerChoixClasse implements Initializable
                 imageHero.setImage(new Image("file:src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/Menus/Classes/guerrier.png"));
                 this.nomClasse.setText("Guerrier");
                 changeValueProgressBar(ConstantesPersonnages.GUERRIER_PV,ConstantesPersonnages.GUERRIER_ATTAQUE,ConstantesPersonnages.GUERRIER_DEFENSE,ConstantesPersonnages.GUERRIER_ATTAQUE_SPECIAL,ConstantesPersonnages.GUERRIER_DEFENSE_SEPCIAL,ConstantesPersonnages.GUERRIER_VITESSE);
-                this.descriptionClasse.setText(ConstantesPersonnages.descriptionGuerrier().toString());
+                this.descriptionClasse.setText(ConstantesDescription.DESCRIPTION_GUERRIER);
             }
             else if (guerrier.equals("Archer"))
             {
                 imageHero.setImage(new Image("file:src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/Menus/Classes/archer.png"));
                 this.nomClasse.setText("Archer");
                 changeValueProgressBar(ConstantesPersonnages.ARCHER_PV,ConstantesPersonnages.ARCHER_ATTAQUE,ConstantesPersonnages.ARCHER_DEFENSE,ConstantesPersonnages.ARCHER_ATTAQUE_SPECIAL,ConstantesPersonnages.ARCHER_DEFENSE_SEPCIAL,ConstantesPersonnages.ARCHER_VITESSE);
-                this.descriptionClasse.setText(ConstantesPersonnages.descriptionArcher().toString());
+                this.descriptionClasse.setText(ConstantesDescription.DESCRIPTION_ARCHER);
             }
             else if (guerrier.equals("Mage"))
             {
                 imageHero.setImage(new Image("file:src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/Menus/Classes/mage.png"));
                 this.nomClasse.setText("Mage");
                 changeValueProgressBar(ConstantesPersonnages.MAGE_PV,ConstantesPersonnages.MAGE_ATTAQUE,ConstantesPersonnages.MAGE_DEFENSE,ConstantesPersonnages.MAGE_ATTAQUE_SPECIAL,ConstantesPersonnages.MAGE_DEFENSE_SEPCIAL,ConstantesPersonnages.MAGE_VITESSE);
-                this.descriptionClasse.setText(ConstantesPersonnages.descriptionMage().toString());
+                this.descriptionClasse.setText(ConstantesDescription.DESCRIPTION_MAGE);
             }
             else if (guerrier.equals("Necromancier"))
             {
                 imageHero.setImage(new Image("file:src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/Menus/Classes/necromancier.png"));
                 this.nomClasse.setText("Necromancier");
                 changeValueProgressBar(ConstantesPersonnages.NECROMANCIER_PV,ConstantesPersonnages.NECROMANCIER_ATTAQUE,ConstantesPersonnages.NECROMANCIER_DEFENSE,ConstantesPersonnages.NECROMANCIER_ATTAQUE_SPECIAL,ConstantesPersonnages.NECROMANCIER_DEFENSE_SEPCIAL,ConstantesPersonnages.NECROMANCIER_VITESSE);
-                this.descriptionClasse.setText(ConstantesPersonnages.descriptionNecromancier().toString());
+                this.descriptionClasse.setText(ConstantesDescription.DESCRIPTION_NECROMANCIER);
             }
 
             miseAjourProgressBar(statPv,statAttaque,statDefense,statAttaqueSpecial,statDefenseSpecial,statVitesse);

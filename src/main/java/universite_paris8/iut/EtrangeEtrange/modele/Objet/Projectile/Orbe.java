@@ -2,11 +2,12 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementOrbe;
+import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Orbe extends Projectile {
     public Orbe() {
-        super(ConstanteObjet.VITESSE_ORBE, ConstanteObjet.NOMBRE_UTLISATION_ORBE, ConstanteObjet.HITBOX_ORBE);
+        super(ConstanteObjet.VITESSE_ORBE, ConstanteObjet.NOMBRE_UTLISATION_ORBE, new Hitbox(ConstanteObjet.HITBOX_ORBE_HAUTEUR, ConstanteObjet.HITBOX_ORBE_LARGEUR));
     }
 
     @Override

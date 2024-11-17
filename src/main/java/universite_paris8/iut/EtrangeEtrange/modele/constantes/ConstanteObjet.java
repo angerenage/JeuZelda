@@ -13,7 +13,8 @@ public class ConstanteObjet {
     public static final double DEGAT_PHYSIQUE_EPEE = 20;
     public static final double DEGAT_SPECIAL_EPEE = 0;
     public static final double VITESSE_EPEE = 0.125;
-    public static final Hitbox HITBOX_EPEE = new Hitbox(0.25, 0.25);
+    public static final double HITBOX_EPEE_HAUTEUR = 0.25;
+    public static final double HITBOX_EPEE_LARGEUR = 0.25;
     public static final int DURABILITE_EPEE = 10;
     public static final int PRIX_ACHAT_EPEE = 12;
     public static final long DELAI_UTILISATION_EPEE = 1000;
@@ -52,7 +53,8 @@ public class ConstanteObjet {
     public static final double DEGAT_PHYSIQUE_FLECHE = 20;
     public static final double DEGAT_SPECIAL_FLECHE = 0;
     public static final double VITESSE_FLECHE = 0.05;
-    public static final Hitbox HITBOX_FLECHE = new Hitbox(0.25, 0.25);
+    public static final double HITBOX_FLECHE_HAUTEUR = 0.25;
+    public static final double HITBOX_FLECHE_LARGEUR = 0.25;
     public static final int DURABILITE_FLECHE = 10;
     public static final int PRIX_ACHAT_FLECHE = 12;
     public static final int STACK_MAX_FLECHE = 64;
@@ -62,12 +64,12 @@ public class ConstanteObjet {
     public static final double DEGAT_PHYSIQUE_ORBE = 3;
     public static final double DEGAT_SPECIAL_ORBE = 7;
     public static final double VITESSE_ORBE = 0.05;
-    public static final Hitbox HITBOX_ORBE = new Hitbox(0.2, 0.2);
+    public static final double HITBOX_ORBE_HAUTEUR = 0.2;
+    public static final double HITBOX_ORBE_LARGEUR = 0.2;
     public static final int PV_ORBE = 1;
     public static final int NOMBRE_UTLISATION_ORBE = 1;
     public static final int PRIX_ACHAT_ORBE = 15;
     public static final int STACK_MAX_ORBE = 64;
-    public static final long DELAI_CHERCHE_POSITION_ORBE = 10500;
 
 
     //--------------------------------------------LIVRE MAGIQUE-------------------------------------------------------//
