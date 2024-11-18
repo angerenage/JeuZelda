@@ -8,13 +8,13 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.ParametreMonstre;
 
 
 public class Bloc extends Acteur implements Dropable {
-    public Bloc(double x, double y, Direction direction, double pv ,Hitbox hitbox)
-    { super(x, y, direction, pv,0, hitbox);}
+    public Bloc(double x, double y, Direction direction)
+    { super(x, y, direction, ParametreMonstre.PV_BLOC,0, ParametreMonstre.HITBOX_BLOC);}
 
     @Override
     public void seFaitPousser(Acteur acteur)

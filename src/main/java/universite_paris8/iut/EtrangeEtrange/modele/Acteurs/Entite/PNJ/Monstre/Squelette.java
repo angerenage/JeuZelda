@@ -7,16 +7,13 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ParametreMonstre;
 
 public class Squelette extends Monstre {
     private Epee epee ;
 
-    public Squelette(double x, double y, Direction direction, Hitbox hitbox, Joueur joueur, Aetoile aetoile) {
+    public Squelette(double x, double y, Direction direction) {
         super(x, y, direction,
               ParametreMonstre.PV_SQUELETTE,
               ParametreMonstre.ATTAQUE_SQUELETTE,
@@ -24,7 +21,7 @@ public class Squelette extends Monstre {
               ParametreMonstre.ATTAQUE_SPECIALE_SQUELETTE,
               ParametreMonstre.DEFENSE_SPECIALE_SQUELETTE,
               ParametreMonstre.VITESSE_SQUELETTE,
-              hitbox);
+              ParametreMonstre.HITBOX_SQUELETTE);
 
         epee = new Epee();
     }

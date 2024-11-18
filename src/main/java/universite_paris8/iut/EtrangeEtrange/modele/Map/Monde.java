@@ -14,6 +14,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.tache.Tache;
 import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
+import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.FabriquePnj;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
@@ -30,6 +31,8 @@ import java.util.ArrayList;
 
 public class Monde {
     private static Monde monde;
+
+    private static final Class<? extends Acteur>[] ACTOR_TYPES = new Class[]{Bloc.class, RoiSquelette.class, Squelette.class, Slime.class, Marchand.class};
 
     /**
      * Taille du monde (généré aléatoirement)
@@ -93,7 +96,6 @@ public class Monde {
                 System.err.println("Erreur de format dans le fichier : " + e.getMessage());
             }
         }
-
     }
 
     public static Monde getMonde() {
@@ -122,20 +124,10 @@ public class Monde {
                 String[] block = ligne.split(",");
 
                 for (int j = 0; j < hauteur && j < block.length; j++) {
-                    int monstre = Integer.parseInt(block[j]);
-                    Acteur acteur = null;
-                    if (monstre != -1) {
-                        if (monstre == 4)
-                            acteur = new Marchand(j + 0.5, ligneIndex + 0.5, Direction.BAS);
-                        else if (monstre == 2)
-                            acteur = new Slime(j + 0.5, ligneIndex + 0.5, Direction.BAS, new Hitbox(0.25, 0.5));
-                        else if (monstre == 3)
-                            acteur = new Squelette(j + 0.5, ligneIndex + 0.5,  Direction.BAS, new Hitbox(0.5, 0.5), joueur, new Aetoile());
-                        else if (monstre == 1)
-                            acteur = new RoiSquelette(j + 0.5 , ligneIndex + 0.5, Direction.BAS);
-                        else if (monstre == 0)
-                            acteur = new Bloc(j + 0.5, ligneIndex + 0.5, Direction.BAS, 1, new Hitbox(1, 1));
-                        ajoutActeur(acteur);
+                    int pnjTypeId = Integer.parseInt(block[j]);
+
+                    if (pnjTypeId != -1) {
+                        FabriquePnj.fabriquePnj(ACTOR_TYPES[pnjTypeId], 1, monde, new Position(j + 0.5, ligneIndex + 0.5), false);
                     }
                 }
 

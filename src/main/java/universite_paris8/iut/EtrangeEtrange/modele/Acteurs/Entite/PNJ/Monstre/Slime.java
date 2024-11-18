@@ -20,13 +20,13 @@ public class Slime extends NPEs {
      * @param direction La direction dans laquelle l'entité est orientée.
      * @param hitbox    La hitbox de l'entité.
      */
-    public Slime(double x, double y, Direction direction, Hitbox hitbox) {
+    public Slime(double x, double y, Direction direction) {
         super(x, y, direction,
               ParametreMonstre.PV_SLIME,
               ParametreMonstre.DEFENSE_SLIME,
               ParametreMonstre.DEFENSE_SPECIALE_SLIME,
               ParametreMonstre.VITESSE_SLIME,
-              hitbox);
+              ParametreMonstre.HITBOX_SLIME);
     }
 
     @Override
