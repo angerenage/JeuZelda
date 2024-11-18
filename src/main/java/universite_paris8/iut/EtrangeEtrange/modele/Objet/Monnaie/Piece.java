@@ -1,7 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 
 public class Piece implements Objet {
     @Override

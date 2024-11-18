@@ -1,12 +1,7 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Attaque;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.AttaqueSpecial;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;

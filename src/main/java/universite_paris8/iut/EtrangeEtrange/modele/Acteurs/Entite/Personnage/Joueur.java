@@ -5,15 +5,13 @@ import universite_paris8.iut.EtrangeEtrange.modele.Compétence.Competences;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.CreationArbre;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Carquois;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.Attaque;
 import universite_paris8.iut.EtrangeEtrange.modele.Statistique.AttaqueSpecial;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
@@ -21,7 +19,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 import java.util.ArrayList;

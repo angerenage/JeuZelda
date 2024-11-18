@@ -1,9 +1,8 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Interfaces;
+package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
 
 public abstract class Arme implements Objet {
 
