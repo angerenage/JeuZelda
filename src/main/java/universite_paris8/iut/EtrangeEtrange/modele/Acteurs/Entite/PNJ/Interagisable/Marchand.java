@@ -5,7 +5,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.ChoixPrompt;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 
