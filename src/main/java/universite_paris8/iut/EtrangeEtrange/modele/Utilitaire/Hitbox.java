@@ -1,6 +1,5 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Utilitaire;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Exeptions.HitboxInvalideExeption;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public class Hitbox {
@@ -13,12 +12,6 @@ public class Hitbox {
     }
 
     public void setHitbox(double hauteur, double largeur) {
-        if (hauteur < 0 || largeur < 0)
-            throw new HitboxInvalideExeption("Valeur négatif interdit");
-
-        if (hauteur > Monde.getSizeMondeHauteur() || largeur > Monde.getSizeMondeLargeur())
-            throw new HitboxInvalideExeption("Valeur trop grande ");
-
         this.hauteur = hauteur;
         this.largeur = largeur;
     }
