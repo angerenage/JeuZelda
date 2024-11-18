@@ -1,4 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.constantes;
+package universite_paris8.iut.EtrangeEtrange.vues.constantes;
 
 
 public class ConstantesAffichage {

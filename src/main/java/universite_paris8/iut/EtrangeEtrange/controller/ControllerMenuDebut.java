@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import universite_paris8.iut.EtrangeEtrange.Runner;
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 
 import java.io.IOException;
 import java.net.URL;

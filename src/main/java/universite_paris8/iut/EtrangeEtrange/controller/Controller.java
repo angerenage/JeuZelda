@@ -25,7 +25,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Jou
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.vues.AfficheBulleConversation;
 import universite_paris8.iut.EtrangeEtrange.vues.BarreDeVie.GestionAffichageVieJoueur;
 
