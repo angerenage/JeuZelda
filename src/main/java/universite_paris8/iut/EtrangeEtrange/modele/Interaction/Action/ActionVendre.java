@@ -3,7 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Marchand;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
+import universite_paris8.iut.EtrangeEtrange.modele.stockage.Emplacement;
 
 import java.util.ArrayList;
 

@@ -6,57 +6,40 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import java.util.ArrayList;
 
 public class Emplacement<T extends Objet> implements Conteneur<T> {
-    private int stackPossible;
-    private final ArrayList<T> objets;
 
-    public Emplacement() {
-        this.objets = new ArrayList<>();
-        this.stackPossible = 1;
-    }
+    private int stackPossible = 1;
+    private final ArrayList<T> objets = new ArrayList<>();
 
     @Override
     public boolean ajoutItem(T objet) {
-        boolean ajoutReussi;
-
-        if (this.objets.isEmpty()) {
+        if (objets.isEmpty()) {
             stackPossible = objet.stackMax();
-            this.objets.add(objet);
-            ajoutReussi = true;
-        } else if (this.objets.get(0).getClass().equals(objet.getClass())) {
-            if (this.objets.size() + 1 < stackPossible) this.objets.add(objet);
-            ajoutReussi = true;
-        } else {
-            ajoutReussi = false;
+            objets.add(objet);
+            return true;
         }
-
-        return ajoutReussi;
+        if (objets.get(0).getClass().equals(objet.getClass()) && objets.size() + 1 < stackPossible) {
+            objets.add(objet);
+            return true;
+        }
+        return false;
     }
 
     public boolean supprimeObjet(T objet) {
-        boolean aSupprimer = false;
-
-        for (int i = this.objets.size() - 1; i >= 0; i--) {
-            if (objet == this.objets.get(i)) {
-                this.objets.remove(i);
-                aSupprimer = true;
-            }
-        }
-
-        return aSupprimer;
+        return objets.removeIf(o -> o == objet);
     }
 
     public T enleveObjet() {
-        return this.objets.remove(0);
+        return objets.isEmpty() ? null : objets.remove(0);
     }
 
     public ArrayList<T> enleverToutLesObjets() {
-        ArrayList<T> nvList = new ArrayList<>(this.objets);
+        ArrayList<T> nvList = new ArrayList<>(objets);
         vider();
         return nvList;
     }
 
     public void vider() {
-        this.objets.clear();
+        objets.clear();
     }
 
     @Override
@@ -65,11 +48,11 @@ public class Emplacement<T extends Objet> implements Conteneur<T> {
     }
 
     public int quantiteObjet() {
-        return this.objets.size();
+        return objets.size();
     }
 
     public boolean estVide() {
-        return this.objets.isEmpty();
+        return objets.isEmpty();
     }
 
     @Override
@@ -103,18 +86,18 @@ public class Emplacement<T extends Objet> implements Conteneur<T> {
     }
 
     public boolean peuEncoreStacker() {
-        return quantiteObjet() + 1 < this.stackPossible;
+        return quantiteObjet() + 1 < stackPossible;
     }
 
     public <U extends Objet> boolean estDuMemeType(Class<U> typeObjet) {
-        boolean estDuMemeType = false;
+        return !objets.isEmpty() && typeObjet.isInstance(objets.get(0));
+    }
 
-        if (!objets.isEmpty()) estDuMemeType = typeObjet.isInstance(objets.get(0));
-
-        return estDuMemeType;
+    public T getObjet() {
+        return objets.isEmpty() ? null : objets.get(0);
     }
 
     public T objetDansLemplacement() {
-        return this.objets.get(0);
+        return objets.isEmpty() ? null : objets.get(0);
     }
 }

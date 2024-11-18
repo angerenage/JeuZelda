@@ -7,101 +7,84 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import java.util.ArrayList;
 
 public class Inventaire<T extends Objet> implements Conteneur<T> {
+
     private final IntegerProperty taille;
     private final Emplacement<T>[] inventaire;
 
     public Inventaire(int taille) {
         this.taille = new SimpleIntegerProperty(taille);
         this.inventaire = (Emplacement<T>[]) new Emplacement[taille];
-
-        for (int i = 0; i < this.inventaire.length; i++) this.inventaire[i] = new Emplacement<>();
+        for (int i = 0; i < this.inventaire.length; i++) {
+            this.inventaire[i] = new Emplacement<>();
+        }
     }
 
     public boolean ajoutItem(T objet) {
-        boolean ajoutReussi = false;
-
-        Emplacement<T> emplacement = null;
-        if (objet.stackMax() > 1) emplacement = chercheEmplacementStackable(objet);
-        if (emplacement == null) emplacement = chercheEmplacementVide();
-
+        Emplacement<T> emplacement = objet.stackMax() > 1 ? chercheEmplacementStackable(objet) : null;
+        if (emplacement == null) {
+            emplacement = chercheEmplacementVide();
+        }
         if (emplacement != null) {
             emplacement.ajoutItem(objet);
-            ajoutReussi = true;
+            return true;
         }
-
-        return ajoutReussi;
+        return false;
     }
 
-
     private ArrayList<Emplacement<T>> chercheEmplacementMemeItem(Class<? extends Objet> typeObjet) {
-        ArrayList<Emplacement<T>> emplacementsCorrespondants = new ArrayList<>();
-
+        ArrayList<Emplacement<T>> emplacements = new ArrayList<>();
         for (Emplacement<T> emplacement : inventaire) {
             if (emplacement.estDuMemeType(typeObjet)) {
-                emplacementsCorrespondants.add(emplacement);
+                emplacements.add(emplacement);
             }
         }
-
-        return emplacementsCorrespondants;
+        return emplacements;
     }
 
     public Emplacement<T> chercheEmplacementStackable(T objet) {
-        ArrayList<Emplacement<T>> emplacements = chercheEmplacementMemeItem(objet.getClass());
-
-        for (Emplacement<T> emplacement : emplacements) {
-            if (emplacement.peuEncoreStacker()) {
-                return emplacement;
-            }
-        }
-
-        return null;
+        return chercheEmplacementMemeItem(objet.getClass())
+                .stream()
+                .filter(Emplacement::peuEncoreStacker)
+                .findFirst()
+                .orElse(null);
     }
 
     public Emplacement<T> chercheEmplacementVide() {
-        Emplacement<T> emplacement = null;
-        boolean emplacementTrouver = false;
-
-        for (int i = 0; i < this.inventaire.length && !emplacementTrouver; i++) {
-            Emplacement<T> emplacementAverifier = this.inventaire[i];
-
-            if (emplacementAverifier.estVide()) {
-                emplacement = emplacementAverifier;
-                emplacementTrouver = true;
+        for (Emplacement<T> emplacement : inventaire) {
+            if (emplacement.estVide()) {
+                return emplacement;
             }
         }
-
-        return emplacement;
+        return null;
     }
 
     public void vider() {
-        for (Emplacement emplacement : inventaire) {
+        for (Emplacement<T> emplacement : inventaire) {
             emplacement.vider();
         }
     }
 
     public boolean estPlein() {
-        boolean plein = true;
-
-        for (int i = 0; i < inventaire.length; i++) {
-            if (inventaire[i].estVide()) plein = false;
+        for (Emplacement<T> emplacement : inventaire) {
+            if (emplacement.estVide()) {
+                return false;
+            }
         }
-
-        return plein;
+        return true;
     }
 
     public boolean estVide() {
-        boolean vide = true;
-
-        for (int i = 0; i < inventaire.length; i++) {
-            if (!inventaire[i].estVide()) vide = false;
+        for (Emplacement<T> emplacement : inventaire) {
+            if (!emplacement.estVide()) {
+                return false;
+            }
         }
-
-        return vide;
+        return true;
     }
 
     public int nombresObjets() {
         int total = 0;
-        for (Emplacement emplacement : inventaire) {
+        for (Emplacement<T> emplacement : inventaire) {
             total += emplacement.quantiteObjet();
         }
         return total;
@@ -113,12 +96,11 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
 
     @Override
     public boolean supprimeObjet(T objet) {
-        ArrayList<Emplacement<T>> emplacements = chercheEmplacementMemeItem(objet.getClass());
-
-        for (Emplacement<T> emplacement : emplacements) {
-            if (emplacement.supprimeObjet(objet)) return true;
+        for (Emplacement<T> emplacement : chercheEmplacementMemeItem(objet.getClass())) {
+            if (emplacement.supprimeObjet(objet)) {
+                return true;
+            }
         }
-
         return false;
     }
 
@@ -127,55 +109,42 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
     }
 
     public ArrayList<T> enleverObjet(int emplacement) {
-        ArrayList<T> objets = new ArrayList<>();
-
-        if (emplacement >= 0 && emplacement < this.inventaire.length && !this.inventaire[emplacement].estVide())
-            objets.addAll(this.inventaire[emplacement].enleverToutLesObjets());
-
-        return objets;
+        if (isValidIndex(emplacement) && !this.inventaire[emplacement].estVide()) {
+            return new ArrayList<>(this.inventaire[emplacement].enleverToutLesObjets());
+        }
+        return new ArrayList<>();
     }
-
 
     public T objetALemplacement(int emplacement) {
-        T objet = null;
-
-        if (emplacement >= 0 && emplacement < this.inventaire.length && !this.inventaire[emplacement].estVide())
-            objet = this.inventaire[emplacement].objetDansLemplacement();
-
-        return objet;
+        return isValidIndex(emplacement) && !this.inventaire[emplacement].estVide()
+                ? this.inventaire[emplacement].objetDansLemplacement()
+                : null;
     }
-
 
     public T retourneObjet(int emplacement) {
-        T objet = null;
-
-        if (emplacement >= 0 && emplacement < this.inventaire.length && !this.inventaire[emplacement].estVide())
-            objet = this.inventaire[emplacement].enleveObjet();
-
-        return objet;
+        return isValidIndex(emplacement) && !this.inventaire[emplacement].estVide()
+                ? this.inventaire[emplacement].enleveObjet()
+                : null;
     }
 
-
     public <U extends Objet> U trouveObjet(Class<U> typeObjet) {
-        U objet = null;
-
-        for (int i = 0; i < inventaire.length && objet == null; i++) {
-            Emplacement<T> emplacement = inventaire[i];
-
-            if (emplacement.estDuMemeType(typeObjet))
-                objet = typeObjet.cast(emplacement.enleveObjet());
-
+        for (Emplacement<T> emplacement : inventaire) {
+            if (emplacement.estDuMemeType(typeObjet)) {
+                return typeObjet.cast(emplacement.enleveObjet());
+            }
         }
-
-        return objet;
+        return null;
     }
 
     public Emplacement<T> getEmplacement(int emplacement) {
-        return inventaire[emplacement];
+        return isValidIndex(emplacement) ? inventaire[emplacement] : null;
     }
 
     public Emplacement<T>[] getInventaire() {
         return this.inventaire;
     }
 
+    private boolean isValidIndex(int index) {
+        return index >= 0 && index < this.inventaire.length;
+    }
 }
