@@ -1,7 +1,5 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Utilitaire;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
-
 public class Hitbox {
 
     private double hauteur;
@@ -16,7 +14,6 @@ public class Hitbox {
         this.largeur = largeur;
     }
 
-    // Méthodes pour récupérer les points extrêmes de la hitbox fonctionne seulement pour des coordonées positive
     public double getPointLePlusADroite(double x) {
         return x + largeur / 2;
     }
@@ -32,7 +29,6 @@ public class Hitbox {
     public double getPointLePlusEnBas(double y) {
         return y + hauteur / 2;
     }
-
 
     public double getLargeur() {
         return this.largeur;
