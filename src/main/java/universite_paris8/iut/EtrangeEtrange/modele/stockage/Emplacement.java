@@ -85,7 +85,7 @@ public class Emplacement<T extends Objet> implements Conteneur<T> {
         return null;
     }
 
-    public boolean peuEncoreStacker() {
+    public boolean peutEncoreStacker() {
         return quantiteObjet() + 1 < stackPossible;
     }
 
@@ -97,7 +97,8 @@ public class Emplacement<T extends Objet> implements Conteneur<T> {
         return objets.isEmpty() ? null : objets.get(0);
     }
 
-    public T objetDansLemplacement() {
-        return objets.isEmpty() ? null : objets.get(0);
+    public boolean contientObjet(T objet) {
+        return objets.contains(objet);
     }
+
 }

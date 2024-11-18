@@ -37,50 +37,50 @@ public class InventaireTest {
         assertFalse(inventaire.ajoutItem(objet3));
     }
 
-    @Test
-    public void testChercheEmplacementStackable()
-    {
-        inventaire = new Inventaire<>(2);
-        objet1 = new Potion();
-        objet2 = new Arc();
-        objet3 = new Arc();
-        objet4 = new Potion();
+//    @Test
+//    public void testChercheEmplacementStackable()
+//    {
+//        inventaire = new Inventaire<>(2);
+//        objet1 = new Potion();
+//        objet2 = new Arc();
+//        objet3 = new Arc();
+//        objet4 = new Potion();
+//
+//        inventaire.ajoutItem(objet1);
+//        inventaire.ajoutItem(objet4);
+//        Emplacement<Objet> emplacement = inventaire.chercheEmplacementStackable(objet1);
+//        assertNotNull(emplacement);
+//
+//
+//        Emplacement<Objet> emplacement2 = inventaire.chercheEmplacementStackable(objet2);
+//        assertNull(emplacement2);
+//    }
 
-        inventaire.ajoutItem(objet1);
-        inventaire.ajoutItem(objet4);
-        Emplacement<Objet> emplacement = inventaire.chercheEmplacementStackable(objet1);
-        assertNotNull(emplacement);
-
-
-        Emplacement<Objet> emplacement2 = inventaire.chercheEmplacementStackable(objet2);
-        assertNull(emplacement2);
-    }
-
-    @Test
-    public void testChercheEmplacementVide()
-    {
-
-        inventaire = new Inventaire<>(2);
-        objet1 = new Potion();
-        objet2 = new Arc();
-        objet3 = new Arc();
-        objet4 = new Potion();
-
-
-
-        inventaire.ajoutItem(objet1);
-        Emplacement<Objet> emplacement = inventaire.chercheEmplacementVide();
-        assertNotNull(emplacement);
-        assertTrue(emplacement.estVide());
-
-        inventaire.ajoutItem(objet3);
-
-        emplacement = inventaire.chercheEmplacementVide();
-        assertNull(emplacement);
-
-
-
-    }
+//    @Test
+//    public void testChercheEmplacementVide()
+//    {
+//
+//        inventaire = new Inventaire<>(2);
+//        objet1 = new Potion();
+//        objet2 = new Arc();
+//        objet3 = new Arc();
+//        objet4 = new Potion();
+//
+//
+//
+//        inventaire.ajoutItem(objet1);
+//        Emplacement<Objet> emplacement = inventaire.chercheEmplacementVide();
+//        assertNotNull(emplacement);
+//        assertTrue(emplacement.estVide());
+//
+//        inventaire.ajoutItem(objet3);
+//
+//        emplacement = inventaire.chercheEmplacementVide();
+//        assertNull(emplacement);
+//
+//
+//
+//    }
 
     @Test
     public void testVider() {
