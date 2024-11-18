@@ -32,8 +32,6 @@ import java.util.Objects;
 public class Monde {
     private static Monde monde;
 
-    private static final Class<? extends Acteur>[] ACTOR_TYPES = new Class[]{Bloc.class, RoiSquelette.class, Squelette.class, Slime.class, Marchand.class};
-
     /**
      * Taille du monde (généré aléatoirement)
      * Ces valeurs ne servent que pour tester le fonctionnement de la scrolling map, elles seront supprimées lorsque les tests seront finis.
@@ -66,28 +64,8 @@ public class Monde {
     }
 
     public void creationMonstre(String nommap, int hauteur) {
-		try {
-            BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONSTRE_BASE_PATH, nommap)));
-            String ligne;
-            int ligneIndex = 0;
-
-            while ((ligne = reader.readLine()) != null && ligneIndex < hauteur) {
-                String[] block = ligne.split(",");
-
-                for (int j = 0; j < hauteur && j < block.length; j++) {
-                    int pnjTypeId = Integer.parseInt(block[j]);
-
-                    if (pnjTypeId != -1) {
-                        FabriquePnj.fabriquePnj(ACTOR_TYPES[pnjTypeId], 1, monde, new Position(j + 0.5, ligneIndex + 0.5), false);
-                    }
-                }
-                ligneIndex++;
-            }
-
-			reader.close();
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Erreur lors de la lecture du fichier de monstres : " + e.getMessage());
-        }
+		MonstreReader monstreReader = new MonstreReader(monde);
+		monstreReader.readFile(String.format(PathRessources.MONSTRE_BASE_PATH, nommap));
     }
 
     public void verifCollision(Acteur acteur) {

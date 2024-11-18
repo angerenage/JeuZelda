@@ -44,28 +44,9 @@ public class Carte {
         String[] fichiers = {"sol", "traversable", "nontraversable"};
 
         for (int i = 0; i < couches.size(); i++) {
-            try {
-				BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONDE_BASE_PATH, nommap, fichiers[i])));
-
-                String ligne;
-                int ligneIndex = 0;
-
-                while ((ligne = reader.readLine()) != null && ligneIndex < hauteur) {
-                    String[] blocks = ligne.split(",");
-
-                    for (int j = 0; j < largeur && j < blocks.length; j++) {
-                        couches.get(i)[ligneIndex][j] = Integer.parseInt(blocks[j]);
-                    }
-                    ligneIndex++;
-                }
-
-				reader.close();
-            } catch (IOException e) {
-                System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
-            } catch (NumberFormatException e) {
-                System.err.println("Erreur de format dans le fichier : " + e.getMessage());
-            }
-        }
+			CouchesReader coucheReader = new CouchesReader(couches.get(i));
+			coucheReader.readFile(String.format(PathRessources.MONDE_BASE_PATH, nommap, fichiers[i]));
+		}
     }
 
     /**
