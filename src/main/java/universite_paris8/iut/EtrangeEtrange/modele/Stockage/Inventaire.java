@@ -2,8 +2,8 @@ package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Conteneur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Conteneur;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 
 import java.util.ArrayList;
 

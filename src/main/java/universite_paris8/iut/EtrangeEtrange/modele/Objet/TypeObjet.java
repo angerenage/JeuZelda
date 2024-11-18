@@ -1,6 +1,5 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;

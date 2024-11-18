@@ -1,10 +1,9 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Bloc;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dropable;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
-import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Dommageable;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Dropable;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;

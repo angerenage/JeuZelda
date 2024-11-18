@@ -1,9 +1,8 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes;
 
-
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementArc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
@@ -23,17 +22,7 @@ public class Arc extends Arme {
 
     @Override
     public Comportement initComportement() {
-        return new Comportement() {
-            @Override
-            public void finit() {
-                fleche = null;
-            }
-
-            @Override
-            public void lancer(Entite utilisateur) {
-                if (fleche != null) fleche.utiliseePar(utilisateur);
-            }
-        };
+        return new ComportementArc(this);
     }
 
     @Override
@@ -53,6 +42,10 @@ public class Arc extends Arme {
 
     public void setFleche(Fleche fleche) {
         this.fleche = fleche;
+    }
+
+    public Fleche getFleche() {
+        return fleche;
     }
 
     @Override

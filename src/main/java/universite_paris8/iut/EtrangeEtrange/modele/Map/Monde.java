@@ -10,7 +10,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisa
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Slime;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Squelette;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Tache;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.tache.Tache;
 import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;

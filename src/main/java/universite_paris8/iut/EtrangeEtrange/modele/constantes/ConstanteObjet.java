@@ -1,12 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.constantes;
 
 
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegeOrbe;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegePluitDeFleche;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Support.SortilegeDeSoins;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
-
 public class ConstanteObjet {
 
     //-----------------------------------------------EPEE----------------------------------------------------//

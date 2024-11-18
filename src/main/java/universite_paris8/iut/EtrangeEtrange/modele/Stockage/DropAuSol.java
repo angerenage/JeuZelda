@@ -1,7 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class DropAuSol {
