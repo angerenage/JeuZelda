@@ -9,14 +9,14 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 public class ActionAchat extends Action {
     private Objet objet;
     private Joueur joueur;
-    private ActionVendre marchander;
 
-    public ActionAchat(Marchand marchand, Objet objet, Joueur joueur, ActionVendre marchander) {
+    private ActionMarchander marchander;
+
+    public ActionAchat(Marchand marchand, Objet objet, Joueur joueur, ActionMarchander marchander) {
         this.joueur = joueur;
         this.objet = objet;
         this.marchander = marchander;
     }
-
 
     @Override
     public Prompt execute() {

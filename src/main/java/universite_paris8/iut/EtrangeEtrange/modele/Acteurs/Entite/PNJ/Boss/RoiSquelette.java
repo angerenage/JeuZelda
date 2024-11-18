@@ -34,7 +34,6 @@ public class RoiSquelette extends Boss {
         this.positionDepart = new Position(x, y);
         initInventaire();
         pattern = null;
-
     }
 
     private void initInventaire() {

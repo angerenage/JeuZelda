@@ -7,14 +7,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
+import universite_paris8.iut.EtrangeEtrange.modele.Map.GestionCollisions;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.vues.GestionSon;
 
 
-public class GestionActeur implements ListChangeListener<Acteur>
-{
+public class GestionActeur implements ListChangeListener<Acteur> {
     private Pane pane;
     private Monde monde;
     private GestionSon gestionSon;
@@ -28,12 +28,9 @@ public class GestionActeur implements ListChangeListener<Acteur>
 
     @Override
     public void onChanged(Change<? extends Acteur> change) {
-        while (change.next())
-        {
-            if (change.wasAdded())
-            {
-                for (Acteur acteur : change.getAddedSubList())
-                {
+        while (change.next()) {
+            if (change.wasAdded()) {
+                for (Acteur acteur : change.getAddedSubList()) {
                     if (acteur.typeActeur().equals("fleche") || acteur.typeActeur().equals("orbe")) {
                         initSpriteProjectile(acteur);
                         gestionSon.lanceSong(acteur);
@@ -50,7 +47,8 @@ public class GestionActeur implements ListChangeListener<Acteur>
                     listenerCollision(acteur);
                     listenerPv(acteur);
                 }
-            } else if (change.wasRemoved()) {
+            }
+			else if (change.wasRemoved()) {
                 for (Acteur acteur : change.getRemoved()) {
                     suppSpriteActeur(acteur);
                 }
@@ -58,43 +56,34 @@ public class GestionActeur implements ListChangeListener<Acteur>
         }
     }
 
-    public void listenerPv(Acteur acteur)
-    {
+    public void listenerPv(Acteur acteur) {
         acteur.getStatsPv().getPvActuelleProperty().addListener((obs, old, nouv)->{
             if (Math.round(nouv.doubleValue()) == 0)
                 this.monde.ajoutActeurAsupprimer(acteur);
         });
     }
 
-    public void listenerCollision(Acteur acteur)
-    {
+    public void listenerCollision(Acteur acteur) {
         acteur.getPosition().getXProperty().addListener((obs, old, nouv)-> {verifCollision(acteur);});
         acteur.getPosition().getYProperty().addListener((obs, old, nouv)-> {verifCollision(acteur);});
     }
 
-    private void verifCollision(Acteur acteur)
-    {
+    private void verifCollision(Acteur acteur) {
         Joueur joueur = monde.getJoueur();
 
-        if(acteur != joueur && monde.collisionAvecActeur(acteur,joueur))
-        {
+        if (acteur != joueur && GestionCollisions.collisionEntreActeur(acteur,joueur)) {
             acteur.subitCollision(joueur);
         }
 
         monde.verifCollision(acteur);
     }
 
-
-    private void suppSpriteActeur(Acteur acteur)
-    {
-        Node node = pane.lookup("#"+acteur.getID());
-
-        if (node != null)
-            this.pane.getChildren().remove(node);
+    private void suppSpriteActeur(Acteur acteur) {
+        Node node = pane.lookup("#" + acteur.getID());
+        if (node != null) this.pane.getChildren().remove(node);
     }
 
-    private void initSpriteProjectile(Acteur acteur)
-    {
+    private void initSpriteProjectile(Acteur acteur) {
         String typeActeur = acteur.typeActeur();
 
         double reglagePositionX;
@@ -102,53 +91,46 @@ public class GestionActeur implements ListChangeListener<Acteur>
 
         ImageView imageView = new ImageView(new Image("file:src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/objet/Projectile/"+typeActeur+".png"));
 
-
         imageView.setId(acteur.getID()+"");
         Direction direction = acteur.getDirection();
 
         int rotation;
 
-        if(direction==Direction.HAUT) {
+        if (direction == Direction.HAUT) {
             rotation = 0;
             reglagePositionY = 15;
             reglagePositionX = 5.5;
         }
-        else if(direction==Direction.BAS){
-            rotation=2;
+        else if (direction == Direction.BAS){
+            rotation = 2;
             reglagePositionY = 15;
             reglagePositionX = 5.5;
         }
-        else if(direction==Direction.DROITE) {
+        else if (direction == Direction.DROITE) {
             rotation = 1;
             reglagePositionY = 5.5;
             reglagePositionX = 15;
         }
-        else
-        {
+        else {
             rotation = 3;
             reglagePositionY = 5.5;
             reglagePositionX = 15;
         }
 
-        imageView.setTranslateX(acteur.getPosition().getX()* ConstantesAffichage.tailleTile-reglagePositionX);
-        imageView.setTranslateY(acteur.getPosition().getY()* ConstantesAffichage.tailleTile-reglagePositionY);
+        imageView.setTranslateX(acteur.getPosition().getX() * ConstantesAffichage.tailleTile-reglagePositionX);
+        imageView.setTranslateY(acteur.getPosition().getY() * ConstantesAffichage.tailleTile-reglagePositionY);
 
-        imageView.setRotate(rotation*90);
+        imageView.setRotate(rotation * 90);
         this.pane.getChildren().add(imageView);
 
-        acteur.getPosition().getXProperty().addListener((obs, old, nouv)->
-        {
+        acteur.getPosition().getXProperty().addListener((obs, old, nouv) -> {
             imageView.setTranslateX(acteur.getPosition().getX()* ConstantesAffichage.tailleTile-reglagePositionX);
         });
 
-        acteur.getPosition().getYProperty().addListener((obs, old, nouv)->
-        {
+        acteur.getPosition().getYProperty().addListener((obs, old, nouv) -> {
             imageView.setTranslateY(acteur.getPosition().getY()* ConstantesAffichage.tailleTile-reglagePositionY);
         });
-
-
     }
-
 
     public void initSpriteBloc(Acteur acteur){
         ImageView imageView;
@@ -174,9 +156,4 @@ public class GestionActeur implements ListChangeListener<Acteur>
             imageView.setTranslateY(acteur.getPosition().getY()* ConstantesAffichage.tailleTile-32);
         });
     }
-
-
-
-
-
 }
