@@ -68,6 +68,7 @@ public class Epee extends Arme implements Dommageable {
     @Override
     public boolean utiliseePar(Entite entite) {
         if (peuUtiliser()) {
+            System.out.println("urse");
             initComportement().lancer(entite);
             peutEtreUtiliser(false);
             startCooldown();

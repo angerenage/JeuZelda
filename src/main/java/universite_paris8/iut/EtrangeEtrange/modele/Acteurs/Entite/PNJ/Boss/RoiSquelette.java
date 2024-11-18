@@ -7,6 +7,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Orbe;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
@@ -28,7 +29,7 @@ public class RoiSquelette extends Boss {
               ParametreMonstre.ATTAQUE_SPECIALE_ROI_SQUELETTE,
               ParametreMonstre.DEFENSE_SPECIALE_ROI_SQUELETTE,
               ParametreMonstre.VITESSE_ROI_SQUELETTE,
-              new Hitbox(1,1)
+              new Hitbox(0.8,1)
         );
         this.positionDepart = new Position(x, y);
         initInventaire();
@@ -65,13 +66,13 @@ public class RoiSquelette extends Boss {
         }
     }
 
-    public void invoqueSquelette() {
-
+    public void invoqueSquelette(int nbr) {
+        new Orbe().utiliseePar(this);
     }
 
     public void teleportePosDepart()
     {
-        setPosition(positionDepart);
+        setPosition(positionDepart.getX(), positionDepart.getY());
     }
 
     @Override
@@ -80,5 +81,11 @@ public class RoiSquelette extends Boss {
             pattern = new PatternRoiSquelette(this);
 
         return pattern;
+    }
+
+
+    public void invoqueSquelette() {
+        new Orbe().utiliseePar(this);
+        new Orbe().utiliseePar(this);
     }
 }

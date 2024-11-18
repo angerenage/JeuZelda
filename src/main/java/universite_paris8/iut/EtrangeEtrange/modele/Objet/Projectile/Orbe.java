@@ -5,7 +5,9 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comp
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
-public class Orbe extends Projectile {
+public class Orbe extends Projectile
+{ 
+
     public Orbe() {
         super(ConstanteObjet.VITESSE_ORBE, ConstanteObjet.NOMBRE_UTLISATION_ORBE, new Hitbox(ConstanteObjet.HITBOX_ORBE_HAUTEUR, ConstanteObjet.HITBOX_ORBE_LARGEUR));
     }

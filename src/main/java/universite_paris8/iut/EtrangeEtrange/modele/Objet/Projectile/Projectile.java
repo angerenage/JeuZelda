@@ -35,7 +35,8 @@ public abstract class Projectile implements Dommageable,Objet {
     @Override
     public boolean utiliseePar(Entite entite) {
         boolean estCasser = durabilite <= 0;
-        if (!estCasser) this.getComportement().lancer(entite);
+        if (!estCasser)
+            this.getComportement().lancer(entite);
         return estCasser;
     }
 }

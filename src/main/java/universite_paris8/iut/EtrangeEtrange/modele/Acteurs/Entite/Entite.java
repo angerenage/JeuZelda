@@ -54,9 +54,6 @@ public abstract class Entite extends Acteur {
 
     }
 
-    protected double subitDegatPhysique(double attaqueEntite, double degatArme) {
-        return Math.abs(attaqueEntite + degatArme - statsDefense.getDefense());
-    }
 
     /**
      * Calcule les dégâts physiques subis par l'entité.

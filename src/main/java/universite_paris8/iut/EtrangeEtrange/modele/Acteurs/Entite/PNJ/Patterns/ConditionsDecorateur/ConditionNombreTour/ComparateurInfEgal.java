@@ -4,7 +4,7 @@ public class ComparateurInfEgal implements ComparateurStrategy
 {
 
     @Override
-    public boolean comparer(long tour, long tourDeclancheur) {
-        return tourDeclancheur <= tour;
+    public boolean comparer(long nbrtour, long tourDeclancheur) {
+        return tourDeclancheur <= nbrtour;
     }
 }

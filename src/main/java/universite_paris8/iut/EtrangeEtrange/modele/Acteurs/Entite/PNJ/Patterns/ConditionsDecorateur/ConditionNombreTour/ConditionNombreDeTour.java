@@ -6,21 +6,22 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comp
 
 public class ConditionNombreDeTour extends ConditionPatternDecorateur
 {
-    private long tour;
-    private ComportementAttaqueEpee comportementAttaqueEpee;
+    private long tour,tourFait;
+
     private ComparateurStrategy comparateurStrategy;
 
 
-    public ConditionNombreDeTour(ComportementAttaqueEpee comportementAttaqueEpee,Pattern patternAeffectuer,ComparateurStrategy comparateurStrategy,long tour) {
+    public ConditionNombreDeTour(Pattern patternAeffectuer,ComparateurStrategy comparateurStrategy,long tour) {
         super(patternAeffectuer);
-        this.comportementAttaqueEpee = comportementAttaqueEpee;
+
         this.tour = tour;
         this.comparateurStrategy = comparateurStrategy;
+        tourFait = 0;
     }
 
 
     @Override
     public boolean conditionRespecter() {
-        return comparateurStrategy.comparer(comportementAttaqueEpee.getTourFait(), tour);
+        return comparateurStrategy.comparer(tour, tourFait++);
     }
 }

@@ -1,5 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionNombreTour.ConditionNombreDeTour;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 
 import java.util.ArrayList;
@@ -21,8 +22,6 @@ public class PatternCompositeStrategie implements Pattern
     public PatternCompositeStrategie(ConditionPatternDecorateur pattern, Pattern patternElse) {
         this(new ArrayList<>(List.of(pattern)), patternElse);
     }
-
-
 
 
 

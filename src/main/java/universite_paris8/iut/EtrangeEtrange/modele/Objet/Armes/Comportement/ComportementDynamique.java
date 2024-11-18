@@ -7,6 +7,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 
+import java.util.ArrayList;
+
 public abstract class ComportementDynamique extends Acteur implements Comportement
 {
     private Pattern pattern;
@@ -32,7 +34,8 @@ public abstract class ComportementDynamique extends Acteur implements Comporteme
     public void finit()
     {
         this.tourFait = 0;
-        Monde.getMonde().enleveActeur(this);
+        this.setPosition(-1,-1);
+        Monde.getMonde().ajoutActeurAsupprimer(this);
     }
 
     public Entite getUtilisateur(){
@@ -50,3 +53,6 @@ public abstract class ComportementDynamique extends Acteur implements Comporteme
 
     }
 }
+
+
+

@@ -33,20 +33,19 @@ public enum Direction {
     }
 
     public static Direction calculerDirection(double deltaX, double deltaY) {
-        // Vérification des directions horizontales
-        if (deltaX < 0) {
-            return GAUCHE;
-        } else if (deltaX > 0) {
-            return DROITE;
-        }
-        // Vérification des directions verticales
-        if (deltaY < 0) {
-            return HAUT;
-        } else if (deltaY > 0) {
-            return BAS;
+        double tolerance = 0.1;
+
+
+
+        if (Math.abs(deltaX) > tolerance) {
+            return deltaX < 0 ? GAUCHE : DROITE;
         }
 
-        // Si deltaX et deltaY sont tous les deux égaux à zéro, il n'y a pas de direction
-        return null; // Ou une direction spéciale pour indiquer l'absence de mouvement
+        if (Math.abs(deltaY) > tolerance) {
+            return deltaY < 0 ? HAUT : BAS;
+        }
+
+        return null;
     }
+
 }

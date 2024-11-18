@@ -17,7 +17,8 @@ public class ComportementOrbe extends ComportementDynamique
 {
 
     private Orbe orbe;
-    private Pattern deplacement;
+    private Offensif utilisateur;
+    private Acteur cible;
 
     public ComportementOrbe(Orbe orbe) {
         super(-1, -1, null, 1, orbe.getVitesse(), orbe.getHitbox());
@@ -37,7 +38,7 @@ public class ComportementOrbe extends ComportementDynamique
     @Override
     public void lancer(Entite entite)
     {
-        Acteur cible;
+        utilisateur = (Offensif) entite;
 
         if (entite instanceof Joueur)
             cible = Monde.getMonde().chercheEnemie();
@@ -45,18 +46,22 @@ public class ComportementOrbe extends ComportementDynamique
             cible = Monde.getMonde().getJoueur();
 
 
-        deplacement = new PatternSeDirigerVersCible(this,cible);
 
         super.lancer(entite);
     }
 
-    public Pattern getDeplacement() {
-        return deplacement;
+    public  Acteur getCible() {
+        return cible;
     }
+
 
     @Override
     public void causeCollision(Acteur acteur) {
 
+        if (acteur != utilisateur)
+        {
+            acteur.subitAttaque(orbe,utilisateur);
+        }
     }
 
     @Override

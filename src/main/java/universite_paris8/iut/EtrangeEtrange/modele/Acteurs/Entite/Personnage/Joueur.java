@@ -79,12 +79,14 @@ public abstract class Joueur extends Entite implements Offensif {
     }
 
     public void actionMainDroite() {
-        if (objetMainDroite != null) {
+        if (objetMainDroite != null)
+        {
             if (objetMainDroite instanceof Arc arc ) {
                 arc.setFleche(carquois.retourneUneFleche());
             }
 
-            if (objetMainDroite.utiliseePar(this)) objetMainDroite = null;
+            if (objetMainDroite.utiliseePar(this))
+                objetMainDroite = null;
         }
     }
 

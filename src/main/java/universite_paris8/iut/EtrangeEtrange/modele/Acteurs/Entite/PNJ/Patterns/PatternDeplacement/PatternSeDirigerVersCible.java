@@ -12,7 +12,7 @@ import java.util.List;
 public class PatternSeDirigerVersCible implements Pattern {
     private Acteur acteur, cible;
     private Aetoile aetoile;
-    private final int delai = 3000;
+    private final int delai = 1;
     private long derniereMiseAJour;
     private List<Position> chemin;
 
@@ -28,23 +28,30 @@ public class PatternSeDirigerVersCible implements Pattern {
     public void effectue() {
         mettreAJourChemin();
         deplacerVersProchainePosition();
-
     }
 
-    private void mettreAJourChemin(){
+    private void mettreAJourChemin() {
         long currentTime = System.currentTimeMillis();
 
-        if (currentTime - derniereMiseAJour >= delai || chemin.isEmpty()) {
-            System.out.println("mise a jour");
+        if (chemin.isEmpty() || currentTime - derniereMiseAJour >= delai ) {
             chemin = aetoile.trouverChemin(acteur.getPosition(), cible.getPosition());
             derniereMiseAJour = currentTime;
         }
     }
 
+
+
     private void deplacerVersProchainePosition() {
-        if (!chemin.isEmpty()) {
-            Position prochainePosition = chemin.get(0);
+        if (chemin.size() > 1) {
+            Position prochainePosition = chemin.get(1);
+
+
+
+
             Direction direction = calculerDirectionVers(prochainePosition);
+
+
+
 
             if (direction != null) {
                 acteur.setDirection(direction);
@@ -52,35 +59,35 @@ public class PatternSeDirigerVersCible implements Pattern {
                 if (acteur.peutSeDeplacer()) {
                     acteur.setSeDeplace(true);
                     acteur.seDeplace(1);
-                }
-                else
-                {
+                } else {
                     acteur.setSeDeplace(false);
                 }
 
                 if (positionAtteinte(prochainePosition)) {
-                    chemin.remove(0);
+                    chemin.remove(1);
                 }
-            }
-            else
-            {
+            } else {
                 acteur.setSeDeplace(false);
             }
         } else {
             acteur.setSeDeplace(false);
         }
-
-
     }
 
     private Direction calculerDirectionVers(Position prochainePosition) {
         double deltaX = prochainePosition.getX() - acteur.getPosition().getX();
         double deltaY = prochainePosition.getY() - acteur.getPosition().getY();
+
+        System.out.println("Position Acteur: " + acteur.getPosition().getX() + ", " + acteur.getPosition().getY());
+        System.out.println("Prochaine Position: " + prochainePosition.getX() + ", " + prochainePosition.getY());
+        System.out.println("DeltaX: " + deltaX + ", DeltaY: " + deltaY);
         return Direction.calculerDirection(deltaX, deltaY);
     }
 
     private boolean positionAtteinte(Position position) {
-        return Math.abs(acteur.getPosition().getX() - position.getX()) < 0.1 &&
-                Math.abs(acteur.getPosition().getY() - position.getY()) < 0.1;
+        // Vérifier si l'acteur est suffisamment proche de la position cible
+        double tolerance = 0.2;  // Ajuster la tolérance si nécessaire
+        return Math.abs(acteur.getPosition().getX() - position.getX()) < tolerance &&
+                Math.abs(acteur.getPosition().getY() - position.getY()) < tolerance;
     }
 }

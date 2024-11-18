@@ -30,7 +30,7 @@ public class Bloc extends Acteur implements Dropable {
     }
 
     @Override
-    public void subitCollision(Acteur acteur) {acteur.causeCollision(this);}
+    public void subitCollision(Acteur acteur) { acteur.causeCollision(this); }
 
     @Override
     public String typeActeur() { return "bloc";}
@@ -52,6 +52,6 @@ public class Bloc extends Acteur implements Dropable {
     public void causeCollision(Acteur acteur) {/*NE FAIT RIEN*/}
 
     @Override
-    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif) { enleveToutPv();}
+    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif) { enlevePv(1000); }
 
 }
