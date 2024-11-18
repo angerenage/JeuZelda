@@ -8,12 +8,12 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-//  universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AfficheBulleConversation
 {
@@ -54,7 +54,7 @@ public class AfficheBulleConversation
         this.textePnj.setText(texte);
     }
 
-    private void afficherPropositionReponse(ArrayList<String> propositions)
+    private void afficherPropositionReponse(List<String> propositions)
     {
         if (propositions == null || propositions.isEmpty())
         {
@@ -71,9 +71,7 @@ public class AfficheBulleConversation
 
     public void affichePrompt(PromptNode prompt)
     {
-        System.out.println(prompt.afficherPrompt());
         afficherMessagePNJ(prompt.afficherPrompt());
-        System.out.println(prompt.getChoixPossibles().size());
         afficherPropositionReponse(prompt.getChoixPossibles());
     }
 

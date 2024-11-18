@@ -16,8 +16,7 @@ import universite_paris8.iut.EtrangeEtrange.Runner;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Interagisable;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.ChoixPrompt;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptGraph;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Archer;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 
@@ -69,7 +68,7 @@ public class Controller implements Initializable {
     private AfficheBulleConversation afficheBulleConversation;
 
 
-    private PromptGraph promptGraph;
+    private InteractionManager interactionManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -310,8 +309,8 @@ public class Controller implements Initializable {
         System.out.println(acteur);
 
         if (acteur instanceof Interagisable interagisable) {
-            promptGraph = interagisable.getPromptGraph();
-            promptGraph.initPrompt();
+            interactionManager = interagisable.getPromptGraph();
+            interactionManager.initPrompt();
 
             this.interactionAvecPnj = true;
 
@@ -319,19 +318,19 @@ public class Controller implements Initializable {
             this.listProposition = afficheBulleConversation.getListProposition();
             this.textePnj = afficheBulleConversation.getTextePnj();
 
-            this.afficheBulleConversation.affichePrompt(promptGraph.getNoeudActuel());
+            this.afficheBulleConversation.affichePrompt(interactionManager.getNoeudActuel());
 
         }
     }
 
     private void promptSuivant() {
 
-        System.out.println("Début de promptSuivant() avec nœud actuel : " + promptGraph.getNoeudActuel());
-        promptGraph.avancerPrompt(ChoixPrompt.fromString(choixSelectionner()));
-        System.out.println("Fin de promptSuivant() avec nœud actuel : " + promptGraph.getNoeudActuel());
+        System.out.println("Début de promptSuivant() avec nœud actuel : " + interactionManager.getNoeudActuel());
+        interactionManager.avancerPrompt(choixSelectionner());
+        System.out.println("Fin de promptSuivant() avec nœud actuel : " + interactionManager.getNoeudActuel());
 
-        if (promptGraph.noeudExists()) {
-            this.afficheBulleConversation.affichePrompt(promptGraph.getNoeudActuel());
+        if (interactionManager.noeudExists()) {
+            this.afficheBulleConversation.affichePrompt(interactionManager.getNoeudActuel());
         }
         else {
             interactionFinie();

@@ -1,10 +1,12 @@
-package universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt;
+package universite_paris8.iut.EtrangeEtrange.modele.interaction;
 
-public class PromptGraph {
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
+
+public class InteractionManager {
     private PromptNode noeudInitial;
     private PromptNode noeudActuel;
 
-    public PromptGraph(PromptNode noeudInitial) {
+    public InteractionManager(PromptNode noeudInitial) {
         this.noeudInitial = noeudInitial;
     }
 
@@ -20,7 +22,7 @@ public class PromptGraph {
         return noeudActuel;
     }
 
-    public void avancerPrompt(ChoixPrompt choix) {
+    public void avancerPrompt(String choix) {
         PromptNode suivant = noeudActuel.getSuivant(choix);
         noeudActuel = suivant;
     }
