@@ -3,8 +3,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Compétence.Competences;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Compétence.CreationArbre;
-import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.LivreMagique;
 
@@ -41,6 +39,7 @@ public abstract class Joueur extends Entite implements Offensif {
     private Competences competences;
 
     protected Carquois carquois;
+
     private boolean estEntrainDeCourir;
 
     /**
@@ -60,7 +59,7 @@ public abstract class Joueur extends Entite implements Offensif {
      */
     public Joueur(double pv, double attaque, double defense, double attaqueSpecial, double defenseSpecial, double vitesse, Objet objetMainDroite, double x, double y, Direction direction, Hitbox hitbox) {
         super(x, y, direction, pv,defense,defenseSpecial,vitesse,hitbox);
-        this.competences = CreationArbre.arbres();
+        this.competences = new Competences();
         this.estEntrainDeCourir = false;
         this.directions = new HashSet<>();
         this.attaque = new Attaque(attaque);
@@ -134,7 +133,7 @@ public abstract class Joueur extends Entite implements Offensif {
     }
 
     public void estEntrainDeCourir(boolean bool) {
-        if (TypeCompetence.COURIR.getCompetence().estDebloquer()) {
+        if (competences.getRoot().estDebloquer()) {
             this.estEntrainDeCourir = bool;
         }
     }

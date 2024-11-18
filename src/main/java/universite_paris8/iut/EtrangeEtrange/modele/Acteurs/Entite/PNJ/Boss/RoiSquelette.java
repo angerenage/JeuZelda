@@ -4,8 +4,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Bo
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternMonstre.PatternRoiSquelette;
-import universite_paris8.iut.EtrangeEtrange.modele.Compétence.TypeCompetence;
-
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
@@ -49,7 +48,8 @@ public class RoiSquelette extends Boss {
 
     @Override
     public void dropApresMort() {
-        TypeCompetence.COURIR.getCompetence().monterDeNiveau(monde.getJoueur());
+		Joueur joueur = monde.getJoueur();
+        joueur.getCompetences().getRoot().monterDeNiveau(joueur);
     }
 
     @Override
