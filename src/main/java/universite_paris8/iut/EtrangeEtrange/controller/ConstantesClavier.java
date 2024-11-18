@@ -2,11 +2,7 @@ package universite_paris8.iut.EtrangeEtrange.controller;
 
 import javafx.scene.input.KeyCode;
 
-import java.security.Key;
-
-
 public class ConstantesClavier {
-
     public static KeyCode deplacementHaut = KeyCode.Z;
     public static KeyCode deplacementBas = KeyCode.S;
     public static KeyCode deplacementDroite = KeyCode.D;

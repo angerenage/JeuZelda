@@ -8,11 +8,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import static org.junit.Assert.assertEquals;
 
 
-public class EntiteTest
-{
-
-
-
+public class EntiteTest {
     @Test
     public void testDeplacement()
     {

@@ -2,7 +2,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementArc;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.comportementArc.ComportementArc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile.Fleche;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
