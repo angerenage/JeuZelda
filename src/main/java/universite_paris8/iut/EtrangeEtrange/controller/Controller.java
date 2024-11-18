@@ -325,9 +325,7 @@ public class Controller implements Initializable {
 
     private void promptSuivant() {
 
-        System.out.println("Début de promptSuivant() avec nœud actuel : " + interactionManager.getNoeudActuel());
         interactionManager.avancerPrompt(choixSelectionner());
-        System.out.println("Fin de promptSuivant() avec nœud actuel : " + interactionManager.getNoeudActuel());
 
         if (interactionManager.noeudExists()) {
             this.afficheBulleConversation.affichePrompt(interactionManager.getNoeudActuel());
