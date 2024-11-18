@@ -3,6 +3,7 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagis
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.TypeObjet;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
 import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
@@ -17,6 +18,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.*;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.transition.TransitionConditionnelle;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.transition.TransitionSimple;
 
+import java.util.Random;
+
 public class Marchand extends NPEs implements Interagisable {
 
     private final Sac sac;
@@ -28,7 +31,29 @@ public class Marchand extends NPEs implements Interagisable {
         initPrompt();
     }
 
+    private void remplieAleatoirementMarchandise()
+    {
+        Random rdm = new Random();
+        TypeObjet[] typeObjets = TypeObjet.values();
+
+        for (int i = 0;i<5;i++)
+        {
+            TypeObjet typeObjet = typeObjets[rdm.nextInt(typeObjets.length)];
+            Objet objet = TypeObjet.nouvelleInstance(typeObjet);
+
+            this.sac.ajoutItem(objet);
+
+            if(objet.stackMax() > 3)
+            {
+                for (int j = 0; j < rdm.nextInt(objet.stackMax()/2);j++)
+                    this.sac.ajoutItem(TypeObjet.nouvelleInstance(typeObjet));
+            }
+
+        }
+    }
+
     public void genereMarchandises() {
+        remplieAleatoirementMarchandise();
         sac.ajoutItem(new Epee());
         sac.ajoutItem(new Arc());
         sac.ajoutItem(new Potion());
