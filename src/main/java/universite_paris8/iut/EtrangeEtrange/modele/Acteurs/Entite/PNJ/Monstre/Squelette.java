@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.P
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
+import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;

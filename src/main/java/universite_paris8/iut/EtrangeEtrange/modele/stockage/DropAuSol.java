@@ -1,15 +1,14 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
+package universite_paris8.iut.EtrangeEtrange.modele.stockage;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
 public class DropAuSol {
 
-
     private static int idStatic = 0;
-    private Position position;
-    private Objet objet;
-    private int id;
+    private final Position position;
+    private final Objet objet;
+    private final int id;
 
     public DropAuSol(Objet objet, Position position) {
         this.objet = objet;
@@ -24,7 +23,6 @@ public class DropAuSol {
     public int getId() {
         return this.id;
     }
-
 
     public Objet getObjet() {
         return objet;

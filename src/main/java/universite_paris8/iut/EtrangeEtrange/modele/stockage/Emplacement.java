@@ -1,14 +1,13 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
+package universite_paris8.iut.EtrangeEtrange.modele.stockage;
 
 import javafx.beans.property.IntegerProperty;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Conteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 
 import java.util.ArrayList;
 
-public class Emplacement <T extends Objet> implements Conteneur<T> {
+public class Emplacement<T extends Objet> implements Conteneur<T> {
     private int stackPossible;
-    private ArrayList<T> objets;
+    private final ArrayList<T> objets;
 
     public Emplacement() {
         this.objets = new ArrayList<>();
@@ -23,12 +22,10 @@ public class Emplacement <T extends Objet> implements Conteneur<T> {
             stackPossible = objet.stackMax();
             this.objets.add(objet);
             ajoutReussi = true;
-        }
-        else if (this.objets.get(0).getClass().equals(objet.getClass())) {
-            if (this.objets.size()+1 < stackPossible) this.objets.add(objet);
+        } else if (this.objets.get(0).getClass().equals(objet.getClass())) {
+            if (this.objets.size() + 1 < stackPossible) this.objets.add(objet);
             ajoutReussi = true;
-        }
-        else {
+        } else {
             ajoutReussi = false;
         }
 
@@ -38,7 +35,7 @@ public class Emplacement <T extends Objet> implements Conteneur<T> {
     public boolean supprimeObjet(T objet) {
         boolean aSupprimer = false;
 
-        for (int i = this.objets.size() -1; i >= 0; i--) {
+        for (int i = this.objets.size() - 1; i >= 0; i--) {
             if (objet == this.objets.get(i)) {
                 this.objets.remove(i);
                 aSupprimer = true;
@@ -48,10 +45,6 @@ public class Emplacement <T extends Objet> implements Conteneur<T> {
         return aSupprimer;
     }
 
-    /**
-     * La méthode enlève l'objet de l'inventaire
-     * @return
-     */
     public T enleveObjet() {
         return this.objets.remove(0);
     }
@@ -109,10 +102,6 @@ public class Emplacement <T extends Objet> implements Conteneur<T> {
         return null;
     }
 
-    public boolean estDeMemeClass(Objet objet) {
-        return this.objets.get(0).getClass().equals(objet.getClass());
-    }
-
     public boolean peuEncoreStacker() {
         return quantiteObjet() + 1 < this.stackPossible;
     }
@@ -123,22 +112,6 @@ public class Emplacement <T extends Objet> implements Conteneur<T> {
         if (!objets.isEmpty()) estDuMemeType = typeObjet.isInstance(objets.get(0));
 
         return estDuMemeType;
-    }
-
-    public Object getObjet() {
-        if (this.objets.isEmpty())
-            return null;
-        else
-            return this.objets.get(0);
-    }
-
-    @Override
-    public String toString() {
-        String nom = "";
-
-        if (!this.objets.isEmpty()) nom = this.objets.get(0).getNom();
-
-        return nom;
     }
 
     public T objetDansLemplacement() {

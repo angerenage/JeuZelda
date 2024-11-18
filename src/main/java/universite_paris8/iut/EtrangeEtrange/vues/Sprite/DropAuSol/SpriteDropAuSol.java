@@ -4,7 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.ImageView;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesAffichage;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.DropAuSol;
+import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 
 public class SpriteDropAuSol {
 

@@ -1,15 +1,14 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Stockage;
+package universite_paris8.iut.EtrangeEtrange.modele.stockage;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Conteneur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 
 import java.util.ArrayList;
 
 public class Inventaire<T extends Objet> implements Conteneur<T> {
-    private IntegerProperty taille;
-    private Emplacement<T>[] inventaire;
+    private final IntegerProperty taille;
+    private final Emplacement<T>[] inventaire;
 
     public Inventaire(int taille) {
         this.taille = new SimpleIntegerProperty(taille);
@@ -123,7 +122,7 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         return false;
     }
 
-    public IntegerProperty getTailleMaxProperty(){
+    public IntegerProperty getTailleMaxProperty() {
         return this.taille;
     }
 
@@ -179,17 +178,4 @@ public class Inventaire<T extends Objet> implements Conteneur<T> {
         return this.inventaire;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Inventaire{");
-        for (Emplacement emplacement : inventaire) {
-            if (!emplacement.estVide()) {
-                sb.append(emplacement);
-                sb.append(", ");
-            }
-        }
-        sb.append('}');
-        return sb.toString();
-    }
 }

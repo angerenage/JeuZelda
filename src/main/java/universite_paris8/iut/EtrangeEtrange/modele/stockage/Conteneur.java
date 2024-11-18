@@ -1,4 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant;
+package universite_paris8.iut.EtrangeEtrange.modele.stockage;
 
 import javafx.beans.property.IntegerProperty;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;

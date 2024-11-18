@@ -3,8 +3,8 @@ import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Emplacement;
-import universite_paris8.iut.EtrangeEtrange.modele.Stockage.Inventaire;
+import universite_paris8.iut.EtrangeEtrange.modele.stockage.Emplacement;
+import universite_paris8.iut.EtrangeEtrange.modele.stockage.Inventaire;
 
 import java.util.ArrayList;
 
