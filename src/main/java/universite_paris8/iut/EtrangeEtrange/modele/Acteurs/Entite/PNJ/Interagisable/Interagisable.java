@@ -1,4 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.interagisable;
+package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable;
 
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
 

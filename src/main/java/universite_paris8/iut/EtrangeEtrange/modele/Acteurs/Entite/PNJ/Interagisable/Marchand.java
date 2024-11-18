@@ -1,11 +1,11 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.interagisable;
+package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.TypeObjet;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.*;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arc;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Contenant.Sac;
@@ -17,8 +17,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.interaction.condition.Conditi
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.*;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.transition.TransitionConditionnelle;
 import universite_paris8.iut.EtrangeEtrange.modele.interaction.transition.TransitionSimple;
-
-import java.util.Random;
 
 public class Marchand extends NPEs implements Interagisable {
 
@@ -54,9 +52,6 @@ public class Marchand extends NPEs implements Interagisable {
     public boolean estUnEnemie() {
         return false;
     }
-
-    @Override
-    public void subitAttaque(Dommageable causeDegat, Offensif entiteOffensif) {}
 
     private void initPrompt() {
         // Création du nœud racine

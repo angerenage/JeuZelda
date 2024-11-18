@@ -1,5 +1,5 @@
 import org.junit.Test;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.GestionPrompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.GestionPrompt;
 
 public class PromptPnjTest
 {

@@ -1,6 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Acteurs;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Dommageable;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;

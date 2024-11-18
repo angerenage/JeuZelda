@@ -182,6 +182,10 @@ public abstract class Joueur extends Entite implements Offensif {
         return objetMainGauche;
     }
 
+    public boolean estBlesse() {
+        return statsPv.getPv() < statsPv.getPvMaximum();
+    }
+
     public void ramasserObjet() {
         ArrayList<DropAuSol> dropAuSols = getMonde().getDropAuSol();
 
