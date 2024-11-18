@@ -6,6 +6,7 @@ import javafx.scene.layout.TilePane;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import org.json.*;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,13 +22,12 @@ public class gestionAffichageMap {
         this.monde = monde;
     }
 
-
     /**
      * Permet d'afficher la map depuis les fichiers JSON des jeux de tuiles crée avec le logiciel Tiled
      */
     public void afficherMondeJSON(){
         String[] fichiers = {"sol", "traversable", "nontraversable"};
-        ArrayList<int[][]> couchesMap = monde.getToutesLesCouches();
+        ArrayList<int[][]> couchesMap = monde.getCarte().getToutesLesCouches();
         for(TilePane tilePaneCouchesMonde : TilePaneCouchesMonde)
             tilePaneCouchesMonde.getChildren().clear();
 
@@ -35,13 +35,14 @@ public class gestionAffichageMap {
             // Lecture du fichier JSON
             StringBuilder json = new StringBuilder();
             try {
-                BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/universite_paris8/iut/EtrangeEtrange/texture/"+fichiers[i]+"/"+fichiers[i]+".tsj"));
+                BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.TEXTURE_BASE_PATH, fichiers[i], fichiers[i])));
                 String ligne;
 
                 while ((ligne = reader.readLine()) != null) {
                     json.append(ligne);
                 }
 
+				reader.close();
             } catch (IOException e) {
                 System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
             } catch (NumberFormatException e) {

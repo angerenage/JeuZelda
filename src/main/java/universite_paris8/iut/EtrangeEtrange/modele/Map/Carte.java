@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
+
 public class Carte {
     private int[][] sol;
     private int[][] traversable;
@@ -18,11 +20,11 @@ public class Carte {
      * @param hauteur Hauteur de la carte.
      * @param largeur Largeur de la carte.
      */
-    public Carte(String chemin, String nommap, int hauteur, int largeur) {
+    public Carte(String nommap, int hauteur, int largeur) {
         this.sol = new int[hauteur][largeur];
         this.traversable = new int[hauteur][largeur];
         this.nontraversable = new int[hauteur][largeur];
-        chargerCouches(chemin, nommap, hauteur, largeur);
+        chargerCouches(nommap, hauteur, largeur);
     }
 
     /**
@@ -33,7 +35,7 @@ public class Carte {
      * @param hauteur Hauteur de la carte.
      * @param largeur Largeur de la carte.
      */
-    private void chargerCouches(String chemin, String nommap, int hauteur, int largeur) {
+    private void chargerCouches(String nommap, int hauteur, int largeur) {
         ArrayList<int[][]> couches = new ArrayList<>();
         couches.add(this.sol);
         couches.add(this.traversable);
@@ -42,7 +44,9 @@ public class Carte {
         String[] fichiers = {"sol", "traversable", "nontraversable"};
 
         for (int i = 0; i < couches.size(); i++) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(chemin + "/" + nommap + "_" + fichiers[i] + ".csv"))) {
+            try {
+				BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONDE_BASE_PATH, nommap, fichiers[i])));
+
                 String ligne;
                 int ligneIndex = 0;
 
@@ -55,6 +59,7 @@ public class Carte {
                     ligneIndex++;
                 }
 
+				reader.close();
             } catch (IOException e) {
                 System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
             } catch (NumberFormatException e) {

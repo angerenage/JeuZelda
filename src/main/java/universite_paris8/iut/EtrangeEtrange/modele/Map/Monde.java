@@ -12,7 +12,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre.Sq
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.tache.Tache;
 import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
-import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Aetoile;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.FabriquePnj;
@@ -53,11 +52,6 @@ public class Monde {
     private ObservableList<Acteur> acteurs = FXCollections.observableArrayList();
     private ArrayList<Acteur> acteursAsupprimer = new ArrayList<>();
 
-    public Monde(String nommap, int hauteur, int largeur) {
-        this.carte = new Carte(PathRessources.MONDE_BASE_PATH, nommap, hauteur, largeur);
-        this.dropsAuSol = FXCollections.observableArrayList();
-    }
-
     public static Monde getMonde() {
         return monde;
     }
@@ -65,17 +59,14 @@ public class Monde {
     public static void initMonde(String nommap, int hauteur, int largeur) {
         if (monde == null) monde = new Monde(nommap, hauteur, largeur);
     }
-
-    public static void setSizeMondeLargeur(int largeurMonde) {
-
-    }
-
-    public static void setSizeMondeHauteur(int hauteurMonde) {
-
+	
+	public Monde(String nommap, int hauteur, int largeur) {
+        this.carte = new Carte(nommap, hauteur, largeur);
+        this.dropsAuSol = FXCollections.observableArrayList();
     }
 
     public void creationMonstre(String nommap, int hauteur) {
-        try {
+		try {
             BufferedReader reader = new BufferedReader(new FileReader(String.format(PathRessources.MONSTRE_BASE_PATH, nommap)));
             String ligne;
             int ligneIndex = 0;
@@ -92,8 +83,9 @@ public class Monde {
                 }
                 ligneIndex++;
             }
-        }
-        catch (IOException | NumberFormatException e) {
+
+			reader.close();
+        } catch (IOException | NumberFormatException e) {
             System.err.println("Erreur lors de la lecture du fichier de monstres : " + e.getMessage());
         }
     }
@@ -253,5 +245,20 @@ public class Monde {
         ArrayList<Acteur> entites = new ArrayList<>();
         acteurs.stream().filter(Objects::nonNull).forEach(entites::add);
         return entites;
+    }
+
+	public Carte getCarte() {
+        return carte;
+    }
+
+	public Acteur chercheEnemie() {
+        Acteur acteur = null;
+
+        for (Acteur act : acteurs) {
+            if (act.estUnEnemie())
+                acteur = act;
+        }
+
+        return acteur;
     }
 }

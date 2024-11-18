@@ -5,7 +5,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.ConditionsDecorateur.ConditionDelaieRespecter;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
-import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionVendre;
+import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.ActionMarchander;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Action.Soigner;
 import universite_paris8.iut.EtrangeEtrange.modele.Interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
@@ -57,7 +57,7 @@ public class Marchand extends NPEs implements Dropable {
     private void initPrompt() {
         Prompt racine = new Prompt("Bonjour ! Que vous ramène ici ?", null);
 
-        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionVendre(this));
+        Prompt reponseRacine1 = new Prompt("Voici ce que je propose.", new ActionMarchander(this));
         Prompt reponseRacine2 = new Prompt("Vous avez entendu parler du monstre qui rôde dans les coins", null);
 
         racine.ajoutPrompt(reponseRacine1, "J'aimerais marchander un peu avec vous");
