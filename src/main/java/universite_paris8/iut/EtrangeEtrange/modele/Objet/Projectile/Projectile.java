@@ -1,10 +1,12 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Offensif;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Dommageable;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Dommageable;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
 
 public abstract class Projectile implements Dommageable,Objet {
     private double vitesse;

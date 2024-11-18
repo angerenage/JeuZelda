@@ -1,8 +1,8 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort;
 
 
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Tache;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Utilisable;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Tache;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 
 public abstract class Sortilege implements Utilisable {

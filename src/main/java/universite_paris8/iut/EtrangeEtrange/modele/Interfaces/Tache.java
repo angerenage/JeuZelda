@@ -1,4 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes;
+package universite_paris8.iut.EtrangeEtrange.modele.Interfaces;
 
 public abstract class Tache
 {

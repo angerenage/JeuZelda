@@ -1,8 +1,9 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Guerrisable;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Guerrisable;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Objet;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Utilisable;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
 
 public class Potion implements Guerrisable, Objet {

@@ -1,6 +1,6 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Projectile;
 
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
+import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.ComportementProjectile.ComportementOrbe;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
