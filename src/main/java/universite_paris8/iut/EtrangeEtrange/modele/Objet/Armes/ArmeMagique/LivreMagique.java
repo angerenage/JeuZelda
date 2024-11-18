@@ -1,10 +1,10 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique;
 
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Entite;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Arme;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Arme;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegeOrbe;
-import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegePluitDeFleche;
-import universite_paris8.iut.EtrangeEtrange.modele.Interfaces.Comportement;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Attaque.SortilegePluieDeFleche;
+import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Comportement.Comportement;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Sortilege;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.ArmeMagique.Sort.Support.SortilegeDeSoins;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstanteObjet;
@@ -17,7 +17,7 @@ public class LivreMagique extends Arme {
     public LivreMagique() {
         this.sortileges = new ArrayList<>();
         this.sortileges.add(new SortilegeOrbe());
-        this.sortileges.add(new SortilegePluitDeFleche());
+        this.sortileges.add(new SortilegePluieDeFleche());
         this.sortileges.add(new SortilegeDeSoins());
     }
 
