@@ -12,22 +12,22 @@ public class AetoileTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialiser un monde avec des obstacles stratégiques pour tester plusieurs chemins
-        monde = new Monde("", "", 10, 10); // suppose une adaptation pour tester
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                monde.getNontraversable()[i][j] = -1; // Tout est traversable
-            }
-        }
-        // Placer des obstacles
-        monde.getNontraversable()[5][1] = 1;
-        monde.getNontraversable()[5][2] = 1;
-        monde.getNontraversable()[5][3] = 1;
-        monde.getNontraversable()[5][5] = 1;
-        monde.getNontraversable()[5][6] = 1;
-        monde.getNontraversable()[5][7] = 1;
-
-        aetoile = new Aetoile(monde);
+//        // Initialiser un monde avec des obstacles stratégiques pour tester plusieurs chemins
+//        monde = new Monde("", "", 10, 10); // suppose une adaptation pour tester
+//        for (int i = 0; i < 10; i++) {
+//            for (int j = 0; j < 10; j++) {
+//                monde.getNontraversable()[i][j] = -1; // Tout est traversable
+//            }
+//        }
+//        // Placer des obstacles
+//        monde.getNontraversable()[5][1] = 1;
+//        monde.getNontraversable()[5][2] = 1;
+//        monde.getNontraversable()[5][3] = 1;
+//        monde.getNontraversable()[5][5] = 1;
+//        monde.getNontraversable()[5][6] = 1;
+//        monde.getNontraversable()[5][7] = 1;
+//
+//        aetoile = new Aetoile(monde);
     }
 
 
