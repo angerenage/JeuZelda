@@ -27,44 +27,29 @@ public class PromptNodeShop extends PromptNode {
         this.achatSuccess = achatSuccess;
         this.suivant = suivant;
         this.transitions = new HashMap<>();
-
-        System.out.println("[DEBUG] PromptNodeShop initialisé avec le texte : " + textePrompt);
     }
 
     @Override
     public String afficherPrompt() {
-        System.out.println("[DEBUG] Affichage du prompt : " + textePrompt);
         return textePrompt;
     }
 
     @Override
     public PromptNode getSuivant(String choix) {
-        System.out.println("[DEBUG] getSuivant appelé avec le choix : " + choix);
         Transition transition = transitions.get(choix);
-
-        if (transition != null) {
-            System.out.println("[DEBUG] Transition trouvée pour le choix : " + choix);
-        } else {
-            System.out.println("[DEBUG] Aucune transition trouvée pour le choix : " + choix);
-        }
 
         return (transition != null) ? transition.getSuivant() : null;
     }
 
     @Override
     public List<String> getChoixPossibles() {
-        System.out.println("[DEBUG] Génération des choix possibles...");
         List<String> choixPossibles = new ArrayList<>();
 
         for (Emplacement<Objet> emplacement : marchand.getMarchandise().getInventaire()) {
-            System.out.println("[DEBUG] Parcours de l'inventaire du marchand...");
             List<Objet> objets = emplacement.enleverToutLesObjets();
-            System.out.println("[DEBUG] Emplacement : " + emplacement);
-            System.out.println("[DEBUG] Objets trouvés : " + objets);
             if (objets != null) {
                 for (Objet objet : objets) {
                     String choixObjet = String.format("%s     [%d]", objet.getNom(), objet.prixAchat());
-                    System.out.println("[DEBUG] Ajout d'un choix pour l'objet : " + choixObjet);
 
                     Map<String, Transition> transitionsSuivant = new HashMap<>();
                     transitionsSuivant.put("Suivant", new TransitionSimple(suivant));
@@ -84,16 +69,13 @@ public class PromptNodeShop extends PromptNode {
                     choixPossibles.add(choixObjet);
                 }
             } else {
-                System.out.println("[DEBUG] Aucun objet trouvé dans cet emplacement.");
             }
         }
 
         // Ajout de l'option "Quitter"
-        System.out.println("[DEBUG] Ajout de l'option 'Quitter'.");
         transitions.put("Quitter", new TransitionSimple(quitter));
         choixPossibles.add("Quitter");
 
-        System.out.println("[DEBUG] Choix possibles générés : " + choixPossibles);
         return choixPossibles;
     }
 }
