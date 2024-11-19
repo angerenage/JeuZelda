@@ -8,18 +8,19 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Joueur;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.prompt.PromptNode;
 import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AfficheBulleConversation
 {
 
-    private Pane pane;
-    private Label textePnj;
-    private ListView<String> listProposition;
+    private final Pane pane;
+    private final Label textePnj;
+    private final ListView<String> listProposition;
 
 
     public AfficheBulleConversation(Joueur joueur, Acteur pnj, Pane pane)
@@ -53,7 +54,7 @@ public class AfficheBulleConversation
         this.textePnj.setText(texte);
     }
 
-    private void afficherPropositionReponse(ArrayList<String> propositions)
+    private void afficherPropositionReponse(List<String> propositions)
     {
         if (propositions == null || propositions.isEmpty())
         {
@@ -68,22 +69,12 @@ public class AfficheBulleConversation
 
     public ListView<String> getListProposition() {return this.listProposition;}
 
-    public void affichePrompt(Prompt prompt)
+    public void affichePrompt(PromptNode prompt)
     {
-        afficherMessagePNJ(prompt.getTextePrompt());
-        afficherPropositionReponse(prompt.getChoixPossible());
+        afficherMessagePNJ(prompt.afficherPrompt());
+        afficherPropositionReponse(prompt.getChoixPossibles());
     }
 
     public Label getTextePnj(){ return this.textePnj;}
-
-
-
-
-
-
-
-
-
-
 
 }

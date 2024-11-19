@@ -13,9 +13,10 @@ import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
 import universite_paris8.iut.EtrangeEtrange.Runner;
+
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Acteur;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.GestionPrompt;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
+import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Interagisable.Interagisable;
+import universite_paris8.iut.EtrangeEtrange.modele.interaction.InteractionManager;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Archer;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Armes.Epee;
 
@@ -25,7 +26,6 @@ import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.Personnage.Jou
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Soins.Potion;
 
-import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.vues.AfficheBulleConversation;
 import universite_paris8.iut.EtrangeEtrange.vues.BarreDeVie.GestionAffichageVieJoueur;
 
@@ -33,6 +33,7 @@ import universite_paris8.iut.EtrangeEtrange.vues.GestionSon;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.DropAuSol.gestionAffichageSpriteDropAuSol;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.Entite.GestionAffichageSpriteEntite;
 
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
 import universite_paris8.iut.EtrangeEtrange.vues.gestionAffichageMap;
 
 import javafx.fxml.FXML;
@@ -65,7 +66,9 @@ public class Controller implements Initializable {
     private ListView<String> listProposition;
     private Label textePnj;
     private AfficheBulleConversation afficheBulleConversation;
-    private GestionPrompt gestionPrompt;
+
+
+    private InteractionManager interactionManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -92,7 +95,7 @@ public class Controller implements Initializable {
 
         gestionAffichageSpriteDropAuSol gestionAffichageDropAuSol = new gestionAffichageSpriteDropAuSol(paneEntite);
         monde.setListenerListeDropsAuSol(gestionAffichageDropAuSol);
-        
+
         monde.setJoueur(joueur);
         monde.creationMonstre( "mapfinal", Monde.getSizeMondeHauteur());
 
@@ -240,7 +243,7 @@ public class Controller implements Initializable {
             else if (keyCode == ConstantesClavier.parlerPnj)
                 interaction();
             else if (keyCode == ConstantesClavier.inventaire)
-                 ouvrirMenu();
+                ouvrirMenu();
             else if (keyCode == ConstantesClavier.courrir)
             {
                 joueur.estEntrainDeCourir(true);
@@ -305,46 +308,30 @@ public class Controller implements Initializable {
         Acteur acteur = monde.interactionAvecActeur();
         System.out.println(acteur);
 
-        if (acteur != null) {
-            Prompt prompt = acteur.getPrompt();
+        if (acteur instanceof Interagisable interagisable) {
+            interactionManager = interagisable.getPromptGraph();
+            interactionManager.initPrompt();
 
-            if (prompt != null) {
-                this.interactionAvecPnj = true;
+            this.interactionAvecPnj = true;
 
-                this.afficheBulleConversation = new AfficheBulleConversation(joueur,acteur,paneInteraction);
-                this.listProposition = afficheBulleConversation.getListProposition();
-                this.textePnj = afficheBulleConversation.getTextePnj();
+            this.afficheBulleConversation = new AfficheBulleConversation(joueur,acteur,paneInteraction);
+            this.listProposition = afficheBulleConversation.getListProposition();
+            this.textePnj = afficheBulleConversation.getTextePnj();
 
-                this.gestionPrompt = new GestionPrompt(prompt);
-                this.afficheBulleConversation.affichePrompt(gestionPrompt.getPrompt());
+            this.afficheBulleConversation.affichePrompt(interactionManager.getNoeudActuel());
 
-            }
         }
     }
 
-    // Permet de passer un tour du prompt
     private void promptSuivant() {
-        // Exécute l'action associée au prompt actuel, s'il y en a une
-        if (gestionPrompt.getPrompt().getAction() != null) {
-            Prompt pr = gestionPrompt.getPrompt().getAction().execute();
 
-            // Si l'action retourne un nouveau prompt, continuez avec ce nouveau prompt
-            if (pr != null) {
-                gestionPrompt = new GestionPrompt(pr);
-                this.afficheBulleConversation.affichePrompt(gestionPrompt.getPrompt());
-                return; // Arrêtez ici pour éviter d'exécuter le reste du code
-            }
-        }
+        interactionManager.avancerPrompt(choixSelectionner());
 
-        // Passer au prompt suivant basé sur le choix sélectionné
-        gestionPrompt.promptSuivant(choixSelectionner());
-
-        // Affiche le nouveau prompt si disponible
-        if (gestionPrompt.getPrompt() != null) {
-            this.afficheBulleConversation.affichePrompt(gestionPrompt.getPrompt());
+        if (interactionManager.noeudExists()) {
+            this.afficheBulleConversation.affichePrompt(interactionManager.getNoeudActuel());
         }
         else {
-            interactionFinie(); // Terminer l'interaction si aucun prompt suivant n'est disponible
+            interactionFinie();
         }
     }
 
@@ -371,15 +358,12 @@ public class Controller implements Initializable {
     }
 
     private void handleInteractionPnj(KeyEvent event) {
-        KeyCode keyCode = event.getCode();
-
-        if (keyCode == KeyCode.ENTER) {
+        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER) {
             promptSuivant();
-        }
-        else if (keyCode == KeyCode.S || keyCode == KeyCode.D) {
+            event.consume();
+        } else if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.D) {
             defile(1);
-        }
-        else if (keyCode == KeyCode.Z || keyCode == KeyCode.Q) {
+        } else if (event.getCode() == KeyCode.Z || event.getCode() == KeyCode.Q) {
             defile(-1);
         }
     }

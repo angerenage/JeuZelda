@@ -3,7 +3,6 @@ package universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Monstre;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.NPEs;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.Pattern;
 import universite_paris8.iut.EtrangeEtrange.modele.Acteurs.Entite.PNJ.Patterns.PatternDeplacement.PatternDeplacementAleatoire;
-import universite_paris8.iut.EtrangeEtrange.modele.interaction.Prompte.Prompt;
 import universite_paris8.iut.EtrangeEtrange.modele.Objet.Monnaie.Piece;
 import universite_paris8.iut.EtrangeEtrange.modele.stockage.DropAuSol;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
@@ -17,7 +16,6 @@ public class Slime extends NPEs {
      * @param x         La position horizontale de l'entité.
      * @param y         La position verticale de l'entité.
      * @param direction La direction dans laquelle l'entité est orientée.
-     * @param hitbox    La hitbox de l'entité.
      */
     public Slime(double x, double y, Direction direction) {
         super(x, y, direction,
@@ -50,8 +48,4 @@ public class Slime extends NPEs {
         return true;
     }
 
-    @Override
-    public Prompt getPrompt() {
-       return  null;
-    }
 }
