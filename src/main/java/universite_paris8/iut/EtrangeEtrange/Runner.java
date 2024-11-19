@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import universite_paris8.iut.EtrangeEtrange.controller.SwitchScene;
 import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.PathRessources;
 
 import java.io.IOException;
 

@@ -1,12 +1,11 @@
 package universite_paris8.iut.EtrangeEtrange.vues;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import universite_paris8.iut.EtrangeEtrange.modele.Map.Monde;
 import org.json.*;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.PathRessources;
 
 import java.io.*;
 import java.util.ArrayList;

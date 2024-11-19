@@ -12,7 +12,7 @@ import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Direction;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Hitbox;
 import universite_paris8.iut.EtrangeEtrange.modele.Utilitaire.Position;
 
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.PathRessources;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.DropAuSol.gestionAffichageSpriteDropAuSol;
 import universite_paris8.iut.EtrangeEtrange.vues.Sprite.Entite.GestionAffichageSpriteEntite;
 import universite_paris8.iut.EtrangeEtrange.controller.GestionActeur;

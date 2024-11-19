@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import universite_paris8.iut.EtrangeEtrange.Runner;
 import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesAffichage;
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesDescription;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.ConstantesDescription;
 import universite_paris8.iut.EtrangeEtrange.modele.constantes.ConstantesPersonnages;
 
 import java.io.IOException;

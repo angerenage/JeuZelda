@@ -1,4 +1,4 @@
-package universite_paris8.iut.EtrangeEtrange.modele.constantes;
+package universite_paris8.iut.EtrangeEtrange.vues.constantes;
 
 public class PathRessources {
     public static final String MONDE_BASE_PATH = "src/main/resources/universite_paris8/iut/EtrangeEtrange/TiledMap/%s_%s.csv";

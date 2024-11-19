@@ -1,11 +1,8 @@
 package universite_paris8.iut.EtrangeEtrange.modele.Map;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import universite_paris8.iut.EtrangeEtrange.modele.constantes.PathRessources;
+import universite_paris8.iut.EtrangeEtrange.vues.constantes.PathRessources;
 
 public class Carte {
     private int[][] sol;
